@@ -62,7 +62,7 @@ Desde el Club de Programación Competitiva de la Universidad de Oviedo (PCU UniO
 ## Requisitos para unirte al equipo
 
 1. **Estar matriculado:** En cualquier grado o máster oficial de la Universidad de Oviedo.
-2. **Compromiso con el entrenamiento:** Asistir a los talleres semanales y a las simulaciones de concurso de la asociación.
+2. **Compromiso con el entrenamiento:** Asistir a las sesiones de entrenamiento y a las simulaciones de concurso de la asociación.
 3. **Bases algorítmicas:** Comprensión de complejidad asintótica ($O(N \log N)$, $O(N)$) y soltura en el manejo de estructuras de datos estándar (vectores, colas con prioridad, mapas, conjuntos) en C++, Java o Python.
 
 ## Enlaces y recursos oficiales

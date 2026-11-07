@@ -6,4 +6,7 @@ export default defineConfig({
   site: 'https://asociacionpcu.vercel.app',
   output: 'static',
   adapter: vercel(),
+  redirects: {
+    '/actividades/talleres-stem': '/actividades/charlas-informativas',
+  },
 });

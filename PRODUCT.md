@@ -8,8 +8,8 @@ web
 
 ## Users
 - **Estudiantes universitarios (EPI Gijón / Universidad de Oviedo):** Principalmente de Grados en Ingeniería Informática, Tecnologías de Telecomunicación, Ciencia e Ingeniería de Datos, Matemáticas o Física. Buscan entrenar en resolución de problemas algorítmicos complejos, aprender estructuras de datos avanzadas y participar en competiciones oficiales por equipos (ICPC/SWERC, AdaByron).
-- **Empresas e instituciones colaboradoras:** Empresas tecnológicas de Asturias y del ámbito nacional interesadas en conectar con perfiles técnicos de alto nivel (scouting de talento), organizar talleres conjuntos y patrocinar los viajes y equipaciones oficiales del equipo.
-- **Centros de educación secundaria y bachillerato:** Colegios e institutos asturianos interesados en talleres de divulgación STEM y fomento del pensamiento computacional y la lógica algorítmica.
+- **Empresas e instituciones colaboradoras:** Empresas tecnológicas de Asturias y del ámbito nacional interesadas en conectar con perfiles técnicos de alto nivel (scouting de talento), organizar ponencias técnicas o retos conjuntos y patrocinar los viajes y equipaciones oficiales del equipo.
+- **Centros de educación secundaria y bachillerato:** Colegios e institutos asturianos interesados en charlas informativas, orientación vocacional en ingenierías y fomento de la algoritmia.
 
 ## Product Purpose
 Proporcionar el portal web oficial y la identidad digital de la Asociación de Programación Competitiva Universitaria (PCU) de la Universidad de Oviedo, centralizando la información sobre competiciones activas (SWERC, HDCPE, AdaByron), entrenamientos técnicos en la EPI de Gijón, dossier de patrocinio empresarial y vías de contacto directo.
