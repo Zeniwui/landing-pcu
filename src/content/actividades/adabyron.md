@@ -39,7 +39,7 @@ Para fomentar la participación de todos los cursos, AdaByron divide a los equip
 
 ---
 
-> **Hito PCU UniOvi en la Final Nacional AdaByron 2026**  
+> **Hito PCU UniOvi en la Final Nacional AdaByron 2024**
 >
 > Tras conseguir la clasificación en la Fase Regional Multisede, el equipo de la Universidad de Oviedo  disputó la Gran Final Nacional celebrada en 2024 en la Facultad de Informática de la UCM en Madrid.  
 
