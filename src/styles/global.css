@@ -769,7 +769,7 @@ a {
 }
 
 /* ==========================================================================
-   HITO DESTACADO DE PALMARÉS (COMPETICIÓN)
+   RESULTADO DESTACADO EN COMPETICIÓN
    ========================================================================== */
 .achievement-card {
     margin-top: 2.25rem;
@@ -1154,6 +1154,14 @@ a {
 
 .channel-value a:hover {
     text-decoration: underline;
+}
+
+.channel-value span {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--ink-secondary);
+    margin-top: 0.2rem;
 }
 
 /* FORM STYLING */

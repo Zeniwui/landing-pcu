@@ -1,12 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ActiveEvents from '../components/ActiveEvents.astro';
-import ContestCard from '../components/ContestCard.astro';
 import { getCollection } from 'astro:content';
 
 const allActivities = await getCollection('actividades');
-// Mostramos únicamente los certámenes y concursos oficiales en esta sección
-const featuredContests = allActivities.filter((item) => item.data.tipo === 'concurso');
 const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
 ---
 
@@ -31,12 +28,12 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
             </h1>
 
             <p class="hero-description">
-              Somos la <strong>Asociación de Programación Competitiva Universitaria (PCU)</strong> de la Universidad de Oviedo. Practicamos estructuras de datos, resolvemos problemas de concurso y preparamos competiciones como AdaByron o SWERC.
+              Somos la <strong>Asociación de Programación Competitiva Universitaria (PCU)</strong> de la Universidad de Oviedo. Practicamos estructuras de datos, resolvemos problemas de concurso y preparamos certámenes oficiales como AdaByron o SWERC.
             </p>
 
             <div class="hero-actions">
               <a href="/actividades" class="btn-primary">Ver Actividades</a>
-              <a href="#contacto" class="btn-secondary">Unirse a la Asociación</a>
+              <a href="/contacto" class="btn-secondary">Unirse a la Asociación</a>
             </div>
           </div>
 
@@ -46,41 +43,25 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
       </div>
     </section>
 
-    <!-- SECCIÓN: CONCURSOS Y COMPETICIONES (DINÁMICO CON ASTRO) -->
+    <!-- SECCIÓN: CONCURSOS Y RESULTADOS -->
     <section id="concursos" class="section-padding">
       <div class="container">
         <div class="section-head">
           <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
             <div>
-              <span class="section-tag">Competiciones</span>
-              <h2 class="section-title">Concursos y Competiciones</h2>
+              <h2 class="section-title">Competiciones Oficiales</h2>
               <p class="section-lead">
-                Participamos en certámenes universitarios de algoritmia y programación a nivel regional, nacional e internacional.
+                Participamos en los principales certámenes universitarios de algoritmia por equipos a nivel regional, nacional e internacional.
               </p>
             </div>
-            <a href="/actividades" class="btn-secondary" style="font-size: 0.88rem; padding: 0.65rem 1.25rem;">
-              Ver todas las actividades ({allActivities.length}) &rarr;
+            <a href="/actividades" class="btn-secondary">
+              Ver todos los certámenes ({allActivities.length}) &rarr;
             </a>
           </div>
         </div>
 
-        <div class="contests-grid">
-          {featuredContests.map((item) => (
-            <ContestCard
-              slug={item.id}
-              titulo={item.data.titulo}
-              descripcion={item.data.descripcion}
-              ambito={item.data.ambito}
-              estado={item.data.estado}
-              formato={item.data.formato}
-              lugar={item.data.lugar}
-              fecha={item.data.fecha}
-            />
-          ))}
-        </div>
-
-        <!-- HITO DE COMPETICIÓN / PALMARÉS -->
-        <div class="achievement-card">
+        <!-- RESULTADO DESTACADO EN COMPETICIÓN -->
+        <div class="achievement-card" style="margin-top: 0;">
           <div class="achievement-icon-side" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
@@ -101,11 +82,11 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
             </p>
             <div class="achievement-meta-strip">
               <span class="meta-item">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                 Formato oficial 3 personas · 1 PC
               </span>
               <span class="meta-item">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                 5 Horas de concurso
               </span>
               <span class="meta-item">EPI Gijón · UniOvi</span>
@@ -114,7 +95,7 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
           <div class="achievement-cta">
             <a href="/actividades/adabyron" class="btn-achievement">
               <span>Ficha del certamen</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cta-arrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cta-arrow" aria-hidden="true">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
@@ -128,10 +109,9 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
     <section id="actividades" class="section-padding" style="background-color: var(--bg-surface);">
       <div class="container">
         <div class="section-head">
-          <span class="section-tag">Comunidad</span>
           <h2 class="section-title">Nuestras Actividades</h2>
           <p class="section-lead">
-            Además de competir, organizamos entrenamientos en la Escuela Politécnica de Ingeniería (EPI) de Gijón y charlas informativas en institutos.
+            Formación continua en la EPI de Gijón y orientación en centros educativos de Asturias.
           </p>
         </div>
 
@@ -141,24 +121,10 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
             <span class="pane-badge">Formación Continua</span>
             <h3 class="pane-title">Entrenamientos Algorítmicos</h3>
             <p class="pane-text">
-              Organizamos sesiones en los laboratorios de la Escuela Politécnica de Ingeniería (EPI) de Gijón para resolver problemas de concurso, comentar soluciones y aprender nuevas técnicas.
+              Sesiones prácticas en la EPI de Gijón para resolver problemas de concurso y dominar estructuras de datos avanzadas. Entrenamos la estrategia en equipo bajo el formato oficial de 3 personas y un solo teclado. Actividad abierta a cualquier estudiante de UniOvi con ganas de aprender y competir.
             </p>
-            <ul class="activity-checklist">
-              <li>
-                <span class="check-bullet">✓</span>
-                <span>Grafos (Dijkstra, BFS/DFS), programación dinámica y estructuras de datos como árboles de segmentos o DSU.</span>
-              </li>
-              <li>
-                <span class="check-bullet">✓</span>
-                <span>Análisis de complejidad temporal y espacial para encajar soluciones en los límites de tiempo de cada problema.</span>
-              </li>
-              <li>
-                <span class="check-bullet">✓</span>
-                <span>Estrategia de equipo para repartir problemas y compartir un único teclado durante cinco horas.</span>
-              </li>
-            </ul>
             <div style="margin-top: 1.5rem;">
-              <a href="/actividades/entrenamientos-semanales" class="btn-secondary" style="font-size: 0.82rem; padding: 0.5rem 1rem;">
+              <a href="/actividades/entrenamientos-semanales" class="btn-secondary">
                 Ver temario y detalles &rarr;
               </a>
             </div>
@@ -169,24 +135,10 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
             <span class="pane-badge">Divulgación y Orientación</span>
             <h3 class="pane-title">Charlas Informativas en Institutos</h3>
             <p class="pane-text">
-              Visitamos colegios e institutos de Asturias para orientar a estudiantes sobre los grados de ingeniería, la vida universitaria y el pensamiento algorítmico.
+              Acercamos el pensamiento algorítmico y la lógica a estudiantes de secundaria y bachillerato en Asturias. Compartimos nuestra experiencia en las ingenierías de la Universidad de Oviedo y resolvemos dudas sobre la transición a la facultad. Actividad totalmente gratuita para centros educativos.
             </p>
-            <ul class="activity-checklist">
-              <li>
-                <span class="check-bullet">✓</span>
-                <span>Orientación de primera mano sobre Ingeniería Informática, Telecomunicaciones y Datos en UniOvi.</span>
-              </li>
-              <li>
-                <span class="check-bullet">✓</span>
-                <span>Introducción al pensamiento algorítmico y cómo la lógica resuelve problemas del mundo real.</span>
-              </li>
-              <li>
-                <span class="check-bullet">✓</span>
-                <span>Ronda abierta de dudas con estudiantes universitarios sobre selectividad y transición a la facultad.</span>
-              </li>
-            </ul>
             <div style="margin-top: 1.5rem;">
-              <a href="/actividades/charlas-informativas" class="btn-secondary" style="font-size: 0.82rem; padding: 0.5rem 1rem;">
+              <a href="/actividades/charlas-informativas" class="btn-secondary">
                 Solicitar charla para tu centro &rarr;
               </a>
             </div>
@@ -200,29 +152,28 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
       <div class="container">
         <div class="sponsors-box">
           <div class="sponsors-intro">
-            <span class="section-tag">Colaboraciones</span>
             <h2 class="sponsors-title">Colabora con la asociación</h2>
             <p class="sponsors-desc">
-              La participación en certámenes como AdaByron o SWERC requiere financiar desplazamientos, alojamientos e inscripciones. Si tu empresa quiere apoyarnos, podemos organizar actividades conjuntas y dar visibilidad a vuestra marca.
+              Financiamos los desplazamientos del equipo a certámenes oficiales mediante acuerdos de patrocinio con empresas tecnológicas. Ofrecemos presencia de marca en equipaciones y campus, junto con acceso directo al mejor talento informático de UniOvi.
             </p>
             <div class="sponsors-actions">
               <a href="/empresas" class="btn-primary">Ver dossier de patrocinio</a>
-              <a href="#contacto" class="btn-secondary">Contactar</a>
+              <a href="/contacto" class="btn-secondary">Contactar</a>
             </div>
           </div>
 
           <div class="sponsors-pillars">
             <div class="pillar-item">
-              <h3 class="pillar-title">Contacto con estudiantes</h3>
-              <p class="pillar-text">Conoce a estudiantes de la EPI de Gijón y de la Universidad de Oviedo con interés real en algoritmia, optimización y resolución práctica de problemas.</p>
+              <h3 class="pillar-title">Scouting de talento</h3>
+              <p class="pillar-text">Conecta con estudiantes con alto nivel en algoritmia, C++ y resolución práctica de problemas.</p>
             </div>
             <div class="pillar-item">
-              <h3 class="pillar-title">Apoyo en viajes y competiciones</h3>
-              <p class="pillar-text">Las aportaciones financian los desplazamientos del equipo a fases regionales y nacionales (AdaByron, SWERC), con el logo de tu empresa en la equipación. Nuestro equipo ya ha demostrado su solvencia clasificándose para la Final Nacional de AdaByron.</p>
+              <h3 class="pillar-title">Marca en competición</h3>
+              <p class="pillar-text">Logotipo en la equipación oficial vestida en las fases nacionales y europeas de AdaByron y SWERC.</p>
             </div>
             <div class="pillar-item">
-              <h3 class="pillar-title">Charlas y ponencias técnicas</h3>
-              <p class="pillar-text">Posibilidad de organizar presentaciones técnicas, retos de programación o ponencias bilaterales en el campus de Gijón.</p>
+              <h3 class="pillar-title">Retos y ponencias</h3>
+              <p class="pillar-text">Organización conjunta de talleres técnicos, desafíos de programación y charlas en la EPI de Gijón.</p>
             </div>
           </div>
         </div>
@@ -235,32 +186,24 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
         <div class="contact-layout">
           <div class="contact-direct-info">
             <div>
-              <span class="section-tag">Contacto</span>
               <h2 class="section-title">Escríbenos</h2>
               <p class="section-lead">
-                Si quieres unirte a los entrenamientos, solicitar una charla para tu centro educativo o colaborar con la asociación, escríbenos y te responderemos en pocos días.
+                ¿Quieres entrenar, pedir una charla para tu centro o colaborar como empresa? Envíanos un mensaje y te responderemos en 24-48 horas.
               </p>
             </div>
 
             <div class="direct-channel">
-              <div class="channel-label">Correo de la Asociación</div>
+              <div class="channel-label">Correo Oficial</div>
               <div class="channel-value">
                 <a href="mailto:asociacionuniovi@gmail.com">asociacionuniovi@gmail.com</a>
               </div>
             </div>
 
             <div class="direct-channel">
-              <div class="channel-label">Sede Universitaria</div>
+              <div class="channel-label">Sede</div>
               <div class="channel-value">
-                Escuela Politécnica de Ingeniería (EPI) de Gijón<br>
-                <span style="font-size: 0.95rem; font-weight: normal; color: var(--ink-secondary);">Campus de Gijón (Viesques) · 33204 Gijón</span>
-              </div>
-            </div>
-
-            <div class="direct-channel">
-              <div class="channel-label">Respuesta Estimada</div>
-              <div class="channel-value" style="font-size: 0.95rem; color: var(--ink-secondary);">
-                Solemos responder en 24 a 48 horas.
+                Escuela Politécnica de Ingeniería (EPI) de Gijón
+                <span>Campus de Viesques · 33204 Gijón</span>
               </div>
             </div>
           </div>
@@ -268,13 +211,11 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
           <!-- FORMULARIO INTERACTIVO CON TRANSMISIÓN AUTOMÁTICA -->
           <div class="contact-form-container">
             <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
-              <!-- Clave inyectada desde el entorno (no visible en GitHub) -->
               <input type="hidden" name="access_key" value={accessKey} />
-              <!-- Campo trampa invisible para bots (Honeypot) -->
               <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off" aria-hidden="true" />
               <div class="form-grid">
                 <div class="form-group">
-                  <label for="nombre" class="form-label">Tu nombre completo <span class="required">*</span></label>
+                  <label for="nombre" class="form-label">Tu nombre <span class="required">*</span></label>
                   <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Ej. Pelayo Álvarez" required>
                 </div>
 
@@ -286,35 +227,33 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
                 <div class="form-group">
                   <label for="categoria" class="form-label">¿Cuál es tu perfil?</label>
                   <select id="categoria" name="categoria" class="form-select">
-                    <option value="Estudiante UniOvi">Estudiante de la Universidad de Oviedo</option>
-                    <option value="Empresa / Patrocinador">Empresa / Propuesta de Patrocinio</option>
-                    <option value="Colegio o Instituto">Colegio / Instituto (Charlas informativas)</option>
-                    <option value="Alumni o Mentor">Alumni / Mentor técnico</option>
+                    <option value="Estudiante UniOvi">Estudiante UniOvi</option>
+                    <option value="Empresa / Patrocinador">Empresa / Patrocinador</option>
+                    <option value="Colegio o Instituto">Colegio o Instituto</option>
                     <option value="Otra consulta">Otra consulta general</option>
                   </select>
                 </div>
 
                 <div class="form-group">
                   <label for="asunto" class="form-label">Asunto breve</label>
-                  <input type="text" id="asunto" name="asunto" class="form-input" placeholder="Ej. Unirse al grupo de AdaByron">
+                  <input type="text" id="asunto" name="asunto" class="form-input" placeholder="Ej. Unirme a los entrenamientos">
                 </div>
 
                 <div class="form-group full-width">
-                  <label for="mensaje" class="form-label">Tu mensaje <span class="required">*</span></label>
-                  <textarea id="mensaje" name="mensaje" class="form-textarea" placeholder="Cuéntanos en qué podemos ayudarte o en qué concurso/actividad te gustaría participar..." required></textarea>
-                  <span class="form-helper">Te responderemos directamente a tu correo.</span>
+                  <label for="mensaje" class="form-label">Mensaje <span class="required">*</span></label>
+                  <textarea id="mensaje" name="mensaje" class="form-textarea" placeholder="Cuéntanos brevemente tu consulta o propuesta..." rows="4" required></textarea>
                 </div>
               </div>
 
               <div class="form-submit-row">
                 <button type="submit" class="btn-submit">
                   <span>Enviar mensaje</span>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <line x1="22" y1="2" x2="11" y2="13"></line>
                     <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                   </svg>
                 </button>
-                <span style="font-size: 0.8rem; color: var(--ink-muted);">Te responderemos lo antes posible.</span>
+                <span style="font-size: 0.8rem; color: var(--ink-muted);">Respuesta en 24-48 horas laborables.</span>
               </div>
 
               <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
