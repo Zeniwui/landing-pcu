@@ -1,6 +1,6 @@
 ---
 titulo: "AdaByron (Concurso Interuniversitario Nacional)"
-descripcion: "El certamen interuniversitario de programación competitiva de referencia en España. Equipos de 3 integrantes resolviendo problemas matemáticos y de algoritmia estricta bajo presión de tiempo."
+descripcion: "Concurso universitario de programación por equipos a nivel nacional. Tres integrantes comparten un ordenador durante cinco horas para resolver problemas de algoritmia y matemáticas."
 tipo: "concurso"
 ambito: "Nacional / Regional"
 estado: "Próxima Fase"
@@ -12,18 +12,18 @@ destacado: true
 
 ## Sobre el certamen AdaByron
 
-El concurso universitario **AdaByron** es la cita de programación algorítmica más multitudinaria de la universidad española. Nacido en Madrid y extendido a múltiples sedes regionales (como la Fase Norte en la que compite la Universidad de Oviedo), simula las condiciones del circuito internacional ICPC:
+AdaByron es un concurso universitario de programación por equipos que se celebra anualmente en varias sedes de España, incluida la Fase Norte en la que compite la Universidad de Oviedo. El certamen sigue una dinámica similar a la del circuito ICPC:
 
-* **Un solo ordenador por equipo:** Tres estudiantes deben gestionar la lectura de problemas en papel, el diseño de soluciones en libreta y el tiempo de tecleo de código.
-* **Jueces automáticos en tiempo real:** Respuestas instantáneas como `Accepted [AC]`, `Time Limit Exceeded [TLE]`, `Wrong Answer [WA]` o `Memory Limit Exceeded [MLE]`.
-* **Lenguajes autorizados:** C++, Java y Python.
+* Los equipos están formados por tres personas y disponen de un único ordenador, por lo que es necesario repartirse el trabajo en papel antes de programar cada solución.
+* Los envíos se evalúan en tiempo real con un juez automático que devuelve veredictos como `Accepted`, `Time Limit Exceeded` o `Wrong Answer`.
+* Se permite programar en C++, Java y Python.
 
 ### Participación de PCU UniOvi
 
-Cada año, la Asociación clasifica a los mejores equipos formados en la Escuela de Ingeniería Informática de Oviedo tras superar rondas internas de selección.
+Cada curso organizamos entrenamientos previos y rondas de selección interna en la Escuela de Ingeniería Informática para formar los equipos que representan a la Universidad de Oviedo en la Fase Norte y en la final nacional.
 
 ### Requisitos para unirse al equipo
 
-1. Estar matriculado en cualquier titulación de la Universidad de Oviedo (Grado o Máster).
-2. Asistir a los entrenamientos semanales de los jueves.
-3. Conocer fundamentos de complejidad temporal ($O(N \log N)$) y estructuras de datos estándar de la STL de C++.
+1. Estar matriculado en algún grado o máster de la Universidad de Oviedo.
+2. Asistir a los entrenamientos de los jueves.
+3. Conocer nociones básicas de complejidad temporal ($O(N \log N)$) y el manejo de estructuras de datos estándar en C++ o Python.

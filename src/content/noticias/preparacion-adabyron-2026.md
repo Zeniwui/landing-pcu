@@ -1,15 +1,15 @@
 ---
-titulo: "PCU UniOvi arranca la fase intensiva para el concurso AdaByron 2026"
-descripcion: "Tres equipos de la Escuela de Informática inician el calendario de simulaciones cronometradas de 5 horas con el objetivo de liderar la Fase Norte."
+titulo: "PCU UniOvi comienza las simulaciones para AdaByron 2026"
+descripcion: "Los equipos de la Escuela de Informática inician las sesiones de simulación de cinco horas para preparar la Fase Norte del certamen."
 fecha: "2026-03-01"
 autor: "Directiva PCU UniOvi"
 categoria: "Competición"
 ---
 
-El próximo mes de marzo tendrá lugar una nueva edición del certamen interuniversitario **AdaByron**, y los equipos de la Universidad de Oviedo ya han comenzado las sesiones de simulación completa en los laboratorios de la Escuela de Ingeniería Informática.
+Este mes de marzo se celebra una nueva edición del concurso AdaByron, y los equipos de la Universidad de Oviedo ya han empezado a entrenar en los laboratorios de la Escuela de Ingeniería Informática.
 
-### Estrategia de equipo: un solo teclado
+### Estrategia de equipo con un solo teclado
 
-En estas simulaciones de 5 horas, la clave no es únicamente la destreza matemática o el dominio de algoritmos, sino la sincronización entre los tres miembros del equipo. Mientras un integrante programa en el ordenador, los otros dos resuelven problemas en papel, diseñan casos de prueba límite (*corner cases*) y preparan las estructuras de datos.
+El formato de cinco horas exige coordinarse con precisión entre los tres integrantes del equipo. Mientras una persona implementa el código en el ordenador, las otras dos trabajan en papel analizando los problemas, buscando casos particulares (*corner cases*) y planteando las estructuras de datos necesarias.
 
-Próximamente publicaremos la crónica detallada con los resultados y las soluciones de los problemas más interesantes de la jornada.
+En las próximas semanas compartiremos un resumen con los resultados de las sesiones y la solución a los problemas más interesantes.

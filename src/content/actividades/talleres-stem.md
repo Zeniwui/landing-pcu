@@ -1,6 +1,6 @@
 ---
 titulo: "Talleres STEM en Colegios e Institutos"
-descripcion: "Iniciativa de divulgación y captación temprana en centros educativos de Asturias para fomentar el pensamiento computacional y la algoritmia sin barreras."
+descripcion: "Talleres prácticos organizados por estudiantes universitarios en centros educativos de Asturias para acercar la programación y el pensamiento algorítmico."
 tipo: "taller"
 ambito: "Principado de Asturias"
 estado: "Convocatoria Abierta"
@@ -9,12 +9,12 @@ lugar: "Institutos y Colegios de Asturias"
 destacado: true
 ---
 
-## Acercando la algoritmia a las aulas
+## Talleres en centros educativos
 
-La programación no es solo memorizar sintaxis o usar herramientas prediseñadas: es aprender a estructurar el pensamiento y resolver problemas complejos mediante la descomposición lógica.
+Organizamos sesiones prácticas en colegios e institutos asturianos para mostrar cómo resolver problemas mediante lógica y algoritmos de forma accesible y entretenida.
 
-### Módulos impartidos por nuestros voluntarios
+### Actividades que realizamos
 
-* **Desafíos lógicos desenchufados:** Puzzles y juegos matemáticos en mesa para comprender la ordenación y los grafos sin necesidad de pantallas.
-* **Primeros pasos con Python y C++:** Dinámicas interactivas donde el alumnado resuelve pequeños retos en entornos amigables.
-* **Charla sobre ingeniería y universidad:** Estudiantes universitarios responden dudas sobre las salidas profesionales en tecnología y la vida académica en la Universidad de Oviedo.
+* Actividades de lógica sin ordenador, con juegos de mesa y acertijos para explicar conceptos como ordenación o búsqueda en grafos.
+* Prácticas guiadas de iniciación con Python o C++, adaptadas al nivel del curso mediante pequeños retos interactivos.
+* Charlas breves sobre el grado en Ingeniería Informática, las salidas técnicas y la vida universitaria en Oviedo.

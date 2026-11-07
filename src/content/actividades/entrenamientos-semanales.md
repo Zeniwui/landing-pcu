@@ -1,6 +1,6 @@
 ---
 titulo: "Entrenamientos Algorítmicos Semanales"
-descripcion: "Sesiones guiadas por estudiantes veteranos en los laboratorios de la Escuela de Ingeniería Informática. Desglose de problemas de alta dificultad, estructuras de datos avanzadas y simulación de concursos."
+descripcion: "Sesiones semanales en los laboratorios de la Escuela de Ingeniería Informática para practicar resolución de problemas, estructuras de datos y simulación de concursos."
 tipo: "entrenamiento"
 ambito: "Universidad de Oviedo"
 estado: "Activo semanalmente"
@@ -11,12 +11,14 @@ destacado: true
 
 ## Dinámica de las sesiones
 
-Las sesiones están pensadas tanto para estudiantes que empiezan desde cero en programación competitiva como para miembros con experiencia en jueces automáticos como Codeforces o LeetCode.
+Nos reunimos todos los jueves en los laboratorios de la Escuela de Ingeniería Informática. Las sesiones están abiertas tanto a estudiantes que se inician en la programación competitiva como a quienes ya tienen experiencia en plataformas como Codeforces o LeetCode.
 
-### Temario del curso 2026
+En cada sesión dedicamos una primera parte a revisar un concepto o técnica algorítmica y el resto del tiempo a resolver problemas prácticos en grupo.
 
-1. **Fundamentos y STL rápida:** `std::vector`, `std::map`, `std::priority_queue`, entrada y salida rápida en C++.
-2. **Teoría de Grafos:** BFS, DFS, Dijkstra, Bellman-Ford, Kruskal/Prim para árboles de expansión mínima, componentes fuertemente conexas (Tarjan).
-3. **Programación Dinámica (DP):** DP clásica (mochila, LIS, LCS), optimización por máscaras de bits (*bitmask DP*) y DP sobre árboles.
-4. **Estructuras de Datos Avanzadas:** *Disjoint Set Union (DSU)*, *Fenwick Trees (Binary Indexed Trees)* y *Segment Trees* con propagación perezosa (*lazy propagation*).
-5. **Geometría Computacional y Aritmética:** Producto vectorial, envolvente convexa (*Convex Hull*), criba de Eratóstenes y exponenciación modular rápida.
+### Contenidos del curso
+
+1. Fundamentos de C++ y STL: uso eficiente de `std::vector`, `std::map`, `std::priority_queue` y optimización de entrada/salida.
+2. Teoría de grafos: búsquedas en profundidad y anchura (DFS/BFS), algoritmos de caminos mínimos (Dijkstra, Bellman-Ford), árboles de expansión mínima y componentes conexas.
+3. Programación dinámica: problemas clásicos de optimización, DP sobre árboles y uso de máscaras de bits (*bitmask DP*).
+4. Estructuras de datos: conjuntos disjuntos (DSU), árboles de Fenwick y árboles de segmentos (*Segment Trees*) con propagación diferida.
+5. Matemáticas y geometría básica: aritmética modular, criba de Eratóstenes y algoritmos de envolvente convexa (*Convex Hull*).
