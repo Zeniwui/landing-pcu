@@ -9,7 +9,7 @@ const { currentPath = '/' } = Astro.props;
 <header class="site-header">
   <div class="container nav-bar">
     <a href="/" class="brand" aria-label="Ir al inicio de PCU UniOvi">
-      <img src="/images/logo.png" alt="Logo PCU Universidad de Oviedo" class="brand-logo-img" />
+      <img src="/images/logo.png" alt="Logo PCU Universidad de Oviedo" class="brand-logo-img" width="38" height="38" />
       <div class="brand-text">
         <span class="brand-name">PCU UniOvi</span>
         <span class="brand-uni">Universidad de Oviedo</span>
@@ -27,8 +27,7 @@ const { currentPath = '/' } = Astro.props;
     <nav class="nav-links" id="nav-menu">
       <a href="/" class={currentPath === '/' ? 'active-link' : ''}>Inicio</a>
       <a href="/actividades" class={currentPath.startsWith('/actividades') ? 'active-link' : ''}>Actividades</a>
-      <a href="/noticias" class={currentPath.startsWith('/noticias') ? 'active-link' : ''}>Noticias</a>
-      <a href="/#empresas">Empresas</a>
+      <a href="/empresas" class={currentPath.startsWith('/empresas') ? 'active-link' : ''}>Empresas</a>
       <a href="/contacto" class={`nav-cta ${currentPath === '/contacto' ? 'active-cta' : ''}`}>Contactar</a>
     </nav>
   </div>

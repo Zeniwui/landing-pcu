@@ -1,18 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Scoreboard from '../components/Scoreboard.astro';
+import ActiveEvents from '../components/ActiveEvents.astro';
 import ContestCard from '../components/ContestCard.astro';
 import { getCollection } from 'astro:content';
 
 const allActivities = await getCollection('actividades');
-// Destacados para la landing principal
-const featuredContests = allActivities.slice(0, 6);
+// Mostramos únicamente los certámenes y concursos oficiales en esta sección
+const featuredContests = allActivities.filter((item) => item.data.tipo === 'concurso');
 const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
 ---
 
 <Layout title="PCU UniOvi | Asociación de Programación Competitiva Universitaria">
   <main>
-    <!-- SECCIÓN HERO: EDITORIAL CON SCOREBOARD DE COMPETICIÓN -->
+    <!-- SECCIÓN HERO: EDITORIAL CON EVENTOS DE COMPETICIÓN -->
     <section id="hero" class="hero">
       <div class="container">
         <div class="hero-grid">
@@ -31,32 +31,17 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
             </h1>
 
             <p class="hero-description">
-              Somos la <strong>Asociación de Programación Competitiva Universitaria (PCU)</strong> de la Universidad de Oviedo. Nos reunimos cada semana para practicar estructuras de datos, resolver problemas de concurso y preparar competiciones como AdaByron o SWERC.
+              Somos la <strong>Asociación de Programación Competitiva Universitaria (PCU)</strong> de la Universidad de Oviedo. Practicamos estructuras de datos, resolvemos problemas de concurso y preparamos competiciones como AdaByron o SWERC.
             </p>
 
             <div class="hero-actions">
               <a href="/actividades" class="btn-primary">Ver Actividades</a>
               <a href="#contacto" class="btn-secondary">Unirse a la Asociación</a>
             </div>
-
-            <div class="hero-stats-row">
-              <div class="stat-item">
-                <span class="stat-value">5 Horas</span>
-                <span class="stat-label">Formato oficial ICPC por equipo de 3</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-value">{allActivities.length}+ Actividades</span>
-                <span class="stat-label">Competiciones y talleres</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-value">Semanal</span>
-                <span class="stat-label">Entrenamientos prácticos</span>
-              </div>
-            </div>
           </div>
 
-          <!-- MARCADOR EN VIVO DE COMPETICIÓN -->
-          <Scoreboard />
+          <!-- EVENTOS ACTIVOS DE COMPETICIÓN -->
+          <ActiveEvents />
         </div>
       </div>
     </section>
@@ -93,6 +78,49 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
             />
           ))}
         </div>
+
+        <!-- HITO DE COMPETICIÓN / PALMARÉS -->
+        <div class="achievement-card">
+          <div class="achievement-icon-side" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+              <path d="M4 22h16"></path>
+              <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+              <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+              <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+            </svg>
+          </div>
+          <div class="achievement-body">
+            <div class="achievement-header-row">
+              <h3 class="achievement-heading">Clasificación a la Final Nacional de AdaByron</h3>
+              <span class="achievement-status-tag">Fase Regional Superada</span>
+            </div>
+            <p class="achievement-text">
+              Tras superar la Fase Regional frente a las universidades de la comunidad, nuestro equipo de la Universidad de Oviedo obtuvo la clasificación directa para competir en la <strong>Final Nacional de AdaByron</strong>.
+            </p>
+            <div class="achievement-meta-strip">
+              <span class="meta-item">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                Formato oficial 3 personas · 1 PC
+              </span>
+              <span class="meta-item">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                5 Horas de concurso
+              </span>
+              <span class="meta-item">EPI Gijón · UniOvi</span>
+            </div>
+          </div>
+          <div class="achievement-cta">
+            <a href="/actividades/adabyron" class="btn-achievement">
+              <span>Ficha del certamen</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cta-arrow">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -103,7 +131,7 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
           <span class="section-tag">Comunidad</span>
           <h2 class="section-title">Nuestras Actividades</h2>
           <p class="section-lead">
-            Además de competir, organizamos entrenamientos semanales en la Escuela Politécnica de Ingeniería (EPI) de Gijón y talleres de divulgación en institutos.
+            Además de competir, organizamos entrenamientos en la Escuela Politécnica de Ingeniería (EPI) de Gijón y talleres de divulgación en institutos.
           </p>
         </div>
 
@@ -111,9 +139,9 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
           <!-- Actividad 1: Entrenamientos Técnicos -->
           <article class="activity-pane featured">
             <span class="pane-badge">Formación Continua</span>
-            <h3 class="pane-title">Entrenamientos Algorítmicos Semanales</h3>
+            <h3 class="pane-title">Entrenamientos Algorítmicos</h3>
             <p class="pane-text">
-              Nos reunimos en los laboratorios de la Escuela Politécnica de Ingeniería (EPI) de Gijón para resolver problemas de concurso, comentar soluciones y aprender nuevas técnicas.
+              Organizamos sesiones en los laboratorios de la Escuela Politécnica de Ingeniería (EPI) de Gijón para resolver problemas de concurso, comentar soluciones y aprender nuevas técnicas.
             </p>
             <ul class="activity-checklist">
               <li>
@@ -131,7 +159,7 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
             </ul>
             <div style="margin-top: 1.5rem;">
               <a href="/actividades/entrenamientos-semanales" class="btn-secondary" style="font-size: 0.82rem; padding: 0.5rem 1rem;">
-                Ver temario y horarios &rarr;
+                Ver temario y detalles &rarr;
               </a>
             </div>
           </article>
@@ -177,20 +205,23 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
             <p class="sponsors-desc">
               La participación en certámenes como AdaByron o SWERC requiere financiar desplazamientos, alojamientos e inscripciones. Si tu empresa quiere apoyarnos, podemos organizar actividades conjuntas y dar visibilidad a vuestra marca.
             </p>
-            <a href="#contacto" class="btn-primary" style="background: #38bdf8; color: #0f172a;">Contactar con nosotros</a>
+            <div class="sponsors-actions">
+              <a href="/empresas" class="btn-primary">Ver dossier de patrocinio</a>
+              <a href="#contacto" class="btn-secondary">Contactar</a>
+            </div>
           </div>
 
           <div class="sponsors-pillars">
             <div class="pillar-item">
-              <h4 class="pillar-title">Contacto con estudiantes</h4>
+              <h3 class="pillar-title">Contacto con estudiantes</h3>
               <p class="pillar-text">Conoce a estudiantes de la EPI de Gijón y de la Universidad de Oviedo con interés real en algoritmia, optimización y resolución práctica de problemas.</p>
             </div>
             <div class="pillar-item">
-              <h4 class="pillar-title">Apoyo en viajes y competiciones</h4>
-              <p class="pillar-text">Las aportaciones financian los desplazamientos del equipo a fases regionales y nacionales (AdaByron, SWERC), incluyendo el logo de tu empresa en la equipación.</p>
+              <h3 class="pillar-title">Apoyo en viajes y competiciones</h3>
+              <p class="pillar-text">Las aportaciones financian los desplazamientos del equipo a fases regionales y nacionales (AdaByron, SWERC), con el logo de tu empresa en la equipación. Nuestro equipo ya ha demostrado su solvencia clasificándose para la Final Nacional de AdaByron.</p>
             </div>
             <div class="pillar-item">
-              <h4 class="pillar-title">Charlas y talleres técnicos</h4>
+              <h3 class="pillar-title">Charlas y talleres técnicos</h3>
               <p class="pillar-text">Posibilidad de organizar presentaciones técnicas, retos de programación o talleres prácticos conjuntos en el campus de Gijón.</p>
             </div>
           </div>

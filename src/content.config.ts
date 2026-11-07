@@ -16,15 +16,4 @@ const actividades = defineCollection({
   }),
 });
 
-const noticias = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/noticias' }),
-  schema: z.object({
-    titulo: z.string(),
-    descripcion: z.string(),
-    fecha: z.string(),
-    autor: z.string().default('Directiva PCU UniOvi'),
-    categoria: z.string(),
-  }),
-});
-
-export const collections = { actividades, noticias };
+export const collections = { actividades };

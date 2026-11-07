@@ -11,53 +11,118 @@ interface Props {
 }
 
 const { slug, titulo, descripcion, ambito, estado, formato, lugar, fecha } = Astro.props;
+
+// Determinamos el estilo semántico del estado según su contenido
+const estadoLower = estado.toLowerCase();
+let statusClass = 'season';
+if (estadoLower.includes('curso') || estadoLower.includes('activa') || estadoLower.includes('superada')) {
+  statusClass = 'confirmed';
+} else if (estadoLower.includes('próxima') || estadoLower.includes('clasificado') || estadoLower.includes('fase')) {
+  statusClass = 'upcoming';
+}
 ---
 
 <article class="contest-card">
   <div class="contest-meta">
     <span class="contest-scope">{ambito}</span>
-    <span class="contest-status upcoming">{estado}</span>
+    <span class={`contest-status ${statusClass}`}>
+      {statusClass === 'confirmed' && <span class="status-pulse-dot" aria-hidden="true"></span>}
+      {estado}
+    </span>
   </div>
+
   <h3 class="contest-name">
     <a href={`/actividades/${slug}`} class="contest-title-link">
       {titulo}
     </a>
   </h3>
+
   <p class="contest-desc">
     {descripcion}
   </p>
+
   <div class="contest-footer">
-    <span class="contest-format">{formato}</span>
-    <span>{lugar}</span>
+    <span class="contest-format">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+        <circle cx="9" cy="7" r="4"></circle>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+      </svg>
+      <span>{formato}</span>
+    </span>
+
+    <span class="contest-venue">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+        <circle cx="12" cy="10" r="3"></circle>
+      </svg>
+      <span>{lugar}</span>
+    </span>
   </div>
+
   <div class="card-detail-action">
     <a href={`/actividades/${slug}`} class="btn-card-readmore">
-      Ver detalles y requisitos &rarr;
+      <span>Ficha y detalles</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="action-arrow" aria-hidden="true">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
     </a>
   </div>
 </article>
 
 <style>
+  .contest-title-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
   .contest-title-link:hover {
     color: var(--uniovi-blue);
-    text-decoration: underline;
+  }
+  .status-pulse-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--verdict-ac);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 0.35rem;
+    animation: pulseDot 2s infinite;
+  }
+  .contest-venue {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
   }
   .card-detail-action {
-    margin-top: 1rem;
-    padding-top: 0.75rem;
+    margin-top: 1.25rem;
+    padding-top: 0.85rem;
     border-top: 1px solid var(--border-hairline);
+    display: flex;
+    justify-content: flex-end;
   }
   .btn-card-readmore {
     font-family: var(--font-mono);
     font-size: 0.78rem;
     font-weight: 600;
     color: var(--uniovi-blue);
+    text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    transition: transform 0.15s ease;
+    gap: 0.4rem;
+    padding: 0.35rem 0.65rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.15s ease;
   }
   .btn-card-readmore:hover {
+    background: var(--uniovi-blue-tint);
+    color: var(--uniovi-blue-hover);
+  }
+  .btn-card-readmore:hover .action-arrow {
     transform: translateX(3px);
+  }
+  .action-arrow {
+    transition: transform 0.15s ease;
   }
 </style>

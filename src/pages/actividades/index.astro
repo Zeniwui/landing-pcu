@@ -4,31 +4,128 @@ import ContestCard from '../../components/ContestCard.astro';
 import { getCollection } from 'astro:content';
 
 const allActivities = await getCollection('actividades');
+
+// Clasificación estructurada para una jerarquía clara
+const officialContests = allActivities.filter((item) => item.data.tipo === 'concurso');
+const communityActivities = allActivities.filter((item) => item.data.tipo !== 'concurso');
 ---
 
 <Layout
-  title="Actividades y Concursos | PCU UniOvi"
-  description="Competiciones oficiales de programación, entrenamientos de algoritmia y talleres de divulgación de la Asociación de Programación Competitiva de la Universidad de Oviedo."
+  title="Actividades y Concursos Oficiales | PCU UniOvi"
+  description="Catálogo de certámenes oficiales de programación por equipos, entrenamientos de algoritmia y talleres de divulgación STEM de la Universidad de Oviedo."
   currentPath="/actividades"
 >
   <main class="activities-page">
-    <section class="section-padding" style="background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);">
+    <!-- CABECERA EDITORIAL UNIFICADA -->
+    <header class="page-header-editorial">
       <div class="container">
-        <div class="breadcrumbs">
-          <a href="/">Inicio</a> / <span>Actividades</span>
+        <div class="hero-meta-bar">
+          <span class="badge-uniovi">EPI GIJÓN · UNIOVI</span>
+          <span class="meta-divider">/</span>
+          <nav class="page-breadcrumbs" aria-label="Ruta de navegación">
+            <a href="/">Inicio</a>
+            <span class="breadcrumb-sep">/</span>
+            <span aria-current="page">Actividades</span>
+          </nav>
         </div>
 
-        <div class="section-head" style="margin-top: 1rem;">
-          <span class="section-tag">Actividades</span>
-          <h1 class="section-title">Actividades y concursos</h1>
+        <h1 class="page-headline">
+          Competición oficial, <span class="accent-text">formación</span> y talleres STEM.
+        </h1>
+        <p class="page-lead-text">
+          Catálogo completo de certámenes universitarios de programación competitiva, sesiones técnicas en los laboratorios de la EPI de Gijón y actividades de divulgación tecnológica en Asturias.
+        </p>
+      </div>
+    </header>
+
+    <!-- SECCIÓN: CERTÁMENES Y CONCURSOS OFICIALES -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-title-row">
+            <h2 class="section-title">Certámenes y Concursos Oficiales</h2>
+            <span class="catalog-counter-badge">{officialContests.length} en catálogo</span>
+          </div>
           <p class="section-lead">
-            Aquí puedes consultar las competiciones en las que participamos, los entrenamientos semanales en la EPI de Gijón y los talleres para centros educativos.
+            Competiciones interuniversitarias de algoritmia y programación por equipos (formato ICPC / 3 integrantes y 1 ordenador) a nivel regional, nacional e internacional.
           </p>
         </div>
 
-        <!-- LISTADO EN GRID DE ACTIVIDADES -->
-        <div class="contests-grid" style="margin-top: 2.5rem;">
-          {allActivities.map((item) => (
+        <div class="contests-grid">
+          {officialContests.map((item) => (
+            <ContestCard
+              slug={item.id}
+              titulo={item.data.titulo}
+              descripcion={item.data.descripcion}
+              ambito={item.data.ambito}
+              estado={item.data.estado}
+              formato={item.data.formato}
+              lugar={item.data.lugar}
+              fecha={item.data.fecha}
+            />
+          ))}
+        </div>
+
+        <!-- HITO DEPORTIVO / PALMARÉS -->
+        <div class="achievement-card">
+          <div class="achievement-icon-side" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+              <path d="M4 22h16"></path>
+              <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+              <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+              <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+            </svg>
+          </div>
+          <div class="achievement-body">
+            <div class="achievement-header-row">
+              <h3 class="achievement-heading">Clasificación a la Final Nacional de AdaByron</h3>
+              <span class="achievement-status-tag">Fase Regional Superada</span>
+            </div>
+            <p class="achievement-text">
+              Tras superar la Fase Regional frente a las universidades de la comunidad, nuestro equipo de la Universidad de Oviedo obtuvo la clasificación directa para competir en la <strong>Final Nacional de AdaByron</strong>.
+            </p>
+            <div class="achievement-meta-strip">
+              <span class="meta-item">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                Formato oficial 3 personas · 1 PC
+              </span>
+              <span class="meta-item">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                5 Horas de concurso
+              </span>
+              <span class="meta-item">EPI Gijón · UniOvi</span>
+            </div>
+          </div>
+          <div class="achievement-cta">
+            <a href="/actividades/adabyron" class="btn-achievement">
+              <span>Ficha del certamen</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cta-arrow" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: FORMACIÓN CONTINUA Y DIVULGACIÓN -->
+    <section class="section-padding" style="background-color: var(--bg-surface); border-top: 1px solid var(--border-hairline);">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-title-row">
+            <h2 class="section-title">Formación Continua y Divulgación</h2>
+            <span class="catalog-counter-badge">{communityActivities.length} programas</span>
+          </div>
+          <p class="section-lead">
+            Iniciativas para impulsar el talento desde las aulas universitarias hasta la iniciación temprana al pensamiento computacional en colegios e institutos.
+          </p>
+        </div>
+
+        <div class="contests-grid">
+          {communityActivities.map((item) => (
             <ContestCard
               slug={item.id}
               titulo={item.data.titulo}
@@ -47,13 +144,26 @@ const allActivities = await getCollection('actividades');
 </Layout>
 
 <style>
-  .breadcrumbs {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--ink-muted);
+  .section-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
   }
-  .breadcrumbs a {
-    color: var(--uniovi-blue);
-    text-decoration: underline;
+  .section-title-row .section-title {
+    margin-bottom: 0;
+  }
+  .catalog-counter-badge {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--ink-muted);
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-hairline);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 </style>

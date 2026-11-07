@@ -12,6 +12,14 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+
+const estadoLower = entry.data.estado.toLowerCase();
+let statusClass = 'season';
+if (estadoLower.includes('curso') || estadoLower.includes('activa') || estadoLower.includes('superada')) {
+  statusClass = 'confirmed';
+} else if (estadoLower.includes('próxima') || estadoLower.includes('clasificado') || estadoLower.includes('fase')) {
+  statusClass = 'upcoming';
+}
 ---
 
 <Layout
@@ -20,59 +28,103 @@ const { Content } = await render(entry);
   currentPath="/actividades"
 >
   <main class="activity-detail-page">
+    <!-- CABECERA EDITORIAL UNIFICADA -->
+    <header class="page-header-editorial">
+      <div class="container">
+        <div class="hero-meta-bar">
+          <span class="badge-uniovi">EPI GIJÓN · UNIOVI</span>
+          <span class="meta-divider">/</span>
+          <nav class="page-breadcrumbs" aria-label="Ruta de navegación">
+            <a href="/">Inicio</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="/actividades">Actividades</a>
+            <span class="breadcrumb-sep">/</span>
+            <span aria-current="page">{entry.data.titulo}</span>
+          </nav>
+        </div>
+
+        <div class="detail-tags-row">
+          <span class="detail-scope-pill">{entry.data.ambito}</span>
+          <span class={`detail-status-pill ${statusClass}`}>
+            {statusClass === 'confirmed' && <span class="status-dot-sm" aria-hidden="true"></span>}
+            {entry.data.estado}
+          </span>
+        </div>
+
+        <h1 class="page-headline" style="max-width: 32ch;">
+          {entry.data.titulo}
+        </h1>
+
+        <p class="page-lead-text">
+          {entry.data.descripcion}
+        </p>
+
+        <!-- FICHA RÁPIDA DE METADATOS TÉCNICOS -->
+        <div class="quick-facts-box">
+          <div class="fact-item">
+            <span class="fact-label">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>Formato</span>
+            </span>
+            <span class="fact-value">{entry.data.formato}</span>
+          </div>
+
+          <div class="fact-item">
+            <span class="fact-label">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>Ubicación / Sede</span>
+            </span>
+            <span class="fact-value">{entry.data.lugar}</span>
+          </div>
+
+          {entry.data.fecha && (
+            <div class="fact-item">
+              <span class="fact-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span>Temporada / Fechas</span>
+              </span>
+              <span class="fact-value">{entry.data.fecha}</span>
+            </div>
+          )}
+        </div>
+      </div>
+    </header>
+
+    <!-- CUERPO PRINCIPAL DEL ARTÍCULO -->
     <article class="section-padding">
-      <div class="container" style="max-width: 900px;">
-        <!-- MIGA DE PAN -->
-        <nav class="breadcrumbs" aria-label="Ruta de navegación">
-          <a href="/">Inicio</a> / <a href="/actividades">Actividades</a> / <span>{entry.data.titulo}</span>
-        </nav>
-
-        <!-- ENCABEZADO EDITORIAL -->
-        <header class="detail-header">
-          <div class="detail-tags">
-            <span class="detail-badge">{entry.data.ambito}</span>
-            <span class="detail-status">{entry.data.estado}</span>
-          </div>
-
-          <h1 class="detail-title">{entry.data.titulo}</h1>
-
-          <p class="detail-lead">{entry.data.descripcion}</p>
-
-          <!-- FICHA RÁPIDA DE METADATOS -->
-          <div class="quick-facts-box">
-            <div class="fact-item">
-              <span class="fact-label">Formato</span>
-              <span class="fact-value">{entry.data.formato}</span>
-            </div>
-            <div class="fact-item">
-              <span class="fact-label">Ubicación / Sede</span>
-              <span class="fact-value">{entry.data.lugar}</span>
-            </div>
-            {entry.data.fecha && (
-              <div class="fact-item">
-                <span class="fact-label">Fecha / Temporada</span>
-                <span class="fact-value">{entry.data.fecha}</span>
-              </div>
-            )}
-          </div>
-        </header>
-
-        <!-- CONTENIDO DETALLADO EN MARKDOWN -->
+      <div class="container" style="max-width: 860px;">
         <div class="markdown-body">
           <Content />
         </div>
 
-        <!-- ACCIÓN DE PARTICIPACIÓN -->
-        <aside class="detail-cta-card">
-          <div class="cta-inner">
-            <span class="section-tag">Participa con Nosotros</span>
-            <h3>¿Quieres involucrarte en esta actividad?</h3>
-            <p>
-              Tanto si eres estudiante de la Universidad de Oviedo con ganas de entrenar, como si representas a una empresa o centro escolar, escríbenos directamente.
+        <!-- ACCIÓN DE PARTICIPACIÓN O CONSULTA DIRECTA -->
+        <aside class="detail-action-card">
+          <div class="detail-action-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </div>
+          <div class="detail-action-content">
+            <h3 class="detail-action-heading">¿Quieres participar o colaborar en esta actividad?</h3>
+            <p class="detail-action-text">
+              Tanto si eres estudiante de la Universidad de Oviedo con interés en entrenar, como si representas a una empresa o centro educativo, escríbenos directamente.
             </p>
-            <div style="margin-top: 1.25rem;">
+            <div class="detail-action-btns">
               <a href="/#contacto" class="btn-primary">Contactar con la Directiva</a>
-              <a href="/actividades" class="btn-secondary" style="margin-left: 0.75rem;">Volver al directorio</a>
+              <a href="/actividades" class="btn-secondary">Volver al catálogo</a>
             </div>
           </div>
         </aside>
@@ -82,86 +134,88 @@ const { Content } = await render(entry);
 </Layout>
 
 <style>
-  .breadcrumbs {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--ink-muted);
-    margin-bottom: 2rem;
-  }
-  .breadcrumbs a {
-    color: var(--uniovi-blue);
-    text-decoration: underline;
-  }
-  .detail-header {
-    border-bottom: 1px solid var(--border-hairline);
-    padding-bottom: 2.5rem;
-    margin-bottom: 2.5rem;
-  }
-  .detail-tags {
+  .detail-tags-row {
     display: flex;
-    gap: 0.75rem;
+    gap: 0.65rem;
     align-items: center;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.85rem;
+    flex-wrap: wrap;
   }
-  .detail-badge {
+  .detail-scope-pill {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-size: 0.74rem;
+    font-weight: 600;
     text-transform: uppercase;
     background: #0f172a;
     color: #ffffff;
     padding: 0.25rem 0.65rem;
     border-radius: var(--radius-sm);
+    letter-spacing: 0.04em;
   }
-  .detail-status {
+  .detail-status-pill {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 700;
-    background: var(--verdict-ac-bg);
-    color: var(--verdict-ac);
+    font-size: 0.74rem;
+    font-weight: 600;
     padding: 0.25rem 0.65rem;
     border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
   }
-  .detail-title {
-    font-family: var(--font-heading);
-    font-size: 2.8rem;
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    color: var(--ink-primary);
-    margin-bottom: 1.25rem;
+  .detail-status-pill.confirmed {
+    background: var(--verdict-ac-bg);
+    color: var(--verdict-ac);
+    border: 1px solid rgba(5, 150, 105, 0.2);
   }
-  .detail-lead {
-    font-size: 1.2rem;
+  .detail-status-pill.upcoming {
+    background: var(--uniovi-blue-tint);
+    color: var(--uniovi-blue);
+    border: 1px solid rgba(29, 78, 216, 0.2);
+  }
+  .detail-status-pill.season {
+    background: #f1f5f9;
     color: var(--ink-secondary);
-    line-height: 1.65;
-    margin-bottom: 2rem;
+    border: 1px solid var(--border-hairline);
+  }
+  .status-dot-sm {
+    width: 6px;
+    height: 6px;
+    background-color: var(--verdict-ac);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulseDot 2s infinite;
   }
   .quick-facts-box {
+    margin-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.25rem;
-    background: var(--bg-surface-elevated);
+    background: var(--bg-surface);
     border: 1px solid var(--border-hairline);
     border-radius: var(--radius-md);
-    padding: 1.25rem 1.5rem;
+    padding: 1.25rem 1.6rem;
+    box-shadow: var(--shadow-card);
   }
   .fact-item {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.35rem;
   }
   .fact-label {
     font-family: var(--font-mono);
     font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     color: var(--ink-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
   }
   .fact-value {
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--ink-primary);
+    line-height: 1.4;
   }
   .markdown-body {
     font-size: 1.05rem;
@@ -170,19 +224,20 @@ const { Content } = await render(entry);
   }
   .markdown-body :global(h2) {
     font-family: var(--font-heading);
-    font-size: 1.8rem;
+    font-size: 1.75rem;
     font-weight: 700;
     color: var(--ink-primary);
-    margin: 2.5rem 0 1rem;
+    margin: 2.75rem 0 1rem;
     border-bottom: 1px solid var(--border-hairline);
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.65rem;
+    letter-spacing: -0.015em;
   }
   .markdown-body :global(h3) {
     font-family: var(--font-heading);
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: var(--ink-primary);
-    margin: 1.75rem 0 0.75rem;
+    margin: 1.85rem 0 0.65rem;
   }
   .markdown-body :global(p) {
     margin-bottom: 1.25rem;
@@ -194,22 +249,70 @@ const { Content } = await render(entry);
   .markdown-body :global(li) {
     margin-bottom: 0.5rem;
   }
-  .detail-cta-card {
-    margin-top: 4rem;
-    background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 100%);
+  .markdown-body :global(blockquote) {
+    margin: 2rem 0;
+    padding: 1.25rem 1.5rem;
+    background: linear-gradient(135deg, rgba(239, 246, 255, 0.8) 0%, #ffffff 100%);
     border: 1px solid rgba(29, 78, 216, 0.2);
-    border-radius: var(--radius-lg);
-    padding: 2.5rem;
-  }
-  .detail-cta-card h3 {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
+    border-radius: var(--radius-md);
     color: var(--ink-primary);
-    margin: 0.5rem 0 0.75rem;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
   }
-  .detail-cta-card p {
+  .markdown-body :global(blockquote p) {
+    margin-bottom: 0.5rem;
+  }
+  .markdown-body :global(blockquote p:last-child) {
+    margin-bottom: 0;
+  }
+  .detail-action-card {
+    margin-top: 3.5rem;
+    background: linear-gradient(135deg, rgba(239, 246, 255, 0.7) 0%, #ffffff 100%);
+    border: 1px solid rgba(29, 78, 216, 0.18);
+    border-radius: var(--radius-md);
+    padding: 2rem 2.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    box-shadow: var(--shadow-card);
+  }
+  .detail-action-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: var(--uniovi-blue-tint);
+    color: var(--uniovi-blue);
+    border: 1px solid rgba(29, 78, 216, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .detail-action-content {
+    flex-grow: 1;
+  }
+  .detail-action-heading {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--ink-primary);
+    margin: 0 0 0.5rem;
+  }
+  .detail-action-text {
+    font-size: 0.98rem;
     color: var(--ink-secondary);
-    font-size: 1rem;
-    max-width: 60ch;
+    line-height: 1.55;
+    margin: 0 0 1.25rem;
+    max-width: 62ch;
+  }
+  .detail-action-btns {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 768px) {
+    .detail-action-card {
+      flex-direction: column;
+    }
   }
 </style>
