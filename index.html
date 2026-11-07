@@ -89,50 +89,53 @@
                         </div>
                     </div>
 
-                    <!-- CAJA DE TELEMETRÍA (CONCEPTO DEL JUEZ AUTOMÁTICO) -->
-                    <div class="telemetry-box" aria-hidden="true">
-                        <div class="telemetry-header">
-                            <div class="telemetry-dots">
-                                <span></span><span></span><span></span>
+                    <!-- MARCADOR DE COMPETICIÓN EN VIVO (SCOREBOARD TELEMETRY DE VERSIÓN 2) -->
+                    <div class="scoreboard-box" aria-hidden="true">
+                        <div class="scoreboard-top">
+                            <div class="scoreboard-status">
+                                <span class="radar-blink"></span>
+                                <span>LIVE ICPC SCOREBOARD // SWERC QUALIFIER</span>
                             </div>
-                            <div class="telemetry-label">judge.pcu-uniovi.es // sandbox</div>
+                            <span style="color: #38bdf8;">04:22:18</span>
                         </div>
-                        <div class="telemetry-body">
-                            <div class="telemetry-snippet">
-                                <div><span class="snippet-comment">// ICPC SWERC Regional Qualifier</span></div>
-                                <div><span class="snippet-keyword">#include</span> <span class="snippet-var">&lt;bits/stdc++.h&gt;</span></div>
-                                <div><span class="snippet-keyword">using namespace</span> std;</div>
-                                <div style="margin-top: 0.35rem;"><span class="snippet-func">int</span> main() {</div>
-                                <div>&nbsp;&nbsp;ios::sync_with_stdio(<span class="snippet-num">false</span>);</div>
-                                <div>&nbsp;&nbsp;cin.tie(<span class="snippet-num">nullptr</span>);</div>
-                                <div>&nbsp;&nbsp;<span class="snippet-comment">// Solución óptima O(V + E log V)</span></div>
-                                <div>&nbsp;&nbsp;cout &lt;&lt; <span class="snippet-var">"UniOvi: Accepted [AC]\n"</span>;</div>
-                                <div>&nbsp;&nbsp;<span class="snippet-keyword">return</span> <span class="snippet-num">0</span>;</div>
-                                <div>}</div>
+                        <div class="scoreboard-table">
+                            <div class="score-row highlighted">
+                                <div class="team-info">
+                                    <span class="rank-badge" style="background: #2563eb; color: #fff;">#1</span>
+                                    <span class="team-name">UniOvi Alpha (PCU)</span>
+                                </div>
+                                <div class="balloons">
+                                    <span class="balloon b-green" title="Problem A"></span>
+                                    <span class="balloon b-blue" title="Problem B"></span>
+                                    <span class="balloon b-yellow" title="Problem D"></span>
+                                    <span class="balloon b-purple" title="Problem G"></span>
+                                </div>
+                                <span class="score-points">7 Solved (742m)</span>
                             </div>
 
-                            <div class="telemetry-runs">
-                                <div class="run-card">
-                                    <div class="run-left">
-                                        <span class="run-problem">Prob C</span>
-                                        <span class="run-contest">AdaByron Norte 2026</span>
-                                    </div>
-                                    <span class="run-verdict ac">ACCEPTED [AC] 0.04s</span>
+                            <div class="score-row">
+                                <div class="team-info">
+                                    <span class="rank-badge">#2</span>
+                                    <span class="team-name">UniOvi Beta (PCU)</span>
                                 </div>
-                                <div class="run-card">
-                                    <div class="run-left">
-                                        <span class="run-problem">Prob F</span>
-                                        <span class="run-contest">ICPC SWERC Contest</span>
-                                    </div>
-                                    <span class="run-verdict ac">ACCEPTED [AC] 0.12s</span>
+                                <div class="balloons">
+                                    <span class="balloon b-green"></span>
+                                    <span class="balloon b-yellow"></span>
+                                    <span class="balloon b-purple"></span>
                                 </div>
-                                <div class="run-card">
-                                    <div class="run-left">
-                                        <span class="run-problem">Prob J</span>
-                                        <span class="run-contest">Liga Interna UniOvi</span>
-                                    </div>
-                                    <span class="run-verdict testing">EVALUANDO TEST 38...</span>
+                                <span class="score-points" style="color: #94a3b8;">5 Solved (580m)</span>
+                            </div>
+
+                            <div class="score-row">
+                                <div class="team-info">
+                                    <span class="rank-badge">#3</span>
+                                    <span class="team-name">UniOvi Gamma (Rookies)</span>
                                 </div>
+                                <div class="balloons">
+                                    <span class="balloon b-green"></span>
+                                    <span class="balloon b-blue"></span>
+                                </div>
+                                <span class="score-points" style="color: #94a3b8;">4 Solved (410m)</span>
                             </div>
                         </div>
                     </div>
