@@ -1,6 +1,6 @@
 // Contact Form Handling Script for PCU UniOvi
 // Connects securely to the internal serverless endpoint /api/contacto
-// Protects against spam, validates fields, and provides clear visual feedback with native email fallback.
+// Protects against spam, validates fields, and provides clear visual feedback.
 
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
@@ -17,7 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const categoria = contactForm.querySelector('[name="categoria"]')?.value;
         const asunto = contactForm.querySelector('[name="asunto"]')?.value.trim();
         const mensaje = contactForm.querySelector('[name="mensaje"]')?.value.trim();
-        const botcheck = contactForm.querySelector('[name="botcheck"]')?.value || '';
+        
+        // Trampa anti-bots (debe ser vacía para usuarios humanos)
+        const botcheckInput = contactForm.querySelector('[name="botcheck"]');
+        const botcheck = (botcheckInput && botcheckInput.type === 'checkbox')
+            ? (botcheckInput.checked ? 'bot' : '')
+            : (botcheckInput ? botcheckInput.value.trim() : '');
 
         if (!nombre || !email || !mensaje) {
             showStatus('Por favor, completa todos los campos obligatorios (nombre, correo y mensaje).', 'error');
@@ -74,22 +79,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } catch (err) {
             console.warn('[PCU Form] Error de red en la conexión con /api/contacto:', err);
-            // Si hay fallo de conexión de red, ofrecemos el fallback
-            isSuccess = true;
+            errorMessage = 'No se pudo conectar con el servidor. Por favor, inténtalo de nuevo más tarde o escribe a asociacionuniovi@gmail.com.';
         }
 
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnText;
 
         if (isSuccess) {
-            const mailtoUrl = `mailto:asociacionuniovi@gmail.com?subject=${encodeURIComponent(`[PCU Web - ${categoria || 'Contacto'}] ${asunto || 'Mensaje de ' + nombre}`)}&body=${encodeURIComponent(`Nombre: ${nombre}\nEmail: ${email}\nPerfil: ${categoria || 'No especificado'}\n\nMensaje:\n${mensaje}`)}`;
-
             showStatus(`
                 <div class="status-success-card">
                     <h4>¡Mensaje enviado con éxito!</h4>
                     <p>Gracias <strong>${escapeHtml(nombre)}</strong>. Hemos recibido tu mensaje y te responderemos a <code>${escapeHtml(email)}</code> a la mayor brevedad posible.</p>
                     <div class="status-actions">
-                        <a href="${mailtoUrl}" class="btn-fallback-mail">Abrir copia en tu gestor de correo</a>
                         <button type="button" class="btn-reset-form" id="btn-reset-msg">Enviar otro mensaje</button>
                     </div>
                 </div>

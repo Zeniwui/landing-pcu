@@ -110,7 +110,7 @@ import Layout from '../layouts/Layout.astro';
 
               <form id="contact-form" action="/api/contacto" method="POST" novalidate>
                 <!-- Campo trampa invisible para bots (Honeypot) -->
-                <input type="checkbox" name="botcheck" style="display: none;" aria-hidden="true" tabindex="-1">
+                <input type="text" name="botcheck" style="display: none !important;" tabindex="-1" autocomplete="off" aria-hidden="true" />
                 <div class="form-grid">
                   <div class="form-group">
                     <label for="nombre" class="form-label">Nombre y apellidos <span class="required">*</span></label>

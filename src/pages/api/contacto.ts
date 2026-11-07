@@ -18,8 +18,12 @@ export const POST: APIRoute = async ({ request }) => {
 
     const { nombre, email, categoria, asunto, mensaje, botcheck } = body;
 
-    // 1. Trampa anti-bots (Honeypot): Si un bot rellena este campo invisible, fingimos éxito
-    if (botcheck) {
+    console.log('[PCU Contact API] Solicitud de contacto recibida para:', email);
+
+    // 1. Trampa anti-bots (Honeypot):
+    // Solo bloquea si el campo fue rellenado conscientemente por un bot
+    if (botcheck && botcheck !== 'false' && botcheck !== 'off') {
+      console.warn('[PCU Contact API] Trampa anti-bots activada. Envío simulado para neutralizar bot.');
       return new Response(
         JSON.stringify({ success: true, message: 'Mensaje procesado' }),
         { status: 200, headers: { 'Content-Type': 'application/json' } }
@@ -31,7 +35,7 @@ export const POST: APIRoute = async ({ request }) => {
       return new Response(
         JSON.stringify({
           success: false,
-          error: 'Por favor, completa los campos requeridos (nombre, email y mensaje).'
+          error: 'Por favor, completa los campos obligatorios (nombre, correo y mensaje).'
         }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
       );
@@ -49,22 +53,31 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // 4. Lectura segura de la clave desde las variables de entorno (NUNCA expuesta en GitHub)
-    const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || process.env.WEB3FORMS_ACCESS_KEY;
+    // 4. Lectura segura de la clave desde las variables de entorno
+    let accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || process.env.WEB3FORMS_ACCESS_KEY;
+
+    if (!accessKey && typeof process.loadEnvFile === 'function') {
+      try {
+        process.loadEnvFile();
+        accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+      } catch (_) {}
+    }
 
     if (!accessKey) {
       console.warn(
-        '[PCU Contact API] La variable WEB3FORMS_ACCESS_KEY no está configurada en el entorno. Funcionando en modo simulación.'
+        '[PCU Contact API] ATENCIÓN: La variable WEB3FORMS_ACCESS_KEY no está definida en .env ni en Vercel. Modo simulación activado.'
       );
       return new Response(
         JSON.stringify({
           success: true,
           simulated: true,
-          message: 'Mensaje procesado en modo simulación (pendiente clave de entorno).'
+          message: 'Mensaje recibido en modo simulación (falta configurar WEB3FORMS_ACCESS_KEY).'
         }),
         { status: 200, headers: { 'Content-Type': 'application/json' } }
       );
     }
+
+    console.log('[PCU Contact API] Transmitiendo a Web3Forms...');
 
     // 5. Envío seguro de servidor a servidor hacia Web3Forms
     const response = await fetch('https://api.web3forms.com/submit', {
@@ -74,7 +87,7 @@ export const POST: APIRoute = async ({ request }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        access_key: accessKey,
+        access_key: accessKey.trim(),
         name: nombre,
         email: email,
         subject: `[PCU Web - ${categoria || 'Contacto'}] ${asunto || 'Nuevo mensaje de ' + nombre}`,
@@ -85,6 +98,7 @@ export const POST: APIRoute = async ({ request }) => {
     });
 
     const result = await response.json();
+    console.log('[PCU Contact API] Respuesta de Web3Forms:', result);
 
     if (response.ok && result.success) {
       return new Response(
@@ -92,11 +106,11 @@ export const POST: APIRoute = async ({ request }) => {
         { status: 200, headers: { 'Content-Type': 'application/json' } }
       );
     } else {
-      console.error('[PCU Contact API] Error devuelto por Web3Forms:', result);
+      console.error('[PCU Contact API] Web3Forms devolvió un error:', result.message || result);
       return new Response(
         JSON.stringify({
           success: false,
-          error: 'No se pudo entregar el correo en este momento. Por favor, escribe directamente a asociacionuniovi@gmail.com.'
+          error: result.message || 'No se pudo entregar el correo en este momento. Por favor, escribe directamente a asociacionuniovi@gmail.com.'
         }),
         { status: 502, headers: { 'Content-Type': 'application/json' } }
       );
