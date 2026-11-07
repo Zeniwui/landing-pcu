@@ -17,4 +17,4 @@ Organizamos sesiones prácticas en colegios e institutos asturianos para mostrar
 
 * Actividades de lógica sin ordenador, con juegos de mesa y acertijos para explicar conceptos como ordenación o búsqueda en grafos.
 * Prácticas guiadas de iniciación con Python o C++, adaptadas al nivel del curso mediante pequeños retos interactivos.
-* Charlas breves sobre el grado en Ingeniería Informática, las salidas técnicas y la vida universitaria en Oviedo.
+* Charlas breves sobre los grados de ingeniería (Informática, Telecomunicaciones...), las salidas técnicas y la vida universitaria.

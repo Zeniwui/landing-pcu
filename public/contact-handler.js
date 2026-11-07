@@ -1,6 +1,6 @@
 // Contact Form Handling Script for PCU UniOvi
-// Connects securely to the internal serverless endpoint /api/contacto
-// Protects against spam, validates fields, and provides clear visual feedback.
+// Submits securely from the user's browser directly to Web3Forms API
+// Features client validation, spinner feedback, honeypot spam protection, and zero exposed secrets in GitHub.
 
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
@@ -14,15 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const nombre = contactForm.querySelector('[name="nombre"]')?.value.trim();
         const email = contactForm.querySelector('[name="email"]')?.value.trim();
-        const categoria = contactForm.querySelector('[name="categoria"]')?.value;
-        const asunto = contactForm.querySelector('[name="asunto"]')?.value.trim();
         const mensaje = contactForm.querySelector('[name="mensaje"]')?.value.trim();
-        
-        // Trampa anti-bots (debe ser vacía para usuarios humanos)
-        const botcheckInput = contactForm.querySelector('[name="botcheck"]');
-        const botcheck = (botcheckInput && botcheckInput.type === 'checkbox')
-            ? (botcheckInput.checked ? 'bot' : '')
-            : (botcheckInput ? botcheckInput.value.trim() : '');
+        const accessKey = contactForm.querySelector('[name="access_key"]')?.value.trim();
 
         if (!nombre || !email || !mensaje) {
             showStatus('Por favor, completa todos los campos obligatorios (nombre, correo y mensaje).', 'error');
@@ -32,6 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             showStatus('Por favor, introduce una dirección de correo válida.', 'error');
+            return;
+        }
+
+        if (!accessKey) {
+            showStatus('La clave de envío (WEB3FORMS_ACCESS_KEY) no está configurada en el entorno. Por favor, escribe directamente a asociacionuniovi@gmail.com.', 'error');
             return;
         }
 
@@ -45,70 +43,62 @@ document.addEventListener('DOMContentLoaded', () => {
             statusBox.className = 'form-status sending';
             statusBox.style.display = 'block';
             statusBox.innerHTML = `
-                <p>Conectando de forma segura con la asociación...</p>
+                <p>Conectando con el servidor de correo...</p>
             `;
         }
 
-        let isSuccess = false;
-        let errorMessage = '';
+        // Serializar los datos del formulario incluyendo access_key, nombre, email, mensaje, etc.
+        const formData = new FormData(contactForm);
+        formData.append('from_name', 'PCU UniOvi Web');
+        formData.append('subject', `[PCU Web - ${formData.get('categoria') || 'Contacto'}] Mensaje de ${nombre}`);
+
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
 
         try {
-            // Envío al endpoint interno seguro de Astro
-            const response = await fetch('/api/contacto', {
+            const response = await fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
                 headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
-                body: JSON.stringify({
-                    nombre,
-                    email,
-                    categoria: categoria || 'General',
-                    asunto: asunto || 'Contacto web',
-                    mensaje,
-                    botcheck
-                })
+                body: json
             });
 
-            const data = await response.json();
+            const result = await response.json();
 
-            if (response.ok && data.success) {
-                isSuccess = true;
+            if (response.ok && result.success) {
+                showStatus(`
+                    <div class="status-success-card">
+                        <h4>¡Mensaje enviado con éxito!</h4>
+                        <p>Gracias <strong>${escapeHtml(nombre)}</strong>. Hemos recibido tu mensaje y te responderemos a <code>${escapeHtml(email)}</code> a la mayor brevedad posible.</p>
+                        <div class="status-actions">
+                            <button type="button" class="btn-reset-form" id="btn-reset-msg">Enviar otro mensaje</button>
+                        </div>
+                    </div>
+                `, 'success');
+
+                contactForm.reset();
+
+                const resetBtn = document.getElementById('btn-reset-msg');
+                if (resetBtn) {
+                    resetBtn.addEventListener('click', () => {
+                        if (statusBox) {
+                            statusBox.style.display = 'none';
+                            statusBox.className = 'form-status';
+                        }
+                    });
+                }
             } else {
-                errorMessage = data.error || 'No se pudo entregar el mensaje en este momento.';
+                console.error('[Web3Forms Error]', result);
+                showStatus(result.message || 'No se pudo entregar el correo. Por favor, escribe directamente a asociacionuniovi@gmail.com.', 'error');
             }
         } catch (err) {
-            console.warn('[PCU Form] Error de red en la conexión con /api/contacto:', err);
-            errorMessage = 'No se pudo conectar con el servidor. Por favor, inténtalo de nuevo más tarde o escribe a asociacionuniovi@gmail.com.';
-        }
-
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnText;
-
-        if (isSuccess) {
-            showStatus(`
-                <div class="status-success-card">
-                    <h4>¡Mensaje enviado con éxito!</h4>
-                    <p>Gracias <strong>${escapeHtml(nombre)}</strong>. Hemos recibido tu mensaje y te responderemos a <code>${escapeHtml(email)}</code> a la mayor brevedad posible.</p>
-                    <div class="status-actions">
-                        <button type="button" class="btn-reset-form" id="btn-reset-msg">Enviar otro mensaje</button>
-                    </div>
-                </div>
-            `, 'success');
-
-            contactForm.reset();
-
-            const resetBtn = document.getElementById('btn-reset-msg');
-            if (resetBtn) {
-                resetBtn.addEventListener('click', () => {
-                    if (statusBox) {
-                        statusBox.style.display = 'none';
-                        statusBox.className = 'form-status';
-                    }
-                });
-            }
-        } else {
-            showStatus(errorMessage || 'Ocurrió un error. Por favor, escribe directamente a asociacionuniovi@gmail.com.', 'error');
+            console.error('[Web3Forms Network Error]', err);
+            showStatus('Ocurrió un error al enviar. Por favor, escribe directamente a asociacionuniovi@gmail.com.', 'error');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
         }
     });
 

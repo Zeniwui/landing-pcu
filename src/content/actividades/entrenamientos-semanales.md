@@ -1,17 +1,17 @@
 ---
 titulo: "Entrenamientos Algorítmicos Semanales"
-descripcion: "Sesiones semanales en los laboratorios de la Escuela de Ingeniería Informática para practicar resolución de problemas, estructuras de datos y simulación de concursos."
+descripcion: "Sesiones semanales en los laboratorios de la Escuela Politécnica de Ingeniería (EPI) de Gijón para practicar resolución de problemas, estructuras de datos y simulación de concursos."
 tipo: "entrenamiento"
 ambito: "Universidad de Oviedo"
 estado: "Activo semanalmente"
 formato: "Presencial · Jueves 17:00 a 19:30"
-lugar: "Laboratorios EII · Campus de los Catalanes"
+lugar: "Laboratorios EPI · Campus de Gijón (Viesques)"
 destacado: true
 ---
 
 ## Dinámica de las sesiones
 
-Nos reunimos todos los jueves en los laboratorios de la Escuela de Ingeniería Informática. Las sesiones están abiertas tanto a estudiantes que se inician en la programación competitiva como a quienes ya tienen experiencia en plataformas como Codeforces o LeetCode.
+Nos reunimos todos los jueves en los laboratorios de la Escuela Politécnica de Ingeniería (EPI) de Gijón. Las sesiones están abiertas tanto a estudiantes que se inician en la programación competitiva como a quienes ya tienen experiencia en plataformas como Codeforces o LeetCode.
 
 En cada sesión dedicamos una primera parte a revisar un concepto o técnica algorítmica y el resto del tiempo a resolver problemas prácticos en grupo.
 

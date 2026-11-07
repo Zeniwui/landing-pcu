@@ -7,6 +7,7 @@ import { getCollection } from 'astro:content';
 const allActivities = await getCollection('actividades');
 // Destacados para la landing principal
 const featuredContests = allActivities.slice(0, 6);
+const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
 ---
 
 <Layout title="PCU UniOvi | Asociación de Programación Competitiva Universitaria">
@@ -17,7 +18,7 @@ const featuredContests = allActivities.slice(0, 6);
         <div class="hero-grid">
           <div class="hero-editorial">
             <div class="hero-meta-bar">
-              <span class="badge-uniovi">ESCUELA DE INFORMÁTICA · UNIOVI</span>
+              <span class="badge-uniovi">EPI GIJÓN · UNIOVI</span>
               <span class="meta-divider">/</span>
               <span class="meta-status">
                 <span class="status-dot"></span> Temporada 2026 Activa
@@ -102,7 +103,7 @@ const featuredContests = allActivities.slice(0, 6);
           <span class="section-tag">Comunidad</span>
           <h2 class="section-title">Nuestras Actividades</h2>
           <p class="section-lead">
-            Además de competir, organizamos entrenamientos semanales en la Escuela de Informática y talleres de divulgación en institutos.
+            Además de competir, organizamos entrenamientos semanales en la Escuela Politécnica de Ingeniería (EPI) de Gijón y talleres de divulgación en institutos.
           </p>
         </div>
 
@@ -112,7 +113,7 @@ const featuredContests = allActivities.slice(0, 6);
             <span class="pane-badge">Formación Continua</span>
             <h3 class="pane-title">Entrenamientos Algorítmicos Semanales</h3>
             <p class="pane-text">
-              Nos reunimos en los laboratorios de la Escuela de Ingeniería Informática para resolver problemas de concurso, comentar soluciones y aprender nuevas técnicas.
+              Nos reunimos en los laboratorios de la Escuela Politécnica de Ingeniería (EPI) de Gijón para resolver problemas de concurso, comentar soluciones y aprender nuevas técnicas.
             </p>
             <ul class="activity-checklist">
               <li>
@@ -153,7 +154,7 @@ const featuredContests = allActivities.slice(0, 6);
               </li>
               <li>
                 <span class="check-bullet">✓</span>
-                <span>Charlas sobre los estudios de informática y la vida universitaria en Oviedo.</span>
+                <span>Charlas sobre los estudios de ingeniería, informática y la vida universitaria.</span>
               </li>
             </ul>
             <div style="margin-top: 1.5rem;">
@@ -182,7 +183,7 @@ const featuredContests = allActivities.slice(0, 6);
           <div class="sponsors-pillars">
             <div class="pillar-item">
               <h4 class="pillar-title">Contacto con estudiantes</h4>
-              <p class="pillar-text">Conoce a estudiantes de la Escuela de Informática con interés real en algoritmia, optimización y resolución práctica de problemas.</p>
+              <p class="pillar-text">Conoce a estudiantes de la EPI de Gijón y de la Universidad de Oviedo con interés real en algoritmia, optimización y resolución práctica de problemas.</p>
             </div>
             <div class="pillar-item">
               <h4 class="pillar-title">Apoyo en viajes y competiciones</h4>
@@ -190,7 +191,7 @@ const featuredContests = allActivities.slice(0, 6);
             </div>
             <div class="pillar-item">
               <h4 class="pillar-title">Charlas y talleres técnicos</h4>
-              <p class="pillar-text">Posibilidad de organizar presentaciones técnicas, retos de programación o talleres prácticos conjuntos en el campus de Oviedo.</p>
+              <p class="pillar-text">Posibilidad de organizar presentaciones técnicas, retos de programación o talleres prácticos conjuntos en el campus de Gijón.</p>
             </div>
           </div>
         </div>
@@ -220,8 +221,8 @@ const featuredContests = allActivities.slice(0, 6);
             <div class="direct-channel">
               <div class="channel-label">Sede Universitaria</div>
               <div class="channel-value">
-                Escuela de Ingeniería Informática<br>
-                <span style="font-size: 0.95rem; font-weight: normal; color: var(--ink-secondary);">Campus de los Catalanes · C/ Valdés Salas s/n, 33007 Oviedo</span>
+                Escuela Politécnica de Ingeniería (EPI) de Gijón<br>
+                <span style="font-size: 0.95rem; font-weight: normal; color: var(--ink-secondary);">Campus de Gijón (Viesques) · 33204 Gijón</span>
               </div>
             </div>
 
@@ -235,9 +236,11 @@ const featuredContests = allActivities.slice(0, 6);
 
           <!-- FORMULARIO INTERACTIVO CON TRANSMISIÓN AUTOMÁTICA -->
           <div class="contact-form-container">
-            <form id="contact-form" action="/api/contacto" method="POST" novalidate>
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+              <!-- Clave inyectada desde el entorno (no visible en GitHub) -->
+              <input type="hidden" name="access_key" value={accessKey} />
               <!-- Campo trampa invisible para bots (Honeypot) -->
-              <input type="text" name="botcheck" style="display: none !important;" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off" aria-hidden="true" />
               <div class="form-grid">
                 <div class="form-group">
                   <label for="nombre" class="form-label">Tu nombre completo <span class="required">*</span></label>

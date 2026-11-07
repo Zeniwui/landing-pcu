@@ -1,12 +1,12 @@
 ---
 titulo: "PCU UniOvi comienza las simulaciones para AdaByron 2026"
-descripcion: "Los equipos de la Escuela de Informática inician las sesiones de simulación de cinco horas para preparar la Fase Norte del certamen."
+descripcion: "Los equipos de la EPI de Gijón inician las sesiones de simulación de cinco horas para preparar la Fase Norte del certamen."
 fecha: "2026-03-01"
 autor: "Directiva PCU UniOvi"
 categoria: "Competición"
 ---
 
-Este mes de marzo se celebra una nueva edición del concurso AdaByron, y los equipos de la Universidad de Oviedo ya han empezado a entrenar en los laboratorios de la Escuela de Ingeniería Informática.
+Este mes de marzo se celebra una nueva edición del concurso AdaByron, y los equipos de la Universidad de Oviedo ya han empezado a entrenar en los laboratorios de la Escuela Politécnica de Ingeniería (EPI) de Gijón.
 
 ### Estrategia de equipo con un solo teclado
 

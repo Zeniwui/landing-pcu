@@ -20,7 +20,7 @@ AdaByron es un concurso universitario de programación por equipos que se celebr
 
 ### Participación de PCU UniOvi
 
-Cada curso organizamos entrenamientos previos y rondas de selección interna en la Escuela de Ingeniería Informática para formar los equipos que representan a la Universidad de Oviedo en la Fase Norte y en la final nacional.
+Cada curso organizamos entrenamientos previos y rondas de selección interna en la Escuela Politécnica de Ingeniería (EPI) de Gijón para formar los equipos que representan a la Universidad de Oviedo en la Fase Norte y en la final nacional.
 
 ### Requisitos para unirse al equipo
 
