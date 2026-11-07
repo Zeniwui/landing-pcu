@@ -89,7 +89,7 @@ components:
 
 El sistema visual de PCU UniOvi está diseñado como una publicación técnica de referencia que une la tradición académica y deportiva de la Universidad de Oviedo (Escuela Politécnica de Ingeniería de Gijón) con la alta competición algorítmica internacional (formato ICPC / AdaByron: 3 personas, 1 ordenador, 5 horas bajo límites estrictos de tiempo y memoria).
 
-La atmósfera combina un lienzo limpio de papel técnico (`#f8fafc` a `#ffffff`) con tipografías de contraste rotundo: la solidez contemporánea de **Space Grotesk** para titulares de impacto, la claridad neutra y descansada de **Plus Jakarta Sans** para prosa densa, y la precisión quirúrgica de **JetBrains Mono** para código, datos, veredictos de jueces automáticos y metadatos de certámenes.
+La atmósfera combina un lienzo limpio de papel técnico (`#f8fafc` a `#ffffff`) con tipografías de contraste rotundo: la solidez contemporánea de **Space Grotesk** para titulares de impacto, la claridad neutra y descansada de **Plus Jakarta Sans** para prosa densa, y la precisión quirúrgica de **JetBrains Mono** para código, datos, veredictos de jueces automáticos y metadatos de competiciones.
 
 El diseño huye conscientemente de las convenciones de plantillas SaaS genéricas: no hay degradados decorativos de texto, no se usan emojis como sucedáneo de iconos ni adornos superficiales de cristal o desenfoque. Toda la jerarquía se apoya en el espacio en blanco deliberado, proporciones asimétricas, micro-interacciones nítidas y la verdad deportiva y técnica del equipo.
 
@@ -197,7 +197,7 @@ El lenguaje de formas es sobrio, estructurado y de inspiración ingenieril, prio
 - **Action:** Botón sutil en el pie ("Ficha y detalles →") con desplazamiento de flecha al hover.
 
 ### Achievement Card (`.achievement-card`)
-- **Signature Component:** Contenedor de hito deportivo con fondo en degradado tonal tenue (`linear-gradient(135deg, rgba(239, 246, 255, 0.7) 0%, #ffffff 100%)`), borde azul sutil de 1px, icono de trofeo vectorial en caja elevada y tira de metadatos de certamen oficial.
+- **Signature Component:** Contenedor de hito deportivo con fondo en degradado tonal tenue (`linear-gradient(135deg, rgba(239, 246, 255, 0.7) 0%, #ffffff 100%)`), borde azul sutil de 1px, icono de trofeo vectorial en caja elevada y tira de metadatos de la competición oficial.
 
 ### Inputs / Form Fields
 - **Fields (`.form-input`, `.form-select`, `.form-textarea`):** Fondo base `#f8fafc`, borde de 1px `#cbd5e1`, radio de 4px, tipografía en 0.95rem.

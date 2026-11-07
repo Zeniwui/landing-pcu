@@ -1,6 +1,6 @@
 ---
 titulo: "AdaByron (Concurso Interuniversitario Nacional)"
-descripcion: "El certamen universitario de programación competitiva de referencia en España. Tres estudiantes por equipo, un único ordenador y cinco horas para resolver problemas de algoritmia y estructuras de datos."
+descripcion: "El principal concurso universitario de programación por equipos de España. Tres estudiantes por equipo, un único ordenador y cinco horas para resolver problemas de algoritmia y estructuras de datos."
 tipo: "concurso"
 ambito: "Regional y Final Nacional"
 estado: "Convocatoria Anual"
@@ -10,9 +10,9 @@ fecha: "Julio 2026 (Final) / Marzo 2026 (Regional)"
 destacado: true
 ---
 
-## Sobre el certamen AdaByron
+## Sobre el concurso AdaByron
 
-AdaByron es el principal certamen universitario de programación competitiva a nivel nacional en España. Inspirado en la filosofía y dinámica del circuito internacional ICPC (*International Collegiate Programming Contest*), reúne cada año a cientos de universitarios de todo el país en una prueba de algoritmia, matemáticas y trabajo en equipo bajo presión temporal.
+AdaByron es el principal concurso universitario de programación por equipos de España. Siguiendo el formato del circuito internacional ICPC (*International Collegiate Programming Contest*), reúne cada año a cientos de estudiantes de todo el país en una prueba de algoritmia, matemáticas y trabajo en equipo bajo presión temporal.
 
 La competición consta de dos fases eliminatorias:
 
@@ -39,14 +39,9 @@ Para fomentar la participación de todos los cursos, AdaByron divide a los equip
 
 ---
 
-> 🏆 **Hito PCU UniOvi en la Final Nacional AdaByron 2026**  
+> **Hito PCU UniOvi en la Final Nacional AdaByron 2026**  
 >
-> Tras conseguir la clasificación en la Fase Regional Multisede, el equipo de la Universidad de Oviedo **CalcudokuSolvers** —integrado por **Álvaro Mendoza del Canto**, **Mariana Patricia Miranda Martín** y **Lidia Casado Cases**— disputó la Gran Final Nacional celebrada los días 3 y 4 de julio de 2026 en la Facultad de Informática de la UCM en Madrid.  
-> 
-> Firmaron una actuación destacada:
-> * **Top 7 Nacional en Categoría AB** (estudiantes de primeros cursos).
-> * **18º puesto en la Clasificación General** entre los 42 equipos finalistas de toda España.
-> * **4 problemas resueltos** con 389 puntos de tiempo.
+> Tras conseguir la clasificación en la Fase Regional Multisede, el equipo de la Universidad de Oviedo  disputó la Gran Final Nacional celebrada en 2024 en la Facultad de Informática de la UCM en Madrid.  
 
 ---
 
@@ -69,4 +64,4 @@ Desde el Club de Programación Competitiva de la Universidad de Oviedo (PCU UniO
 
 * [Web oficial de AdaByron Nacional 2026](https://ada-byron.es/2026/nac/)
 * [Clasificación final y resultados oficiales 2026](https://ada-byron.es/2026/nac/resultado.php)
-* [Reglamento oficial del certamen](https://ada-byron.es/2026/nac/reglamento.php)
+* [Reglamento oficial del concurso](https://ada-byron.es/2026/nac/reglamento.php)

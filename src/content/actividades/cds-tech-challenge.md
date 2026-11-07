@@ -12,11 +12,11 @@ destacado: true
 
 ## Sobre el HPE CDS Tech Challenge
 
-El **HPE CDS Tech Challenge** es una competición tecnológica internacional impulsada por **CDS (a Hewlett Packard Enterprise Company)** junto a **HPE** y con el respaldo tecnológico de **AMD**. El certamen está orientado a estudiantes de educación superior (universidad y formación profesional superior) de cuatro países aliados: **España, México, Colombia y Puerto Rico**.
+El **HPE CDS Tech Challenge** es una competición tecnológica internacional impulsada por **CDS (a Hewlett Packard Enterprise Company)** junto a **HPE** y con el respaldo tecnológico de **AMD**. La competición está orientada a estudiantes universitarios y de formación profesional superior de cuatro países: **España, México, Colombia y Puerto Rico**.
 
 La edición 2026-2027 se articula bajo la misión **«La Alianza GreenLake»**, centrada en transformar infraestructuras críticas y diseñar ecosistemas inteligentes capaces de tomar decisiones en tiempo real, aunando analítica distribuida, conectividad masiva y sostenibilidad operativa.
 
-> ⚡ **Competición en marcha:** Nuestros equipos de **PCU UniOvi** se encuentran actualmente disputando las pruebas clasificatorias de la Fase I.
+> **Competición en marcha:** Nuestros equipos de **PCU UniOvi** se encuentran actualmente disputando las pruebas clasificatorias de la Fase I.
 
 ---
 
@@ -60,7 +60,7 @@ Los retos abarcan la convergencia de siete disciplinas esenciales:
 
 Los integrantes de **PCU (Programming Club UniOvi)** participan organizados en equipos de 3 personas, contando con el acompañamiento de profesorado tutor de la Universidad de Oviedo (Escuela Politécnica de Ingeniería de Gijón). 
 
-La participación en el certamen permite poner a prueba habilidades prácticas de arquitectura software, trabajo colaborativo bajo presión y resolución de retos de infraestructura empresarial real.
+Participar en esta competición permite poner a prueba habilidades prácticas de arquitectura de software, trabajo en equipo y resolución de retos técnicos reales.
 
 ---
 

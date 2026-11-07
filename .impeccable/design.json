@@ -44,7 +44,7 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display / Hero",
-        "purpose": "Titulares principales de alto impacto en portada y cabeceras de certamen."
+        "purpose": "Titulares principales de alto impacto en portada y cabeceras de actividades."
       },
       "headline": {
         "displayName": "Headline",
@@ -110,7 +110,7 @@
       "kind": "button",
       "refersTo": "button-primary",
       "description": "Llamada a la acción principal con acento azul UniOvi y transición suave.",
-      "html": "<button class=\"ds-btn-primary\">Ver certámenes oficiales</button>",
+      "html": "<button class=\"ds-btn-primary\">Ver concursos oficiales</button>",
       "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; background: #1d4ed8; color: #ffffff; padding: 0.85rem 1.65rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 0.95rem; border-radius: 4px; border: 1px solid transparent; cursor: pointer; transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 2px 4px rgba(29, 78, 216, 0.2); } .ds-btn-primary:hover { background: #1e40af; transform: translateY(-1px); box-shadow: 0 4px 10px rgba(29, 78, 216, 0.28); } .ds-btn-primary:focus-visible { outline: 2px solid #1d4ed8; outline-offset: 2px; }"
     },
     {

@@ -29,7 +29,7 @@ Hemos migrado el portal a **[Astro](https://astro.build/)** para permitir múlti
 │   ├── components/         # Componentes modulares (Navbar, Footer, Scoreboard, Cards)
 │   ├── content/            # ¡Aquí se redacta el contenido!
 │   │   ├── actividades/    # Fichas individuales de concursos y talleres (.md)
-│   │   └── noticias/       # Artículos y crónicas de certámenes (.md)
+│   │   └── noticias/       # Artículos y crónicas de competiciones (.md)
 │   ├── layouts/            # Plantilla base (Layout.astro)
 │   ├── pages/              # Rutas del portal
 │   │   ├── index.astro     # Portada principal

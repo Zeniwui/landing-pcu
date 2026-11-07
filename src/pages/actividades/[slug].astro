@@ -123,7 +123,7 @@ if (estadoLower.includes('curso') || estadoLower.includes('activa') || estadoLow
               Tanto si eres estudiante de la Universidad de Oviedo con interés en entrenar, como si representas a una empresa o centro educativo, escríbenos directamente.
             </p>
             <div class="detail-action-btns">
-              <a href="/#contacto" class="btn-primary">Contactar con la Directiva</a>
+              <a href="/contacto" class="btn-primary">Contactar</a>
               <a href="/actividades" class="btn-secondary">Volver al catálogo</a>
             </div>
           </div>
@@ -143,7 +143,7 @@ if (estadoLower.includes('curso') || estadoLower.includes('activa') || estadoLow
   }
   .detail-scope-pill {
     font-family: var(--font-mono);
-    font-size: 0.74rem;
+    font-size: 0.78rem;
     font-weight: 600;
     text-transform: uppercase;
     background: #0f172a;
@@ -154,7 +154,7 @@ if (estadoLower.includes('curso') || estadoLower.includes('activa') || estadoLow
   }
   .detail-status-pill {
     font-family: var(--font-mono);
-    font-size: 0.74rem;
+    font-size: 0.78rem;
     font-weight: 600;
     padding: 0.25rem 0.65rem;
     border-radius: var(--radius-sm);
@@ -203,7 +203,7 @@ if (estadoLower.includes('curso') || estadoLower.includes('activa') || estadoLow
   }
   .fact-label {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--ink-muted);
@@ -212,19 +212,19 @@ if (estadoLower.includes('curso') || estadoLower.includes('activa') || estadoLow
     gap: 0.4rem;
   }
   .fact-value {
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--ink-primary);
     line-height: 1.4;
   }
   .markdown-body {
-    font-size: 1.05rem;
+    font-size: 1rem;
     line-height: 1.75;
     color: var(--ink-secondary);
   }
   .markdown-body :global(h2) {
     font-family: var(--font-heading);
-    font-size: 1.75rem;
+    font-size: 2.4rem;
     font-weight: 700;
     color: var(--ink-primary);
     margin: 2.75rem 0 1rem;
@@ -234,7 +234,7 @@ if (estadoLower.includes('curso') || estadoLower.includes('activa') || estadoLow
   }
   .markdown-body :global(h3) {
     font-family: var(--font-heading);
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     font-weight: 700;
     color: var(--ink-primary);
     margin: 1.85rem 0 0.65rem;
@@ -248,6 +248,61 @@ if (estadoLower.includes('curso') || estadoLower.includes('activa') || estadoLow
   }
   .markdown-body :global(li) {
     margin-bottom: 0.5rem;
+  }
+  .markdown-body :global(a) {
+    color: var(--uniovi-blue);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgba(29, 78, 216, 0.4);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease, background-color 0.15s ease;
+    border-radius: var(--radius-sm);
+    padding: 0.05rem 0.2rem;
+    margin: -0.05rem -0.2rem;
+  }
+  .markdown-body :global(a:hover) {
+    color: var(--uniovi-blue-hover);
+    text-decoration-color: var(--uniovi-blue-hover);
+    background-color: var(--uniovi-blue-tint);
+  }
+  .markdown-body :global(a:focus-visible) {
+    outline: 2px solid var(--uniovi-blue);
+    outline-offset: 2px;
+  }
+  .markdown-body :global(a[href^="http"]::after) {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-left: 0.25rem;
+    vertical-align: -1px;
+    background-color: currentColor;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E");
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    opacity: 0.8;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .markdown-body :global(a[href^="http"]:hover::after) {
+    opacity: 1;
+    transform: translate(1px, -1px);
+  }
+  .markdown-body :global(strong) {
+    color: var(--ink-primary);
+    font-weight: 600;
+  }
+  .markdown-body :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--bg-surface-elevated);
+    color: var(--ink-primary);
+    border: 1px solid var(--border-hairline);
+    padding: 0.15rem 0.4rem;
+    border-radius: var(--radius-sm);
   }
   .markdown-body :global(blockquote) {
     margin: 2rem 0;

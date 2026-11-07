@@ -15,7 +15,7 @@ web
 Proporcionar el portal web oficial y la identidad digital de la Asociación de Programación Competitiva Universitaria (PCU) de la Universidad de Oviedo, centralizando la información sobre competiciones activas (SWERC, HDCPE, AdaByron), entrenamientos técnicos en la EPI de Gijón, dossier de patrocinio empresarial y vías de contacto directo.
 
 ## Positioning
-PCU UniOvi es la única asociación universitaria en Asturias dedicada en exclusiva a la programación competitiva oficial de alto rendimiento (formato ICPC: 3 personas, 1 ordenador, 5 horas bajo límite estricto de tiempo y memoria). A diferencia de clubes generales de desarrollo o charlas genéricas, su foco es la excelencia algorítmica, la optimización extrema ($O(N \log N)$, STL avanzada) y la representación oficial de la Universidad de Oviedo en certámenes nacionales e internacionales.
+PCU UniOvi es la única asociación universitaria en Asturias dedicada en exclusiva a la programación competitiva oficial de alto rendimiento (formato ICPC: 3 personas, 1 ordenador, 5 horas bajo límite estricto de tiempo y memoria). A diferencia de clubes generales de desarrollo o charlas genéricas, su foco es la excelencia algorítmica, la optimización extrema ($O(N \log N)$, STL avanzada) y la representación oficial de la Universidad de Oviedo en competiciones nacionales e internacionales.
 
 ## Operating Context
 - **Sede física:** Escuela Politécnica de Ingeniería (EPI) de Gijón, Campus de Viesques (Gijón, Asturias).
@@ -41,6 +41,6 @@ PCU UniOvi es la única asociación universitaria en Asturias dedicada en exclus
 
 ## Product Principles
 1. **Verdad deportiva y técnica:** Reflejar fielmente la realidad del equipo; no prometer periodicidades que no se cumplen ni inventar patrocinadores no confirmados.
-2. **Claridad algorítmica:** Explicar el funcionamiento de cada certamen (fases regionales, finales nacionales, formato de tres personas y un solo teclado) de forma comprensible tanto para novatos como para ingenieros veteranos.
+2. **Claridad algorítmica:** Explicar el funcionamiento de cada concurso (fases regionales, finales nacionales, formato de tres personas y un solo teclado) de forma comprensible tanto para novatos como para ingenieros veteranos.
 3. **Foco en el impacto y el talento:** Presentar a los miembros de la asociación como perfiles de alto valor analítico para el ecosistema tecnológico regional e internacional.
 4. **Accesibilidad y rigor visual:** Tipografías monoespaciadas y encabezados sólidos que evocan terminales y entornos de desarrollo, manteniendo contraste AA/AAA y rendimiento web impecable.

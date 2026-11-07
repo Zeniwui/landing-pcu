@@ -7,7 +7,7 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
 
 <Layout
   title="Contacto y FAQ | PCU UniOvi"
-  description="Canales de contacto oficiales con la Asociación de Programación Competitiva Universitaria de la Universidad de Oviedo (EPI Gijón). Información sobre certámenes, charlas informativas y colaboraciones."
+  description="Canales de contacto de la Asociación de Programación Competitiva Universitaria de la Universidad de Oviedo (EPI Gijón). Información sobre competiciones, entrenamientos y colaboraciones."
   currentPath="/contacto"
 >
   <main class="contact-page">
@@ -38,83 +38,25 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
       <div class="container">
         <div class="contact-grid-main">
           
-          <!-- COLUMNA IZQUIERDA: CANALES DIRECTOS & UBICACIÓN -->
+          <!-- COLUMNA IZQUIERDA: SEDE DE LA ASOCIACIÓN -->
           <div class="channels-column">
-            <h2 class="sub-heading">Vías de contacto oficiales</h2>
+            <h2 class="sub-heading">Sede de la asociación</h2>
             <p class="channels-desc">
-              Respondemos a todas las consultas de forma directa a través de nuestro correo institucional o en nuestro servidor de Discord.
+              Nuestras actividades y entrenamientos presenciales se celebran en el campus universitario de Gijón.
             </p>
 
             <div class="channel-card">
               <div class="channel-icon-wrap" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-              </div>
-              <div class="channel-details">
-                <span class="channel-type">Correo Institucional</span>
-                <a href="mailto:asociacionuniovi@gmail.com" class="channel-link">asociacionuniovi@gmail.com</a>
-                <span class="channel-note">Respuesta en 24 a 48 horas laborables.</span>
-              </div>
-            </div>
-
-            <div class="channel-card">
-              <div class="channel-icon-wrap" style="background: rgba(88, 101, 242, 0.12); color: #5865F2;" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
-                </svg>
-              </div>
-              <div class="channel-details">
-                <span class="channel-type">Servidor de Discord</span>
-                <a href="https://discord.gg" target="_blank" rel="noopener noreferrer" class="channel-link">Comunidad Discord PCU</a>
-                <span class="channel-note">Debates de problemas, simulaciones conjuntas y avisos.</span>
-              </div>
-            </div>
-
-            <div class="channel-card">
-              <div class="channel-icon-wrap" style="background: rgba(225, 48, 108, 0.12); color: #e1306c;" aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                </svg>
-              </div>
-              <div class="channel-details">
-                <span class="channel-type">Instagram Oficial</span>
-                <a href="https://instagram.com/pcu_uniovi" target="_blank" rel="noopener noreferrer" class="channel-link">@pcu_uniovi</a>
-                <span class="channel-note">Coberturas de viajes a concursos y vida del equipo.</span>
-              </div>
-            </div>
-
-            <div class="channel-card">
-              <div class="channel-icon-wrap" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
               </div>
               <div class="channel-details">
-                <span class="channel-type">Sede de la Asociación</span>
+                <span class="channel-type">Ubicación y Laboratorios</span>
                 <span class="channel-val">Escuela Politécnica de Ingeniería (EPI) de Gijón</span>
-                <span class="channel-note">Campus de Gijón (Viesques) · 33204 Gijón (Asturias).</span>
+                <span class="channel-note">Universidad de Oviedo · Campus de Viesques · 33204 Gijón (Asturias).</span>
               </div>
-            </div>
-
-            <!-- GUÍA DE PARTICIPACIÓN -->
-            <div class="profile-routing-box">
-              <h3 class="routing-title">¿Cómo participar?</h3>
-              <ul class="routing-list">
-                <li>
-                  <strong>Estudiantes universitarios:</strong> Si estudias en la Universidad de Oviedo (cualquier campus y titulación técnica), puedes unirte a nuestras simulaciones y grupo de entrenamiento. No se exige experiencia previa en certámenes.
-                </li>
-                <li>
-                  <strong>Empresas colaboradoras:</strong> Si quieres impulsar el talento técnico regional apoyando nuestros desplazamientos a finales nacionales e internacionales, contáctanos para explorar modalidades de patrocinio.
-                </li>
-                <li>
-                  <strong>Colegios e institutos:</strong> Ofrecemos charlas informativas y de orientación universitaria gratuitas para alumnado de secundaria y bachillerato en Asturias.
-                </li>
-              </ul>
             </div>
           </div>
 
@@ -214,14 +156,14 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
         <div class="faq-accordion">
           <details class="faq-item">
             <summary class="faq-question">
-              <span>¿Necesito tener un nivel avanzado en algoritmia o C++ para unirme?</span>
+              <span>¿Necesito tener un nivel avanzado en algoritmia para unirme?</span>
               <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </summary>
             <div class="faq-answer">
               <p>
-                No hace falta experiencia previa en jueces automáticos. En nuestras sesiones trabajamos tanto fundamentos (uso eficiente de la biblioteca estándar STL de C++, optimización de entrada/salida y estructuras básicas) como problemas avanzados de nivel nacional. Lo fundamental es tener ganas de aprender y resolver retos en equipo.
+                No hace falta experiencia previa. En nuestras sesiones trabajamos tanto fundamentos como problemas avanzados de nivel nacional. Lo fundamental es tener ganas de aprender y resolver retos en equipo.
               </p>
             </div>
           </details>
@@ -235,7 +177,7 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
             </summary>
             <div class="faq-answer">
               <p>
-                Sí. Aunque la sede y las simulaciones presenciales se celebran en la Escuela Politécnica de Ingeniería (EPI) de Gijón, la asociación está abierta a todo el alumnado de la Universidad de Oviedo (Informática, Telecomunicaciones, Ciencia de Datos, Matemáticas, Física, etc.). La coordinación continua y el debate de problemas se canalizan a través de nuestro servidor oficial de Discord.
+                Sí. Aunque la sede y las actividades presenciales se celebran en la Escuela Politécnica de Ingeniería (EPI) de Gijón, la asociación está abierta a todo el alumnado de la Universidad de Oviedo (Informática, Telecomunicaciones, Ciencia de Datos, Matemáticas, Física, etc.).
               </p>
             </div>
           </details>
@@ -249,7 +191,7 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
             </summary>
             <div class="faq-answer">
               <p>
-                Son completamente gratuitas. Somos una asociación universitaria sin ánimo de lucro registrada en la Universidad de Oviedo; organizamos estas charlas de forma altruista para orientar al alumnado de secundaria y bachillerato sobre las carreras técnicas y la vida universitaria.
+                Son completamente gratuitas. Somos una asociación universitaria registrada en la Universidad de Oviedo; organizamos estas charlas de forma altruista para orientar al alumnado de secundaria y bachillerato sobre las carreras técnicas y la vida universitaria.
               </p>
             </div>
           </details>
@@ -263,7 +205,7 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
             </summary>
             <div class="faq-answer">
               <p>
-                Buscamos empresas colaboradoras que ayuden a financiar desplazamientos, alojamientos y equipaciones de los equipos en certámenes oficiales como AdaByron o SWERC/ICPC. Ofrecemos modalidades de Socio Colaborador y Socio Estratégico con visibilidad en campus, equipación oficial y opciones de organizar retos técnicos bilaterales con los estudiantes más cualificados. Puedes consultar nuestro <a href="/empresas" style="color: var(--uniovi-blue); text-decoration: underline;">dossier para empresas</a>.
+                Buscamos empresas colaboradoras que ayuden a financiar desplazamientos, alojamientos y equipaciones de los equipos en competiciones oficiales como AdaByron o SWERC/ICPC. Ofrecemos modalidades de Socio Colaborador y Socio Estratégico con visibilidad en campus, equipación oficial y opciones de organizar retos técnicos bilaterales con los estudiantes más cualificados. Puedes consultar nuestro <a href="/empresas" style="color: var(--uniovi-blue); text-decoration: underline;">dossier para empresas</a>.
               </p>
             </div>
           </details>
@@ -283,7 +225,7 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
 
   .sub-heading {
     font-family: var(--font-heading);
-    font-size: 1.55rem;
+    font-size: 1.35rem;
     font-weight: 700;
     color: var(--ink-primary);
     margin-bottom: 0.5rem;
@@ -291,7 +233,7 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
   }
 
   .channels-desc {
-    font-size: 0.98rem;
+    font-size: 1rem;
     color: var(--ink-secondary);
     margin-bottom: 1.75rem;
     line-height: 1.55;
@@ -335,69 +277,23 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
 
   .channel-type {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--ink-muted);
   }
 
-  .channel-link {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--uniovi-blue);
-    text-decoration: none;
-    transition: color 0.15s ease;
-  }
-
-  .channel-link:hover {
-    text-decoration: underline;
-    color: var(--uniovi-blue-hover);
-  }
-
   .channel-val {
-    font-size: 0.96rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--ink-primary);
   }
 
   .channel-note {
-    font-size: 0.84rem;
+    font-size: 0.78rem;
     color: var(--ink-secondary);
     line-height: 1.4;
-  }
-
-  .profile-routing-box {
-    margin-top: 2rem;
-    background: var(--bg-surface-elevated);
-    border: 1px solid var(--border-hairline);
-    border-radius: var(--radius-md);
-    padding: 1.5rem;
-  }
-
-  .routing-title {
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--ink-primary);
-    margin-bottom: 0.85rem;
-  }
-
-  .routing-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-  }
-
-  .routing-list li {
-    font-size: 0.88rem;
-    color: var(--ink-secondary);
-    line-height: 1.5;
-  }
-
-  .routing-list strong {
-    color: var(--ink-primary);
   }
 
   .form-header-box {
@@ -408,7 +304,7 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
 
   .form-main-title {
     font-family: var(--font-heading);
-    font-size: 1.75rem;
+    font-size: 1.35rem;
     font-weight: 700;
     color: var(--ink-primary);
     margin-bottom: 0.4rem;
@@ -416,7 +312,7 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
   }
 
   .form-sub {
-    font-size: 0.92rem;
+    font-size: 1rem;
     color: var(--ink-secondary);
     line-height: 1.5;
     margin: 0;
@@ -469,7 +365,7 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
   .faq-question {
     padding: 1.15rem 1.4rem;
     font-family: var(--font-heading);
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--ink-primary);
     cursor: pointer;
@@ -498,7 +394,7 @@ const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
 
   .faq-answer {
     padding: 0 1.4rem 1.35rem;
-    font-size: 0.96rem;
+    font-size: 1rem;
     color: var(--ink-secondary);
     line-height: 1.65;
     border-top: 1px solid var(--border-hairline);
