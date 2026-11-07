@@ -1,0 +1,63 @@
+---
+interface Props {
+  slug: string;
+  titulo: string;
+  descripcion: string;
+  ambito: string;
+  estado: string;
+  formato: string;
+  lugar: string;
+  fecha?: string;
+}
+
+const { slug, titulo, descripcion, ambito, estado, formato, lugar, fecha } = Astro.props;
+---
+
+<article class="contest-card">
+  <div class="contest-meta">
+    <span class="contest-scope">{ambito}</span>
+    <span class="contest-status upcoming">{estado}</span>
+  </div>
+  <h3 class="contest-name">
+    <a href={`/actividades/${slug}`} class="contest-title-link">
+      {titulo}
+    </a>
+  </h3>
+  <p class="contest-desc">
+    {descripcion}
+  </p>
+  <div class="contest-footer">
+    <span class="contest-format">{formato}</span>
+    <span>{lugar}</span>
+  </div>
+  <div class="card-detail-action">
+    <a href={`/actividades/${slug}`} class="btn-card-readmore">
+      Ver detalles y requisitos &rarr;
+    </a>
+  </div>
+</article>
+
+<style>
+  .contest-title-link:hover {
+    color: var(--uniovi-blue);
+    text-decoration: underline;
+  }
+  .card-detail-action {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-hairline);
+  }
+  .btn-card-readmore {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--uniovi-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: transform 0.15s ease;
+  }
+  .btn-card-readmore:hover {
+    transform: translateX(3px);
+  }
+</style>

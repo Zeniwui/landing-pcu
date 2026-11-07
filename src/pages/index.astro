@@ -1,0 +1,291 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Scoreboard from '../components/Scoreboard.astro';
+import ContestCard from '../components/ContestCard.astro';
+import { getCollection } from 'astro:content';
+
+const allActivities = await getCollection('actividades');
+// Destacados para la landing principal
+const featuredContests = allActivities.slice(0, 6);
+---
+
+<Layout title="PCU UniOvi | Asociación de Programación Competitiva Universitaria">
+  <main>
+    <!-- SECCIÓN HERO: EDITORIAL CON SCOREBOARD DE COMPETICIÓN -->
+    <section id="hero" class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-editorial">
+            <div class="hero-meta-bar">
+              <span class="badge-uniovi">ESCUELA DE INFORMÁTICA · UNIOVI</span>
+              <span class="meta-divider">/</span>
+              <span class="meta-status">
+                <span class="status-dot"></span> Temporada 2026 Activa
+              </span>
+            </div>
+
+            <h1 class="hero-title">
+              Pensar en <span class="accent-text">O(1)</span>.<br>
+              Competir en la élite algorítmica.
+            </h1>
+
+            <p class="hero-description">
+              Somos la <strong>Asociación de Programación Competitiva Universitaria (PCU)</strong> de la Universidad de Oviedo. Entrenamos a estudiantes en algoritmia y estructuras de datos para resolver problemas complejos contra el cronómetro y competir en certámenes internacionales.
+            </p>
+
+            <div class="hero-actions">
+              <a href="/actividades" class="btn-primary">Explorar Directorio de Actividades</a>
+              <a href="#contacto" class="btn-secondary">Unirse a la Asociación</a>
+            </div>
+
+            <div class="hero-stats-row">
+              <div class="stat-item">
+                <span class="stat-value">5 Horas</span>
+                <span class="stat-label">Formato oficial ICPC por equipo de 3</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">{allActivities.length}+ Actividades</span>
+                <span class="stat-label">Competiciones y talleres en marcha</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">Semanal</span>
+                <span class="stat-label">Sesiones prácticas y simulación</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- MARCADOR EN VIVO DE COMPETICIÓN -->
+          <Scoreboard />
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: CONCURSOS Y COMPETICIONES (DINÁMICO CON ASTRO) -->
+    <section id="concursos" class="section-padding">
+      <div class="container">
+        <div class="section-head">
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <span class="section-tag">Calendario & Circuitos</span>
+              <h2 class="section-title">Concursos y Competiciones</h2>
+              <p class="section-lead">
+                Participamos activamente en los certámenes universitarios más exigentes de algoritmia y programación a nivel nacional y europeo.
+              </p>
+            </div>
+            <a href="/actividades" class="btn-secondary" style="font-size: 0.88rem; padding: 0.65rem 1.25rem;">
+              Ver todas las fichas ({allActivities.length}) &rarr;
+            </a>
+          </div>
+        </div>
+
+        <div class="contests-grid">
+          {featuredContests.map((item) => (
+            <ContestCard
+              slug={item.id}
+              titulo={item.data.titulo}
+              descripcion={item.data.descripcion}
+              ambito={item.data.ambito}
+              estado={item.data.estado}
+              formato={item.data.formato}
+              lugar={item.data.lugar}
+              fecha={item.data.fecha}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: ACTIVIDADES FORMATIVAS & IMPACTO -->
+    <section id="actividades" class="section-padding" style="background-color: var(--bg-surface);">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Desarrollo & Comunidad</span>
+          <h2 class="section-title">Nuestras Actividades</h2>
+          <p class="section-lead">
+            Más allá de las competiciones, impulsamos la cultura técnica dentro y fuera del campus universitario.
+          </p>
+        </div>
+
+        <div class="activities-container">
+          <!-- Actividad 1: Entrenamientos Técnicos -->
+          <article class="activity-pane featured">
+            <span class="pane-badge">Formación Continua</span>
+            <h3 class="pane-title">Entrenamientos Algorítmicos Semanales</h3>
+            <p class="pane-text">
+              Sesiones guiadas por estudiantes veteranos en los laboratorios de la Escuela de Ingeniería Informática. Desglosamos problemas de alta dificultad y optimización de código.
+            </p>
+            <ul class="activity-checklist">
+              <li>
+                <span class="check-bullet">✓</span>
+                <span><strong>Temario estructurado:</strong> Grafos (Dijkstra, BFS/DFS), Programación Dinámica y Estructuras avanzadas (Segment Trees, Fenwick, DSU).</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span><strong>Análisis de complejidad:</strong> Enfoques para resolver problemas dentro de los límites estrictos de tiempo y memoria.</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span><strong>Trabajo en equipo:</strong> Estrategias para gestionar un único teclado entre 3 personas en 5 horas de certamen.</span>
+              </li>
+            </ul>
+            <div style="margin-top: 1.5rem;">
+              <a href="/actividades/entrenamientos-semanales" class="btn-secondary" style="font-size: 0.82rem; padding: 0.5rem 1rem;">
+                Ver temario completo y horarios &rarr;
+              </a>
+            </div>
+          </article>
+
+          <!-- Actividad 2: Impacto Social & STEM -->
+          <article class="activity-pane">
+            <span class="pane-badge">Vocaciones Científicas</span>
+            <h3 class="pane-title">Talleres STEM en Colegios e Institutos</h3>
+            <p class="pane-text">
+              Llevamos la informática formativa a las aulas asturianas. Mostramos a los más jóvenes que programar va mucho más allá de usar herramientas: es desarrollar pensamiento crítico y algorítmico.
+            </p>
+            <ul class="activity-checklist">
+              <li>
+                <span class="check-bullet">✓</span>
+                <span><strong>Resolución lógica sin pantallas:</strong> Puzzles matemáticos y juegos algorítmicos para despertar la curiosidad.</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span><strong>Iniciación a Python y C++:</strong> Primeros pasos guiados para estudiantes de la ESO y Bachillerato.</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span><strong>Creación de cantera técnica:</strong> Conectar el futuro talento con la universidad antes de su selectividad.</span>
+              </li>
+            </ul>
+            <div style="margin-top: 1.5rem;">
+              <a href="/actividades/talleres-stem" class="btn-secondary" style="font-size: 0.82rem; padding: 0.5rem 1rem;">
+                Solicitar taller para tu centro &rarr;
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: PARA EMPRESAS Y PATROCINADORES -->
+    <section id="empresas" class="section-padding">
+      <div class="container">
+        <div class="sponsors-box">
+          <div class="sponsors-intro">
+            <span class="section-tag">Alianzas Estratégicas</span>
+            <h2 class="sponsors-title">Impulsa al mejor talento tech de Asturias</h2>
+            <p class="sponsors-desc">
+              Los miembros de PCU son los estudiantes con mayor disciplina analítica, rapidez en depuración y resiliencia ante problemas complejos. Apoyar a la asociación posiciona a tu empresa en el epicentro de la excelencia técnica.
+            </p>
+            <a href="#contacto" class="btn-primary" style="background: #38bdf8; color: #0f172a;">Hablar con la Directiva</a>
+          </div>
+
+          <div class="sponsors-pillars">
+            <div class="pillar-item">
+              <h4 class="pillar-title">Acceso directo a talento excepcional</h4>
+              <p class="pillar-text">Conecta con los perfiles más buscados por las tecnológicas globales: programadores capaces de superar cualquier prueba técnica y diseñar arquitecturas óptimas.</p>
+            </div>
+            <div class="pillar-item">
+              <h4 class="pillar-title">Patrocinio de viajes y competiciones</h4>
+              <p class="pillar-text">Tu aportación financia desplazamientos y alojamientos en certámenes como SWERC y AdaByron, luciendo tu marca en camisetas y presentaciones oficiales.</p>
+            </div>
+            <div class="pillar-item">
+              <h4 class="pillar-title">Employer Branding y talleres conjuntos</h4>
+              <p class="pillar-text">Organiza hackathons internos, charlas de ingeniería avanzada y retos de algoritmia co-brandeados en la Universidad de Oviedo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: CONTACTO DIRECTO & AUTO-ENVÍO -->
+    <section id="contacto" class="section-padding contact-section">
+      <div class="container">
+        <div class="contact-layout">
+          <div class="contact-direct-info">
+            <div>
+              <span class="section-tag">Buzón Oficial</span>
+              <h2 class="section-title">Escríbenos directamente</h2>
+              <p class="section-lead">
+                Tanto si quieres incorporarte al equipo, proponer una colaboración institucional o patrocinar nuestros próximos concursos, estamos al otro lado.
+              </p>
+            </div>
+
+            <div class="direct-channel">
+              <div class="channel-label">Correo Oficial de la Asociación</div>
+              <div class="channel-value">
+                <a href="mailto:asociacionuniovi@gmail.com">asociacionuniovi@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="direct-channel">
+              <div class="channel-label">Sede Universitaria</div>
+              <div class="channel-value">
+                Escuela de Ingeniería Informática<br>
+                <span style="font-size: 0.95rem; font-weight: normal; color: var(--ink-secondary);">Campus de los Catalanes · C/ Valdés Salas s/n, 33007 Oviedo</span>
+              </div>
+            </div>
+
+            <div class="direct-channel">
+              <div class="channel-label">Respuesta Estimada</div>
+              <div class="channel-value" style="font-size: 0.95rem; color: var(--ink-secondary);">
+                Menos de 48 horas laborables por parte de la directiva de PCU.
+              </div>
+            </div>
+          </div>
+
+          <!-- FORMULARIO INTERACTIVO CON TRANSMISIÓN AUTOMÁTICA -->
+          <div class="contact-form-container">
+            <form id="contact-form" action="https://formspree.io/f/asociacionuniovi@gmail.com" method="POST" novalidate>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="nombre" class="form-label">Tu nombre completo <span class="required">*</span></label>
+                  <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Ej. Pelayo Álvarez" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="email" class="form-label">Correo electrónico <span class="required">*</span></label>
+                  <input type="email" id="email" name="email" class="form-input" placeholder="nombre@correo.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="categoria" class="form-label">¿Cuál es tu perfil?</label>
+                  <select id="categoria" name="categoria" class="form-select">
+                    <option value="Estudiante UniOvi">Estudiante de la Universidad de Oviedo</option>
+                    <option value="Empresa / Patrocinador">Empresa / Propuesta de Patrocinio</option>
+                    <option value="Colegio o Instituto">Colegio / Instituto (Talleres STEM)</option>
+                    <option value="Alumni o Mentor">Alumni / Mentor técnico</option>
+                    <option value="Otra consulta">Otra consulta general</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="asunto" class="form-label">Asunto breve</label>
+                  <input type="text" id="asunto" name="asunto" class="form-input" placeholder="Ej. Unirse al grupo de AdaByron">
+                </div>
+
+                <div class="form-group full-width">
+                  <label for="mensaje" class="form-label">Tu mensaje <span class="required">*</span></label>
+                  <textarea id="mensaje" name="mensaje" class="form-textarea" placeholder="Cuéntanos en qué podemos ayudarte o en qué concurso/actividad te gustaría participar..." required></textarea>
+                  <span class="form-helper">El mensaje se transmite de forma automática a la directiva de la asociación.</span>
+                </div>
+              </div>
+
+              <div class="form-submit-row">
+                <button type="submit" class="btn-submit">
+                  <span>Transmitir Mensaje</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+                <span style="font-size: 0.8rem; color: var(--ink-muted);">Sin registro obligatorio · Conexión directa</span>
+              </div>
+
+              <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

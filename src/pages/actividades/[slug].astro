@@ -1,0 +1,215 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const activities = await getCollection('actividades');
+  return activities.map(entry => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout
+  title={`${entry.data.titulo} | PCU UniOvi`}
+  description={entry.data.descripcion}
+  currentPath="/actividades"
+>
+  <main class="activity-detail-page">
+    <article class="section-padding">
+      <div class="container" style="max-width: 900px;">
+        <!-- MIGA DE PAN -->
+        <nav class="breadcrumbs" aria-label="Ruta de navegación">
+          <a href="/">Inicio</a> / <a href="/actividades">Actividades</a> / <span>{entry.data.titulo}</span>
+        </nav>
+
+        <!-- ENCABEZADO EDITORIAL -->
+        <header class="detail-header">
+          <div class="detail-tags">
+            <span class="detail-badge">{entry.data.ambito}</span>
+            <span class="detail-status">{entry.data.estado}</span>
+          </div>
+
+          <h1 class="detail-title">{entry.data.titulo}</h1>
+
+          <p class="detail-lead">{entry.data.descripcion}</p>
+
+          <!-- FICHA RÁPIDA DE METADATOS -->
+          <div class="quick-facts-box">
+            <div class="fact-item">
+              <span class="fact-label">Formato</span>
+              <span class="fact-value">{entry.data.formato}</span>
+            </div>
+            <div class="fact-item">
+              <span class="fact-label">Ubicación / Sede</span>
+              <span class="fact-value">{entry.data.lugar}</span>
+            </div>
+            {entry.data.fecha && (
+              <div class="fact-item">
+                <span class="fact-label">Fecha / Temporada</span>
+                <span class="fact-value">{entry.data.fecha}</span>
+              </div>
+            )}
+          </div>
+        </header>
+
+        <!-- CONTENIDO DETALLADO EN MARKDOWN -->
+        <div class="markdown-body">
+          <Content />
+        </div>
+
+        <!-- ACCIÓN DE PARTICIPACIÓN -->
+        <aside class="detail-cta-card">
+          <div class="cta-inner">
+            <span class="section-tag">Participa con Nosotros</span>
+            <h3>¿Quieres involucrarte en esta actividad?</h3>
+            <p>
+              Tanto si eres estudiante de la Universidad de Oviedo con ganas de entrenar, como si representas a una empresa o centro escolar, escríbenos directamente.
+            </p>
+            <div style="margin-top: 1.25rem;">
+              <a href="/#contacto" class="btn-primary">Contactar con la Directiva</a>
+              <a href="/actividades" class="btn-secondary" style="margin-left: 0.75rem;">Volver al directorio</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .breadcrumbs {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    margin-bottom: 2rem;
+  }
+  .breadcrumbs a {
+    color: var(--uniovi-blue);
+    text-decoration: underline;
+  }
+  .detail-header {
+    border-bottom: 1px solid var(--border-hairline);
+    padding-bottom: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .detail-tags {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 1.25rem;
+  }
+  .detail-badge {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: #0f172a;
+    color: #ffffff;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-sm);
+  }
+  .detail-status {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: var(--verdict-ac-bg);
+    color: var(--verdict-ac);
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-sm);
+  }
+  .detail-title {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink-primary);
+    margin-bottom: 1.25rem;
+  }
+  .detail-lead {
+    font-size: 1.2rem;
+    color: var(--ink-secondary);
+    line-height: 1.65;
+    margin-bottom: 2rem;
+  }
+  .quick-facts-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+  }
+  .fact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .fact-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-muted);
+  }
+  .fact-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink-primary);
+  }
+  .markdown-body {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--ink-secondary);
+  }
+  .markdown-body :global(h2) {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--ink-primary);
+    margin: 2.5rem 0 1rem;
+    border-bottom: 1px solid var(--border-hairline);
+    padding-bottom: 0.5rem;
+  }
+  .markdown-body :global(h3) {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--ink-primary);
+    margin: 1.75rem 0 0.75rem;
+  }
+  .markdown-body :global(p) {
+    margin-bottom: 1.25rem;
+  }
+  .markdown-body :global(ul), .markdown-body :global(ol) {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  .markdown-body :global(li) {
+    margin-bottom: 0.5rem;
+  }
+  .detail-cta-card {
+    margin-top: 4rem;
+    background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 100%);
+    border: 1px solid rgba(29, 78, 216, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+  }
+  .detail-cta-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--ink-primary);
+    margin: 0.5rem 0 0.75rem;
+  }
+  .detail-cta-card p {
+    color: var(--ink-secondary);
+    font-size: 1rem;
+    max-width: 60ch;
+  }
+</style>

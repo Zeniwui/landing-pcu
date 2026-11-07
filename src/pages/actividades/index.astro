@@ -1,0 +1,59 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ContestCard from '../../components/ContestCard.astro';
+import { getCollection } from 'astro:content';
+
+const allActivities = await getCollection('actividades');
+---
+
+<Layout
+  title="Actividades y Concursos | PCU UniOvi"
+  description="Catálogo de concursos oficiales de programación, olimpiadas, entrenamientos de algoritmia y talleres de divulgación STEM de la Universidad de Oviedo."
+  currentPath="/actividades"
+>
+  <main class="activities-page">
+    <section class="section-padding" style="background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="/">Inicio</a> / <span>Actividades</span>
+        </div>
+
+        <div class="section-head" style="margin-top: 1rem;">
+          <span class="section-tag">Directorio Completo</span>
+          <h1 class="section-title">Todas Nuestras Actividades & Concursos</h1>
+          <p class="section-lead">
+            Consulta los certámenes en los que competimos, las sesiones técnicas semanales en la Escuela de Informática y las actividades formativas en Asturias.
+          </p>
+        </div>
+
+        <!-- LISTADO EN GRID DE ACTIVIDADES -->
+        <div class="contests-grid" style="margin-top: 2.5rem;">
+          {allActivities.map((item) => (
+            <ContestCard
+              slug={item.id}
+              titulo={item.data.titulo}
+              descripcion={item.data.descripcion}
+              ambito={item.data.ambito}
+              estado={item.data.estado}
+              formato={item.data.formato}
+              lugar={item.data.lugar}
+              fecha={item.data.fecha}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .breadcrumbs {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+  }
+  .breadcrumbs a {
+    color: var(--uniovi-blue);
+    text-decoration: underline;
+  }
+</style>

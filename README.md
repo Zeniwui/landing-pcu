@@ -1,56 +1,93 @@
-# 🚀 PCU - Landing Page Oficial
+# 🚀 PCU UniOvi - Portal Web Oficial (Astro)
 
-Bienvenido al repositorio de la página web de la **Asociación de Programación Competitiva Universitaria (PCU)** de la Universidad de Oviedo. 
+Bienvenido al repositorio de la página web de la **Asociación de Programación Competitiva Universitaria (PCU)** de la Universidad de Oviedo.
 
-Este proyecto sirve como carta de presentación corporativa para buscar patrocinadores, conectar con empresas tecnológicas y dar a conocer nuestra actividad (competiciones de algoritmia y talleres STEM).
+Este portal sirve como carta de presentación corporativa, directorio de actividades y concursos de algoritmia, blog de crónicas y canal de contacto para patrocinadores y estudiantes.
 
-🌍 **Web en producción (En vivo):** [https://asociacionpcu.vercel.app](https://asociacionpcu.vercel.app)
-
----
-
-## 🛠️ Tecnologías utilizadas
-
-Para mantener el proyecto rápido, accesible y fácil de mantener por cualquier miembro del equipo, hemos optado por tecnologías nativas:
-- **HTML5** (Estructura semántica)
-- **CSS3** (Diseño moderno, Flexbox/Grid, 100% Responsive, tema claro)
-- **Vanilla JavaScript** (Interactividad básica del menú móvil)
-- *Sin frameworks (ni React, ni Tailwind) para máxima ligereza.*
+🌍 **Web oficial:** [https://asociacionpcu.vercel.app](https://asociacionpcu.vercel.app)
 
 ---
 
-## 🤝 Cómo colaborar (Guía para el equipo)
+## 🛠️ Stack Tecnológico: Astro + Markdown + CSS Nativo
 
-Si eres miembro de PCU y quieres hacer cambios en la web (añadir información, cambiar textos o estilos), sigue estos pasos. Todo el proceso está pensado para hacerse desde la interfaz de **Visual Studio Code (VS Code)** sin necesidad de usar la terminal.
+Hemos migrado el portal a **[Astro](https://astro.build/)** para permitir múltiples páginas, catálogo de actividades y noticias sin perder la velocidad extrema del HTML estático:
 
-### 1. Requisitos previos
-- Tener instalado [Visual Studio Code](https://code.visualstudio.com/).
-- Tener instalado [Git para Windows/Mac](https://git-scm.com/downloads).
-- Tener una cuenta en GitHub.
-
-### 2. Bajarse el proyecto (Clonar)
-1. Abre VS Code.
-2. En el menú superior, ve a **View > Command Palette** (o pulsa `Ctrl + Shift + P`).
-3. Escribe `Git: Clone` y selecciona esa opción.
-4. Pega la URL de este repositorio de GitHub y pulsa Enter.
-5. Elige una carpeta en tu ordenador donde quieras guardar el proyecto.
-6. Cuando termine de descargar, VS Code te preguntará si quieres abrir el repositorio. Dile que **Sí (Open)**.
-
-### 3. Trabajar en local
-1. Haz los cambios que necesites en el archivo `index.html` o `styles.css`.
-2. Para ver tus cambios antes de subirlos, simplemente haz doble clic en tu archivo `index.html` desde tu explorador de archivos de Windows/Mac para que se abra en tu navegador. 
-   *💡 Tip pro: Si usas la extensión "Live Server" en VS Code, podrás ver los cambios en tiempo real cada vez que guardes.*
-
-### 4. Subir tus cambios para que todos los vean
-Una vez que estés contento con tus cambios y hayas comprobado que funcionan bien:
-1. Ve al panel de **Source Control** (el tercer icono en la barra lateral izquierda de VS Code, que parece una bifurcación).
-2. Verás una lista con los archivos que has modificado.
-3. En la caja de texto superior (Message), escribe qué has cambiado. Por ejemplo: `Actualizado el texto de la sección empresas`.
-4. Haz clic en el botón azul **Commit** (dile que "Yes" si te pregunta si quieres preparar/stage los cambios).
-5. El botón azul cambiará a **Sync Changes** (Sincronizar cambios). Haz clic ahí.
-
-### ⚡ ¡Despliegue Automático!
-**No tienes que hacer nada más.** Este repositorio está conectado automáticamente a **Vercel**. 
-En el mismo momento en el que haces clic en *Sync Changes* en VS Code, Vercel detecta la actualización en GitHub y reconstruye la página web. En menos de un minuto, tus cambios estarán visibles para todo el mundo en el enlace oficial: [asociacionpcu.vercel.app](https://asociacionpcu.vercel.app).
+* **0 KB de JavaScript innecesario:** Astro compila a HTML y CSS puro. Máxima puntuación en rendimiento y SEO.
+* **Content Collections (Markdown):** Las noticias y las actividades se redactan en archivos `.md` dentro de `src/content/`.
+* **Diseño Editorial Técnico:** Paleta inspirada en la Universidad de Oviedo (`#1D4ED8`), tipografías `Space Grotesk`, `JetBrains Mono` y `Plus Jakarta Sans`.
+* **Marcador ICPC en Vivo:** Componente con telemetría de competición y globos oficiales.
 
 ---
-*Hecho con ❤️ por el equipo de PCU.*
+
+## 📁 Estructura del Proyecto
+
+```text
+├── public/                 # Archivos estáticos directos (imágenes, scripts)
+│   ├── images/logo.png
+│   └── contact-handler.js  # Script interactivo de envío automático
+├── src/
+│   ├── components/         # Componentes modulares (Navbar, Footer, Scoreboard, Cards)
+│   ├── content/            # ¡Aquí se redacta el contenido!
+│   │   ├── actividades/    # Fichas individuales de concursos y talleres (.md)
+│   │   └── noticias/       # Artículos y crónicas de certámenes (.md)
+│   ├── layouts/            # Plantilla base (Layout.astro)
+│   ├── pages/              # Rutas del portal
+│   │   ├── index.astro     # Portada principal
+│   │   ├── actividades/    # Directorio y páginas dinámicas (/actividades/[slug])
+│   │   └── noticias/       # Blog y crónicas (/noticias/[slug])
+│   └── styles/
+│       └── global.css      # Estilos globales y tokens de diseño
+├── astro.config.mjs        # Configuración de Astro
+└── package.json
+```
+
+---
+
+## ✍️ Cómo añadir una nueva Actividad o Concurso
+
+Cualquier miembro del equipo puede publicar una nueva actividad simplemente creando un archivo en `src/content/actividades/nombre-actividad.md`:
+
+```markdown
+---
+titulo: "AdaByron Norte 2026"
+descripcion: "Competición interuniversitaria de 3 personas por equipo y 1 ordenador."
+tipo: "concurso" # Opciones: concurso | entrenamiento | taller | divulgacion
+ambito: "Nacional / Regional"
+estado: "Próxima Fase"
+formato: "3 Personas · 1 PC · 5 Horas"
+lugar: "Fase Regional Norte"
+fecha: "Marzo 2026"
+destacado: true
+---
+
+## Descripción y Requisitos
+Aquí se escribe el contenido en formato Markdown estándar con fotos, tablas o enlaces...
+```
+
+Astro se encarga automáticamente de crear la tarjeta en `/actividades` y la página detallada en `/actividades/nombre-actividad`.
+
+---
+
+## 💻 Desarrollo en Local
+
+1. **Instalar dependencias:**
+   ```bash
+   npm install
+   ```
+
+2. **Iniciar servidor de desarrollo:**
+   ```bash
+   npm run dev
+   ```
+   Abre [http://localhost:4321](http://localhost:4321) en tu navegador para ver los cambios en tiempo real.
+
+3. **Compilar para producción:**
+   ```bash
+   npm run build
+   ```
+
+---
+
+## ⚡ Despliegue en Vercel
+
+El repositorio está configurado para desplegarse automáticamente en Vercel. Cada commit en GitHub dispara la compilación estática instantánea sin coste alguno.
