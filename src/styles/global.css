@@ -1400,12 +1400,18 @@ a {
     color: #ffffff;
 }
 
+.footer-meta-note {
+    color: var(--ink-muted);
+    font-size: 0.78rem;
+}
+
 .footer-bottom {
     padding-top: 2rem;
     border-top: 1px solid #1e293b;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    text-align: center;
     font-size: 0.8rem;
     color: #94a3b8;
 }

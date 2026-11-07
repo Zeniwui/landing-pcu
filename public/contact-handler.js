@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (!accessKey) {
-            showStatus('La clave de envío (WEB3FORMS_ACCESS_KEY) no está configurada en el entorno. Por favor, escribe directamente a asociacionuniovi@gmail.com.', 'error');
+            showStatus('Error al enviar el mensaje. Por favor, escribe directamente a asociacionuniovi@gmail.com.', 'error');
             return;
         }
 
