@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCU UniOvi | Neo-Brutalist Algoritmia Asturias</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <meta name="description" content="Propuesta 3: Neo-Brutalist Astur. Asociación de Programación Competitiva Universitaria - Universidad de Oviedo. Alto impacto, concursos, talleres y buzón directo.">
+    
+    <!-- Hoja de estilos de la Versión 3 (Neo-Brutalist) -->
+    <link rel="stylesheet" href="styles-v3.css">
+    
+    <!-- Barra flotante de previsualización para comparar las 3 versiones -->
+    <link rel="stylesheet" href="switcher.css">
+</head>
+<body>
+
+    <!-- CABECERA -->
+    <header class="site-header">
+        <div class="container nav-bar">
+            <a href="#hero" class="brand" aria-label="Ir al inicio de PCU UniOvi">
+                <img src="images/logo.png" alt="Logo PCU Universidad de Oviedo" class="brand-logo-img">
+                <div class="brand-text">
+                    <span class="brand-name">PCU UNIOVI</span>
+                    <span class="brand-uni">ALGORITMIA · ASTURIAS</span>
+                </div>
+            </a>
+
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Alternar navegación" aria-expanded="false">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+
+            <nav class="nav-links" id="nav-menu">
+                <a href="#hero">Inicio</a>
+                <a href="#concursos">Concursos</a>
+                <a href="#actividades">Actividades</a>
+                <a href="#empresas">Empresas</a>
+                <a href="#contacto" class="nav-cta">Enviar Mensaje</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO NEO-BRUTALIST -->
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div>
+                        <span class="brutal-tag">★ UNIVERSIDAD DE OVIEDO · TEMPORADA 2026</span>
+
+                        <h1 class="hero-title">
+                            No hacemos código común. <span class="highlight-box">Forjamos algoritmos</span>.
+                        </h1>
+
+                        <p class="hero-description">
+                            La Asociación de Programación Competitiva Universitaria (PCU) entrena a la cantera técnica de Asturias para resolver problemas de máxima complejidad en tiempo récord.
+                        </p>
+
+                        <div class="hero-actions">
+                            <a href="#concursos" class="btn-brutal-primary">Explorar Concursos</a>
+                            <a href="#contacto" class="btn-brutal-secondary">Escribir a la Asociación</a>
+                        </div>
+                    </div>
+
+                    <!-- TARJETA MANIFIESTO FÍSICA -->
+                    <div class="manifesto-card" aria-hidden="true">
+                        <span class="manifesto-sticker">REGLAS OFICIALES</span>
+                        <h3 class="manifesto-header">El ADN de la Competición</h3>
+                        <ul class="manifesto-list">
+                            <li class="manifesto-item">
+                                <span class="manifesto-num">01</span>
+                                <p><strong>3 Personas. 1 Ordenador.</strong> El teclado se comparte. El éxito depende de la comunicación analítica y la estrategia conjunta.</p>
+                            </li>
+                            <li class="manifesto-item">
+                                <span class="manifesto-num">02</span>
+                                <p><strong>5 Horas. 12 Retos.</strong> Jueces automáticos evaluando en tiempo real con límites de $O(N \log N)$ y memoria implacable.</p>
+                            </li>
+                            <li class="manifesto-item">
+                                <span class="manifesto-num">03</span>
+                                <p><strong>Asturias en Europa.</strong> Llevamos los colores de la Universidad de Oviedo a las fases regionales de ICPC y AdaByron.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: CONCURSOS Y COMPETICIONES (ESQUEMA PRINCIPAL) -->
+        <section id="concursos" class="section-padding">
+            <div class="container">
+                <div class="section-head">
+                    <span class="brutal-tag">CERTÁMENES OFICIALES</span>
+                    <h2 class="section-title">Concursos en los que estamos implicados</h2>
+                    <p class="section-lead">
+                        Esquema principal de las competiciones activas y circuitos en los que la Universidad de Oviedo tiene presencia directa.
+                    </p>
+                </div>
+
+                <div class="contests-grid">
+                    <!-- Concurso 1 -->
+                    <article class="contest-block">
+                        <div class="contest-badge-row">
+                            <span class="contest-tag">INTERUNIVERSITARIO</span>
+                            <span class="contest-status-stamp stamp-yellow">PRÓXIMA FASE</span>
+                        </div>
+                        <h3 class="contest-h">AdaByron (Concurso Nacional)</h3>
+                        <p class="contest-body">
+                            La competición interuniversitaria de programación de referencia en España. Tres competidores, un único equipo informático y problemas de precisión matemática y algorítmica.
+                        </p>
+                        <div class="contest-meta-bottom">
+                            <span>EQUIPOS DE 3 · 5H</span>
+                            <span>FASE NORTE</span>
+                        </div>
+                    </article>
+
+                    <!-- Concurso 2 -->
+                    <article class="contest-block">
+                        <div class="contest-badge-row">
+                            <span class="contest-tag">CIRCUITO ICPC</span>
+                            <span class="contest-status-stamp stamp-ac">CLASIFICATORIA OFICIAL</span>
+                        </div>
+                        <h3 class="contest-h">ICPC SWERC Regional</h3>
+                        <p class="contest-body">
+                            Southwestern Europe Regional Contest. La cita donde compiten los mejores centros de Francia, Italia, España y Portugal para lograr plaza en las finales mundiales de algoritmia.
+                        </p>
+                        <div class="contest-meta-bottom">
+                            <span>C++ / JAVA / PYTHON</span>
+                            <span>EUROPA SUDOESTE</span>
+                        </div>
+                    </article>
+
+                    <!-- Concurso 3 -->
+                    <article class="contest-block">
+                        <div class="contest-badge-row">
+                            <span class="contest-tag">CANTERA JOVEN</span>
+                            <span class="contest-status-stamp stamp-blue">COLABORACIÓN</span>
+                        </div>
+                        <h3 class="contest-h">Olimpiada Informática Española</h3>
+                        <p class="contest-body">
+                            Apoyo pedagógico y técnico en la fase clasificatoria autonómica del Principado de Asturias para detectar talento en institutos y bachilleratos.
+                        </p>
+                        <div class="contest-meta-bottom">
+                            <span>INDIVIDUAL</span>
+                            <span>ASTURIAS</span>
+                        </div>
+                    </article>
+
+                    <!-- Concurso 4 -->
+                    <article class="contest-block">
+                        <div class="contest-badge-row">
+                            <span class="contest-tag">ABIERTO ONLINE</span>
+                            <span class="contest-status-stamp stamp-ac">ANUAL</span>
+                        </div>
+                        <h3 class="contest-h">Concurso de las 12 Uvas</h3>
+                        <p class="contest-body">
+                            Maratón de fin de año en la plataforma Acepta el Reto. Velocidad pura de resolución para despedir el año compitiendo en línea.
+                        </p>
+                        <div class="contest-meta-bottom">
+                            <span>ACEPTAELRETO</span>
+                            <span>ONLINE</span>
+                        </div>
+                    </article>
+
+                    <!-- Concurso 5 -->
+                    <article class="contest-block">
+                        <div class="contest-badge-row">
+                            <span class="contest-tag">INTERNO UNIOVI</span>
+                            <span class="contest-status-stamp stamp-yellow">MENSUAL</span>
+                        </div>
+                        <h3 class="contest-h">Liga Interna de Algoritmia</h3>
+                        <p class="contest-body">
+                            Simulaciones en los laboratorios de Oviedo para entrenar a nuevos miembros, depurar estrategias y preparar las alineaciones competitivas de la temporada.
+                        </p>
+                        <div class="contest-meta-bottom">
+                            <span>LABORATORIOS EII</span>
+                            <span>OVIEDO</span>
+                        </div>
+                    </article>
+
+                    <!-- Concurso 6 -->
+                    <article class="contest-block">
+                        <div class="contest-badge-row">
+                            <span class="contest-tag">MUNDIAL ASÍNCRONO</span>
+                            <span class="contest-status-stamp stamp-blue">CONTINUO</span>
+                        </div>
+                        <h3 class="contest-h">Codeforces & AtCoder Rounds</h3>
+                        <p class="contest-body">
+                            Seguimiento constante de problemas y ratings individuales, con sesiones de upsolving grupal para desmenuzar las soluciones ganadoras.
+                        </p>
+                        <div class="contest-meta-bottom">
+                            <span>ONLINE TRACKER</span>
+                            <span>GLOBAL</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: ACTIVIDADES FORMATIVAS & IMPACTO -->
+        <section id="actividades" class="section-padding">
+            <div class="container">
+                <div class="section-head">
+                    <span class="brutal-tag">IMPACTO Y COMUNIDAD</span>
+                    <h2 class="section-title">Qué hacemos en PCU UniOvi</h2>
+                    <p class="section-lead">
+                        Un programa estructurado para desarrollar capacidades analíticas de vanguardia y democratizar el conocimiento computacional en la región.
+                    </p>
+                </div>
+
+                <div class="activities-split">
+                    <article class="activity-box box-blue">
+                        <span class="activity-badge">Entrenamientos Técnicos</span>
+                        <h3 class="activity-title">Sesiones Semanales en Laboratorio</h3>
+                        <p class="activity-desc">
+                            Práctica presencial en la Escuela de Ingeniería Informática de Oviedo. Resolvemos retos complejos y perfeccionamos algoritmos de rendimiento crítico.
+                        </p>
+                        <ul class="activity-points">
+                            <li>
+                                <span class="bullet-square">✓</span>
+                                <span><strong>Álgebra, Grafos y DP:</strong> Enfoques formales para reducir complejidades exponenciales a polinómicas.</span>
+                            </li>
+                            <li>
+                                <span class="bullet-square">✓</span>
+                                <span><strong>Estrategia de equipo:</strong> Gestión de roles en el teclado, lectura de enunciados y testeo manual.</span>
+                            </li>
+                            <li>
+                                <span class="bullet-square">✓</span>
+                                <span><strong>Simulación de jueces:</strong> Tests automáticos y control estricto de consumo de memoria.</span>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="activity-box">
+                        <span class="activity-badge">Vocaciones STEM</span>
+                        <h3 class="activity-title">Talleres en Colegios e Institutos</h3>
+                        <p class="activity-desc">
+                            Llevamos dinámicas de pensamiento computacional y algoritmia a las aulas asturianas para despertar vocaciones científicas tempranas.
+                        </p>
+                        <ul class="activity-points">
+                            <li>
+                                <span class="bullet-square">✓</span>
+                                <span><strong>Puzzles lógicos sin pantallas:</strong> Demostrar que la informática es lógica pura antes que sintaxis.</span>
+                            </li>
+                            <li>
+                                <span class="bullet-square">✓</span>
+                                <span><strong>Iniciación a Python y C++:</strong> Primeros retos guiados para jóvenes con curiosidad por la ingeniería.</span>
+                            </li>
+                            <li>
+                                <span class="bullet-square">✓</span>
+                                <span><strong>Puente con la Universidad:</strong> Mostrar de primera mano el ambiente universitario y las oportunidades tecnológicas.</span>
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: PARA EMPRESAS -->
+        <section id="empresas" class="section-padding">
+            <div class="container">
+                <div class="sponsors-manifesto">
+                    <div>
+                        <span class="brutal-tag" style="background: #ffffff;">ALIANZA EMPRESARIAL</span>
+                        <h2 class="sponsors-heading">El talento más resolutivo de la Universidad de Oviedo</h2>
+                        <p class="sponsors-p">
+                            Los concursos de algoritmia forjan perfiles capaces de resolver problemas bajo presión extrema, depurar sin vacilar y optimizar sistemas críticos. Sé el partner estratégico que impulse sus próximos logros.
+                        </p>
+                        <a href="#contacto" class="btn-brutal-primary" style="background: var(--brutal-black); color: #fff;">Contactar con la Directiva</a>
+                    </div>
+
+                    <div class="sponsors-cards-col">
+                        <div class="sponsor-card-mini">
+                            <h4>Cantera de ingeniería de primer nivel</h4>
+                            <p>Acceso preferente a estudiantes altamente disciplinados en algoritmos, estructuras de datos y resolución analítica.</p>
+                        </div>
+                        <div class="sponsor-card-mini">
+                            <h4>Presencia en certámenes europeos</h4>
+                            <p>Tu marca en camisetas, equipaciones de competición y materiales durante las expediciones a SWERC y AdaByron.</p>
+                        </div>
+                        <div class="sponsor-card-mini">
+                            <h4>Employer branding auténtico</h4>
+                            <p>Organiza hackathons, charlas y desafíos técnicos directamente en la Escuela de Informática de Oviedo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: CONTACTO DIRECTO -->
+        <section id="contacto" class="section-padding">
+            <div class="container">
+                <div class="contact-layout">
+                    <div class="contact-channels-box">
+                        <div>
+                            <span class="brutal-tag">BUZÓN DIRECTO</span>
+                            <h2 class="section-title">Escribe a la asociación</h2>
+                            <p class="section-lead">
+                                Envía un mensaje con tu propuesta. Ya seas estudiante con ganas de competir, empresa patrocinadora o centro educativo, nos pondremos en contacto contigo.
+                            </p>
+                        </div>
+
+                        <div class="channel-card">
+                            <div class="channel-badge">Email Oficial</div>
+                            <div class="channel-content">
+                                <a href="mailto:asociacionuniovi@gmail.com">asociacionuniovi@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="channel-card">
+                            <div class="channel-badge">Ubicación</div>
+                            <div class="channel-content" style="font-size: 1rem; font-weight: normal;">
+                                <strong>Escuela de Ingeniería Informática (UniOvi)</strong><br>
+                                Campus de los Catalanes · Oviedo, Asturias
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FORMULARIO BRUTALISTA -->
+                    <div class="contact-form-brutal">
+                        <form id="contact-form" action="https://formspree.io/f/asociacionuniovi@gmail.com" method="POST" novalidate>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="nombre" class="form-label">Tu nombre completo <span class="req">*</span></label>
+                                    <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Ej. Covadonga García" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Correo electrónico <span class="req">*</span></label>
+                                    <input type="email" id="email" name="email" class="form-input" placeholder="tu@correo.com" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="categoria" class="form-label">Perfil / Interés</label>
+                                    <select id="categoria" name="categoria" class="form-select">
+                                        <option value="Estudiante UniOvi">Estudiante de la Universidad de Oviedo</option>
+                                        <option value="Empresa / Patrocinador">Empresa / Propuesta de Patrocinio</option>
+                                        <option value="Colegio o Instituto">Colegio / Instituto (Talleres STEM)</option>
+                                        <option value="Otra consulta">Otra consulta general</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="asunto" class="form-label">Asunto</label>
+                                    <input type="text" id="asunto" name="asunto" class="form-input" placeholder="Ej. Unirse al grupo de entrenamientos">
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label for="mensaje" class="form-label">Mensaje <span class="req">*</span></label>
+                                    <textarea id="mensaje" name="mensaje" class="form-textarea" placeholder="Escribe aquí tu mensaje para la asociación..." required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-submit-row">
+                                <button type="submit" class="btn-submit-brutal">
+                                    <span>Enviar Mensaje</span>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                    </svg>
+                                </button>
+                                <span style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700;">★ ENVÍO AUTOMÁTICO</span>
+                            </div>
+
+                            <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div>
+                    <h3 class="footer-brand-title">PCU Universidad de Oviedo</h3>
+                    <p class="footer-sub">
+                        Asociación de Programación Competitiva Universitaria. Fomentando el rigor algorítmico, el trabajo en equipo y la proyección del talento asturiano.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Secciones</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#hero">Inicio</a></li>
+                        <li><a href="#concursos">Concursos</a></li>
+                        <li><a href="#actividades">Actividades</a></li>
+                        <li><a href="#empresas">Para Empresas</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Contacto</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="mailto:asociacionuniovi@gmail.com">asociacionuniovi@gmail.com</a></li>
+                        <li><a href="#contacto">Formulario Directo</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2026 Asociación de Programación Competitiva Universitaria · UniOvi.</span>
+                <span>DESARROLLADO EN ASTURIAS</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="contact-handler.js"></script>
+    <script src="switcher.js"></script>
+    <script>
+        const toggleBtn = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        toggleBtn?.addEventListener('click', () => {
+            const isOpen = navMenu.classList.toggle('is-open');
+            toggleBtn.setAttribute('aria-expanded', isOpen);
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('is-open');
+                toggleBtn?.setAttribute('aria-expanded', false);
+            });
+        });
+    </script>
+</body>
+</html>
