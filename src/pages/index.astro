@@ -4,7 +4,12 @@ import ActiveEvents from '../components/ActiveEvents.astro';
 import { getCollection } from 'astro:content';
 
 const allActivities = await getCollection('actividades');
-const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || '';
+const accessKey =
+  import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ||
+  import.meta.env.WEB3FORMS_ACCESS_KEY ||
+  process.env.PUBLIC_WEB3FORMS_ACCESS_KEY ||
+  process.env.WEB3FORMS_ACCESS_KEY ||
+  '';
 ---
 
 <Layout title="PCU UniOvi | Asociación de Programación Competitiva Universitaria">

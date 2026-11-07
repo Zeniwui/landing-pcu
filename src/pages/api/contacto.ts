@@ -54,12 +54,16 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // 4. Lectura segura de la clave desde las variables de entorno
-    let accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || process.env.WEB3FORMS_ACCESS_KEY;
+    let accessKey =
+      import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ||
+      import.meta.env.WEB3FORMS_ACCESS_KEY ||
+      process.env.PUBLIC_WEB3FORMS_ACCESS_KEY ||
+      process.env.WEB3FORMS_ACCESS_KEY;
 
     if (!accessKey && typeof process.loadEnvFile === 'function') {
       try {
         process.loadEnvFile();
-        accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+        accessKey = process.env.PUBLIC_WEB3FORMS_ACCESS_KEY || process.env.WEB3FORMS_ACCESS_KEY;
       } catch (_) {}
     }
 
