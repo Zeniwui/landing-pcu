@@ -1,0 +1,303 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Obtenemos la clave de forma segura desde las variables de entorno (.env en local, panel de Vercel en producción)
+const accessKey =
+  import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ||
+  import.meta.env.WEB3FORMS_ACCESS_KEY ||
+  process.env.PUBLIC_WEB3FORMS_ACCESS_KEY ||
+  process.env.WEB3FORMS_ACCESS_KEY ||
+  '';
+---
+
+<Layout
+  title="Contacto y FAQ | PCU UniOvi"
+  description="Canales de contacto de la Asociación de Programación Competitiva Universitaria de la Universidad de Oviedo (EPI Gijón). Información sobre competiciones, entrenamientos y colaboraciones."
+  currentPath="/contacto"
+>
+  <main class="contact-page">
+    <!-- CABECERA EDITORIAL UNIFICADA -->
+    <header class="page-header-editorial">
+      <div class="container">
+        <div class="hero-meta-bar">
+          <span class="badge-uniovi">EPI GIJÓN · UNIOVI</span>
+          <span class="meta-divider">/</span>
+          <nav class="page-breadcrumbs" aria-label="Ruta de navegación">
+            <a href="/">Inicio</a>
+            <span class="breadcrumb-sep">/</span>
+            <span aria-current="page">Contacto</span>
+          </nav>
+        </div>
+
+        <h1 class="page-headline">
+          Canales de contacto y <span class="accent-text">atención directa</span>.
+        </h1>
+        <p class="page-lead-text">
+          Escríbenos para consultar detalles sobre competiciones, solicitar una charla informativa en tu centro educativo o proponer una colaboración técnica con la directiva.
+        </p>
+      </div>
+    </header>
+
+    <!-- BLOQUE PRINCIPAL: FORMULARIO DE CONTACTO -->
+    <section class="section-padding">
+      <div class="container" style="max-width: 820px;">
+        <div class="contact-form-container">
+          <div class="form-header-box">
+            <h2 class="form-main-title">Envíanos un mensaje</h2>
+            <p class="form-sub">
+              Completa el formulario y te responderemos a tu correo en un plazo máximo de 48 horas.
+            </p>
+          </div>
+
+          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <input type="hidden" name="access_key" value={accessKey} />
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="nombre" class="form-label">Nombre y apellidos <span class="required">*</span></label>
+                <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Ej. Pelayo Álvarez" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">Correo electrónico <span class="required">*</span></label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="tu.nombre@correo.com" required />
+              </div>
+
+              <div class="form-group">
+                <label for="categoria" class="form-label">¿Cuál es tu perfil?</label>
+                <select id="categoria" name="categoria" class="form-select">
+                  <option value="Estudiante UniOvi">Estudiante de la Universidad de Oviedo</option>
+                  <option value="Empresa / Patrocinador">Empresa / Propuesta de Patrocinio</option>
+                  <option value="Colegio o Instituto">Colegio / Instituto (Charlas informativas)</option>
+                  <option value="Alumni o Mentor">Alumni / Mentor técnico</option>
+                  <option value="Otra consulta">Otra consulta general</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="asunto" class="form-label">Asunto breve</label>
+                <input type="text" id="asunto" name="asunto" class="form-input" placeholder="Ej. Unirme al grupo de AdaByron 2026" />
+              </div>
+
+              <div class="form-group full-width">
+                <label for="mensaje" class="form-label">Tu mensaje <span class="required">*</span></label>
+                <textarea
+                  id="mensaje"
+                  name="mensaje"
+                  class="form-textarea"
+                  placeholder="Explícanos tu consulta, propuesta o en qué actividad te gustaría participar..."
+                  rows="5"
+                  required
+                ></textarea>
+                <span class="form-helper">
+                  Responderemos directamente al correo facilitado.
+                </span>
+              </div>
+            </div>
+
+            <div class="form-submit-row">
+              <button type="submit" class="btn-submit">
+                <span>Enviar mensaje</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+              <span class="security-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span>Canal seguro y directo</span>
+              </span>
+            </div>
+
+            <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="section-padding faq-section">
+      <div class="container" style="max-width: 900px;">
+        <div class="section-head text-center">
+          <h2 class="section-title">Preguntas frecuentes</h2>
+          <p class="section-lead">
+            Respuestas a las dudas habituales sobre el funcionamiento de la asociación, entrenamientos y participación en competiciones.
+          </p>
+        </div>
+
+        <div class="faq-accordion">
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Necesito tener un nivel avanzado en algoritmia para unirme?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                No hace falta experiencia previa. En nuestras sesiones trabajamos tanto fundamentos como problemas avanzados de nivel nacional. Lo fundamental es tener ganas de aprender y resolver retos en equipo.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Puedo unirme si estudio en campus de Oviedo o Mieres, o de otras carreras?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Sí. Aunque la sede y las actividades presenciales se celebran en la Escuela Politécnica de Ingeniería (EPI) de Gijón, la asociación está abierta a todo el alumnado de la Universidad de Oviedo (Informática, Telecomunicaciones, Ciencia de Datos, Matemáticas, Física, etc.).
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Las charlas informativas en colegios e institutos tienen algún coste?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Son completamente gratuitas. Somos una asociación universitaria registrada en la Universidad de Oviedo; organizamos estas charlas de forma altruista para orientar al alumnado de secundaria y bachillerato sobre las carreras técnicas y la vida universitaria.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Cómo puede colaborar una empresa tecnológica con PCU UniOvi?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Buscamos empresas colaboradoras que ayuden a financiar desplazamientos, alojamientos y equipaciones de los equipos en competiciones oficiales como AdaByron o SWERC/ICPC. Ofrecemos modalidades de Socio Colaborador y Socio Estratégico con visibilidad en campus, equipación oficial y opciones de organizar retos técnicos bilaterales con los estudiantes más cualificados. Puedes consultar nuestro <a href="/empresas" style="color: var(--uniovi-blue); text-decoration: underline;">dossier para empresas</a>.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .form-header-box {
+    margin-bottom: 1.75rem;
+    border-bottom: 1px solid var(--border-hairline);
+    padding-bottom: 1.25rem;
+  }
+
+  .form-main-title {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--ink-primary);
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.015em;
+  }
+
+  .form-sub {
+    font-size: 1rem;
+    color: var(--ink-secondary);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .security-badge {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  /* FAQ */
+  .faq-section {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-hairline);
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-center .section-lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .faq-accordion {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .faq-item {
+    background: var(--bg-page);
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .faq-item[open] {
+    border-color: rgba(29, 78, 216, 0.35);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  }
+
+  .faq-question {
+    padding: 1.15rem 1.4rem;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    user-select: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-chevron {
+    color: var(--ink-muted);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+    color: var(--uniovi-blue);
+  }
+
+  .faq-answer {
+    padding: 0 1.4rem 1.35rem;
+    font-size: 1rem;
+    color: var(--ink-secondary);
+    line-height: 1.65;
+    border-top: 1px solid var(--border-hairline);
+    padding-top: 1rem;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+</style>

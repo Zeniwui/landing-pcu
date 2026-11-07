@@ -1,0 +1,58 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="container nav-bar">
+    <a href="/" class="brand" aria-label="Ir al inicio de PCU UniOvi">
+      <img src="/images/logo.png" alt="Logo PCU Universidad de Oviedo" class="brand-logo-img" width="38" height="38" />
+      <div class="brand-text">
+        <span class="brand-name">PCU UniOvi</span>
+        <span class="brand-uni">Universidad de Oviedo</span>
+      </div>
+    </a>
+
+    <button class="mobile-toggle" id="mobile-toggle" aria-label="Alternar menú de navegación" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+
+    <nav class="nav-links" id="nav-menu">
+      <a href="/" class={currentPath === '/' ? 'active-link' : ''}>Inicio</a>
+      <a href="/actividades" class={currentPath.startsWith('/actividades') ? 'active-link' : ''}>Actividades</a>
+      <a href="/empresas" class={currentPath.startsWith('/empresas') ? 'active-link' : ''}>Empresas</a>
+      <a href="/contacto" class={`nav-cta ${currentPath === '/contacto' ? 'active-cta' : ''}`}>Contactar</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggleBtn = document.getElementById('mobile-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  toggleBtn?.addEventListener('click', () => {
+    const isOpen = navMenu?.classList.toggle('is-open');
+    toggleBtn.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu?.classList.remove('is-open');
+      toggleBtn?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+<style>
+  .active-link {
+    color: var(--uniovi-blue) !important;
+    font-weight: 700 !important;
+  }
+</style>

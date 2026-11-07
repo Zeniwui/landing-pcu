@@ -1,0 +1,939 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const accessKey =
+  import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ||
+  import.meta.env.WEB3FORMS_ACCESS_KEY ||
+  process.env.PUBLIC_WEB3FORMS_ACCESS_KEY ||
+  process.env.WEB3FORMS_ACCESS_KEY ||
+  '';
+---
+
+<Layout
+  title="Empresas y Patrocinio | PCU UniOvi"
+  description="Dossier oficial de patrocinio y colaboración empresarial de la Asociación de Programación Competitiva Universitaria (EPI Gijón · Universidad de Oviedo)."
+  currentPath="/empresas"
+>
+  <main class="sponsors-page">
+    <!-- CABECERA EDITORIAL UNIFICADA -->
+    <header class="page-header-editorial">
+      <div class="container">
+        <div class="hero-meta-bar">
+          <span class="badge-uniovi">EPI GIJÓN · UNIOVI</span>
+          <span class="meta-divider">/</span>
+          <nav class="page-breadcrumbs" aria-label="Ruta de navegación">
+            <a href="/">Inicio</a>
+            <span class="breadcrumb-sep">/</span>
+            <span aria-current="page">Empresas & Patrocinio</span>
+          </nav>
+        </div>
+
+        <h1 class="page-headline" style="max-width: 26ch;">
+          Impulsa el <span class="accent-text">talento algorítmico</span>.<br />
+          Conecta con los perfiles más técnicos.
+        </h1>
+
+        <p class="page-lead-text">
+          La <strong>Asociación de Programación Competitiva Universitaria (PCU)</strong> entrena a estudiantes de la Escuela Politécnica de Ingeniería (EPI) de Gijón y de la Universidad de Oviedo para competir en concursos como AdaByron o SWERC/ICPC. Colabora con nosotros para financiar desplazamientos y equipación a cambio de visibilidad directa, prestigio institucional y acceso preferente a futuros ingenieros de software.
+        </p>
+
+        <div class="hero-actions" style="margin-top: 2rem; margin-bottom: 2rem;">
+          <a href="#modalidades" class="btn-primary">Ver modalidades de colaboración</a>
+          <a href="/contacto" class="btn-secondary">Contactar</a>
+        </div>
+
+        <!-- TIRA EDITORIAL DE DATOS CLAVE -->
+        <div class="sponsor-facts-strip">
+          <div class="strip-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span><strong>EPI Gijón:</strong> Sede en Campus de Viesques</span>
+          </div>
+          <div class="strip-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            <span><strong>2 Modalidades:</strong> Colaborador (C) y Estratégico (E)</span>
+          </div>
+          <div class="strip-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+              <path d="M4 22h16"></path>
+              <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+              <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+              <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+            </svg>
+            <span><strong>Resultados:</strong> Clasificados a la Final Nacional de AdaByron</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- POR QUÉ COLABORAR: PILARES DE RETORNO -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-head text-center">
+          <h2 class="section-title">¿Por qué patrocinar a PCU UniOvi?</h2>
+          <p class="section-lead">
+            Colaborar con nuestra asociación no es una simple aportación publicitaria; es una inversión directa en el talento informático y algorítmico más cualificado de Asturias.
+          </p>
+        </div>
+
+        <div class="value-pillars-grid">
+          <article class="pillar-card">
+            <div class="pillar-icon-wrap" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <h3 class="pillar-heading">Scouting técnico de primer nivel</h3>
+            <p class="pillar-description">
+              Conoce a estudiantes con solvencia contrastada en estructuras de datos complejas, optimización temporal/espacial, C++ y Python, habituados a resolver problemas difíciles bajo estricta presión de tiempo.
+            </p>
+          </article>
+
+          <article class="pillar-card">
+            <div class="pillar-icon-wrap" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                <line x1="7" y1="7" x2="7.01" y2="7"></line>
+              </svg>
+            </div>
+            <h3 class="pillar-heading">Presencia en el campus y equipaciones</h3>
+            <p class="pillar-description">
+              Posiciona la marca de tu empresa entre el alumnado de ingeniería de la EPI de Gijón mediante cartelería, folletos técnicos y la equipación oficial en viajes a competiciones (Final Nacional de AdaByron o SWERC).
+            </p>
+          </article>
+
+          <article class="pillar-card">
+            <div class="pillar-icon-wrap" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="pillar-heading">Ponencias y retos bilaterales</h3>
+            <p class="pillar-description">
+              Organiza de forma conjunta con la directiva presentaciones técnicas, retos prácticos de algoritmia o ponencias sobre los desafíos de ingeniería que afronta tu compañía en la industria.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODALIDADES DE COLABORACIÓN (TIERS) -->
+    <section id="modalidades" class="section-padding" style="background-color: var(--bg-surface); border-top: 1px solid var(--border-hairline);">
+      <div class="container">
+        <div class="section-head text-center">
+          <h2 class="section-title">Modalidades de colaboración</h2>
+          <p class="section-lead">
+            Estructuramos dos vías transparentes de apoyo: <strong>Socio Colaborador (C)</strong> para presencia continua en campus y canales digitales, y <strong>Socio Estratégico (E)</strong> para máxima notoriedad y presencia en la ropa oficial.
+          </p>
+        </div>
+
+        <div class="tiers-grid">
+          <!-- TIER 1: SOCIO COLABORADOR (C) -->
+          <article class="tier-card tier-colaborador">
+            <header class="tier-header">
+              <span class="tier-code-badge">Modalidad C</span>
+              <h3 class="tier-title">Socio Colaborador</h3>
+              <p class="tier-purpose">
+                Para compañías que desean apoyar activamente a los equipos universitarios y consolidar su marca técnica entre el alumnado de la EPI de Gijón.
+              </p>
+            </header>
+
+            <div class="tier-highlights">
+              <span class="highlights-title">Visibilidad incluida:</span>
+              <ul class="tier-features-list">
+                <li>
+                  <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <div>
+                    <strong>Posters y cartelería en la EPI</strong>
+                    <span class="feature-note">Presencia en tablones informativos de la Escuela Politécnica de Gijón.</span>
+                  </div>
+                </li>
+                <li>
+                  <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <div>
+                    <strong>Página web oficial</strong>
+                    <span class="feature-note">Logotipo corporativo con enlace directo en nuestra web institucional.</span>
+                  </div>
+                </li>
+                <li>
+                  <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <div>
+                    <strong>Redes sociales · Destacadas</strong>
+                    <span class="feature-note">Mención en historias destacadas fijas de colaboradores oficiales.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <footer class="tier-cta-box">
+              <a href="#contacto-empresas" class="btn-secondary btn-tier-full" data-tier="Socio Colaborador (C)">
+                Solicitar modalidad Colaborador &rarr;
+              </a>
+            </footer>
+          </article>
+
+          <!-- TIER 2: SOCIO ESTRATÉGICO (E) -->
+          <article class="tier-card tier-estrategico">
+            <div class="tier-featured-tag">Máxima visibilidad e impacto</div>
+            <header class="tier-header">
+              <span class="tier-code-badge tier-code-strategic">Modalidad E</span>
+              <h3 class="tier-title">Socio Estratégico</h3>
+              <p class="tier-purpose">
+                Para empresas que buscan vinculación preferente, presencia en la equipación de competición oficial y contenidos exclusivos en redes y eventos.
+              </p>
+            </header>
+
+            <div class="tier-highlights">
+              <span class="highlights-title">Todo lo del Colaborador (C), más ventajas exclusivas:</span>
+              <ul class="tier-features-list">
+                <li class="exclusive-feature">
+                  <svg class="star-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <div>
+                    <strong>Ropa y equipación oficial</strong>
+                    <span class="feature-note">Logotipo en las camisetas oficiales que llevamos a AdaByron y competiciones nacionales.</span>
+                  </div>
+                </li>
+                <li class="exclusive-feature">
+                  <svg class="star-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <div>
+                    <strong>Presentaciones y ponencias</strong>
+                    <span class="feature-note">Diapositiva institucional de apertura en ponencias y encuentros técnicos conjuntos.</span>
+                  </div>
+                </li>
+                <li class="exclusive-feature">
+                  <svg class="star-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <div>
+                    <strong>Folletos informativos</strong>
+                    <span class="feature-note">Inclusión de material corporativo en jornadas técnicas para estudiantes.</span>
+                  </div>
+                </li>
+                <li class="exclusive-feature">
+                  <svg class="star-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <div>
+                    <strong>Redes sociales · Publicaciones dedicadas</strong>
+                    <span class="feature-note">Publicación individualizada destacando la colaboración técnica en Instagram y LinkedIn.</span>
+                  </div>
+                </li>
+                <li>
+                  <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <div>
+                    <strong>Web oficial con posición preferente</strong>
+                    <span class="feature-note">Logotipo en tamaño destacado y enlace follow directo.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <footer class="tier-cta-box">
+              <a href="#contacto-empresas" class="btn-primary btn-tier-full" data-tier="Socio Estratégico (E)">
+                Solicitar modalidad Estratégico &rarr;
+              </a>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MATRIZ COMPARATIVA DE VISIBILIDAD -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-head text-center">
+          <h2 class="section-title">Matriz de visibilidad por soporte</h2>
+          <p class="section-lead">
+            Consulta al detalle dónde y en qué formatos aparecerá la marca de tu empresa según la categoría acordada.
+          </p>
+        </div>
+
+        <div class="matrix-wrapper">
+          <table class="visibility-table" aria-label="Tabla comparativa de visibilidad entre Socio Colaborador y Socio Estratégico">
+            <thead>
+              <tr>
+                <th scope="col" class="th-channel">Canal o Soporte</th>
+                <th scope="col" class="th-colab">Socio Colaborador (C)</th>
+                <th scope="col" class="th-strat">Socio Estratégico (E)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" class="row-channel">
+                  <span class="channel-name">Posters y Cartelería</span>
+                  <span class="channel-desc">Tablones y laboratorios de la EPI de Gijón</span>
+                </th>
+                <td class="td-status">
+                  <span class="badge-included">✓ Incluido</span>
+                </td>
+                <td class="td-status highlight-col">
+                  <span class="badge-included">✓ Incluido (Logo preferente)</span>
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row" class="row-channel">
+                  <span class="channel-name">Folletos informativos</span>
+                  <span class="channel-desc">Material impreso en jornadas técnicas y charlas</span>
+                </th>
+                <td class="td-status">
+                  <span class="badge-excluded">—</span>
+                </td>
+                <td class="td-status highlight-col">
+                  <span class="badge-included">✓ Incluido</span>
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row" class="row-channel">
+                  <span class="channel-name">Presentaciones PowerPoint</span>
+                  <span class="channel-desc">Diapositiva en charlas y sesiones técnicas</span>
+                </th>
+                <td class="td-status">
+                  <span class="badge-excluded">—</span>
+                </td>
+                <td class="td-status highlight-col">
+                  <span class="badge-included">✓ Incluido</span>
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row" class="row-channel">
+                  <span class="channel-name">Ropa y Equipación Oficial</span>
+                  <span class="channel-desc">Camisetas vestidas en viajes y finales nacionales</span>
+                </th>
+                <td class="td-status">
+                  <span class="badge-excluded">—</span>
+                </td>
+                <td class="td-status highlight-col">
+                  <span class="badge-included badge-featured">✓ Incluido en equipación</span>
+                </td>
+              </tr>
+
+              <tr class="table-group-header">
+                <th colspan="3">Canales Digitales & Redes</th>
+              </tr>
+
+              <tr>
+                <th scope="row" class="row-channel">
+                  <span class="channel-name">Historias destacadas fijas</span>
+                  <span class="channel-desc">Presencia permanente en perfil de Instagram</span>
+                </th>
+                <td class="td-status">
+                  <span class="badge-included">✓ Incluido</span>
+                </td>
+                <td class="td-status highlight-col">
+                  <span class="badge-included">✓ Incluido</span>
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row" class="row-channel">
+                  <span class="channel-name">Publicaciones dedicadas (Feed)</span>
+                  <span class="channel-desc">Post individualizado con mención corporativa</span>
+                </th>
+                <td class="td-status">
+                  <span class="badge-excluded">—</span>
+                </td>
+                <td class="td-status highlight-col">
+                  <span class="badge-included">✓ Incluido</span>
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row" class="row-channel">
+                  <span class="channel-name">Página web oficial</span>
+                  <span class="channel-desc">Logotipo institucional con enlace follow directo</span>
+                </th>
+                <td class="td-status">
+                  <span class="badge-included">✓ Incluido</span>
+                </td>
+                <td class="td-status highlight-col">
+                  <span class="badge-included badge-featured">✓ Incluido (Logo preferente)</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULARIO DIRECTO PARA EMPRESAS -->
+    <section id="contacto-empresas" class="section-padding">
+      <div class="container" style="max-width: 900px;">
+        <div class="section-head text-center">
+          <h2 class="section-title">Únete como socio empresarial</h2>
+          <p class="section-lead">
+            Cuéntanos qué objetivos de scouting, visibilidad o patrocinio persigue tu compañía y nos pondremos en contacto contigo en menos de 48 horas.
+          </p>
+        </div>
+
+        <div class="contact-form-container">
+          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+                <input type="hidden" name="access_key" value={accessKey} />
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                <input type="hidden" name="categoria" value="Empresa / Patrocinador" />
+
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="nombre" class="form-label">Persona de contacto <span class="required">*</span></label>
+                    <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Ej. Pelayo Álvarez (Head of Engineering)" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email" class="form-label">Correo corporativo <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="nombre@empresa.com" required />
+                  </div>
+
+                  <div class="form-group full-width">
+                    <label for="asunto" class="form-label">Modalidad de interés <span class="required">*</span></label>
+                    <select id="asunto" name="asunto" class="form-select" required>
+                      <option value="Interés en Socio Estratégico (E)">Socio Estratégico (Modalidad E - Máxima visibilidad y ropa)</option>
+                      <option value="Interés en Socio Colaborador (C)">Socio Colaborador (Modalidad C - Campus y web)</option>
+                      <option value="Propuesta personalizada para PCU UniOvi">Propuesta a medida / Colaboración técnica</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group full-width">
+                    <label for="mensaje" class="form-label">Propuesta o necesidades de tu compañía <span class="required">*</span></label>
+                    <textarea
+                      id="mensaje"
+                      name="mensaje"
+                      class="form-textarea"
+                      placeholder="Explícanos brevemente qué busca tu empresa (posiciones técnicas a cubrir, patrocinio de equipación, charlas técnicas conjuntas...)"
+                      rows="4"
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div class="form-submit-row">
+                  <button type="submit" class="btn-submit">
+                    <span>Enviar propuesta corporativa</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <line x1="22" y1="2" x2="11" y2="13"></line>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                  </button>
+                  <span class="security-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span>Tratamiento confidencial</span>
+                  </span>
+                </div>
+
+                <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+    <!-- FAQ DE PATROCINIO -->
+    <section class="section-padding faq-section">
+      <div class="container" style="max-width: 900px;">
+        <div class="section-head text-center">
+          <h2 class="section-title">Preguntas frecuentes sobre el patrocinio</h2>
+          <p class="section-lead">
+            Respuestas a las cuestiones habituales de empresas sobre la colaboración y el convenio.
+          </p>
+        </div>
+
+        <div class="faq-accordion">
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Qué entidad jurídica respalda la colaboración?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                PCU UniOvi es la Asociación de Programación Competitiva Universitaria de la Universidad de Oviedo, registrada formalmente y con sede en la Escuela Politécnica de Ingeniería (EPI) de Gijón. Emitimos el correspondiente convenio o certificado de donación / colaboración según el régimen pactado.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Cuándo se inicia la visibilidad del patrocinador?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                De forma inmediata tras formalizar el acuerdo. Publicamos el logotipo corporativo en la web institucional y activamos las menciones en redes sociales y cartelería de la temporada competitiva activa.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Podemos organizar una visita a oficinas o un reto técnico en la EPI de Gijón?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Sí. Con los Socios Estratégicos coordinamos ponencias técnicas en los laboratorios de la EPI de Gijón, visitas a sedes y retos de algoritmia para acercar la cultura de vuestra compañía a nuestros estudiantes más destacados.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  // Enlace interactivo entre los botones de tiers y el selector del formulario
+  document.querySelectorAll('.btn-tier-full').forEach(button => {
+    button.addEventListener('click', () => {
+      const tier = button.getAttribute('data-tier');
+      const asuntoSelect = document.getElementById('asunto') as HTMLSelectElement | null;
+      if (asuntoSelect && tier) {
+        if (tier.includes('Estratégico')) {
+          asuntoSelect.value = 'Interés en Socio Estratégico (E)';
+        } else if (tier.includes('Colaborador')) {
+          asuntoSelect.value = 'Interés en Socio Colaborador (C)';
+        }
+      }
+    });
+  });
+</script>
+
+<style>
+  .sponsor-facts-strip {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-hairline);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-secondary);
+  }
+  .strip-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .strip-item svg {
+    color: var(--uniovi-blue);
+    flex-shrink: 0;
+  }
+  .strip-item strong {
+    color: var(--ink-primary);
+  }
+
+  /* PILARES DE RETORNO */
+  .value-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .pillar-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .pillar-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--uniovi-blue);
+    box-shadow: var(--shadow-elevated);
+  }
+  .pillar-icon-wrap {
+    width: 44px;
+    height: 44px;
+    background: var(--uniovi-blue-tint);
+    color: var(--uniovi-blue);
+    border: 1px solid rgba(29, 78, 216, 0.18);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .pillar-heading {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ink-primary);
+    margin: 0 0 0.65rem;
+  }
+  .pillar-description {
+    font-size: 0.94rem;
+    color: var(--ink-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* TIERS */
+  .tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    align-items: stretch;
+  }
+  .tier-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .tier-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(29, 78, 216, 0.35);
+    box-shadow: var(--shadow-elevated);
+  }
+  .tier-estrategico {
+    border-color: rgba(29, 78, 216, 0.4);
+    background: linear-gradient(180deg, rgba(239, 246, 255, 0.4) 0%, #ffffff 100%);
+  }
+  .tier-featured-tag {
+    position: absolute;
+    top: -12px;
+    right: 24px;
+    background: var(--uniovi-blue);
+    color: #ffffff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+  }
+  .tier-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-hairline);
+  }
+  .tier-code-badge {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: #0f172a;
+    color: #ffffff;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-sm);
+    display: inline-block;
+    margin-bottom: 0.75rem;
+  }
+  .tier-code-strategic {
+    background: var(--uniovi-blue);
+  }
+  .tier-title {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ink-primary);
+    margin: 0 0 0.5rem;
+  }
+  .tier-purpose {
+    font-size: 0.92rem;
+    color: var(--ink-secondary);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .highlights-title {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-muted);
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .tier-features-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    margin-bottom: 2rem;
+  }
+  .tier-features-list li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+  .check-icon {
+    color: var(--verdict-ac);
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+  .star-icon {
+    color: var(--uniovi-blue);
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+  .tier-features-list strong {
+    display: block;
+    font-size: 0.92rem;
+    color: var(--ink-primary);
+    margin-bottom: 0.15rem;
+  }
+  .feature-note {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--ink-secondary);
+    line-height: 1.45;
+  }
+  .btn-tier-full {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* MATRIZ */
+  .matrix-wrapper {
+    overflow-x: auto;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+  }
+  .visibility-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+  .visibility-table th, .visibility-table td {
+    padding: 1rem 1.25rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-hairline);
+  }
+  .th-channel {
+    background: var(--bg-surface-elevated);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-muted);
+  }
+  .th-colab, .th-strat {
+    background: var(--bg-surface-elevated);
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink-primary);
+    text-align: center;
+  }
+  .th-strat {
+    background: rgba(29, 78, 216, 0.05);
+    color: var(--uniovi-blue);
+  }
+  .row-channel {
+    font-weight: normal;
+  }
+  .channel-name {
+    display: block;
+    font-weight: 600;
+    color: var(--ink-primary);
+  }
+  .channel-desc {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--ink-secondary);
+    margin-top: 0.15rem;
+  }
+  .td-status {
+    text-align: center;
+  }
+  .highlight-col {
+    background: rgba(29, 78, 216, 0.02);
+  }
+  .badge-included {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--verdict-ac);
+    background: var(--verdict-ac-bg);
+    border: 1px solid rgba(5, 150, 105, 0.2);
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-sm);
+    display: inline-block;
+  }
+  .badge-featured {
+    color: var(--uniovi-blue);
+    background: var(--uniovi-blue-tint);
+    border-color: rgba(29, 78, 216, 0.2);
+  }
+  .badge-excluded {
+    color: var(--ink-muted);
+  }
+  .table-group-header th {
+    background: var(--bg-surface-elevated);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-primary);
+  }
+
+  /* TRANSPARENCIA */
+  .transparency-box {
+    background: #090d16;
+    color: #f8fafc;
+    border-radius: var(--radius-lg);
+    padding: 3.5rem;
+    border: 1px solid #1e293b;
+  }
+  .transparency-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+  }
+  .transparency-lead {
+    font-size: 1.05rem;
+    color: #94a3b8;
+    line-height: 1.65;
+    max-width: 65ch;
+    margin-bottom: 2.5rem;
+  }
+  .allocation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+  }
+  .allocation-item {
+    border-left: 2px solid var(--uniovi-blue);
+    padding-left: 1.25rem;
+  }
+  .allocation-pct {
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #60a5fa;
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .allocation-head {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+  }
+  .allocation-text {
+    font-size: 0.88rem;
+    color: #94a3b8;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* CONTACTO / FORM LAYOUT */
+  .security-badge {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  /* FAQ */
+  .faq-section {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-hairline);
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-center .section-lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .faq-accordion {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .faq-item {
+    background: var(--bg-page);
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .faq-item[open] {
+    border-color: rgba(29, 78, 216, 0.35);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  }
+  .faq-question {
+    padding: 1.15rem 1.4rem;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    user-select: none;
+  }
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+  .faq-chevron {
+    color: var(--ink-muted);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+    color: var(--uniovi-blue);
+  }
+  .faq-answer {
+    padding: 0 1.4rem 1.35rem;
+    font-size: 0.96rem;
+    color: var(--ink-secondary);
+    line-height: 1.65;
+    border-top: 1px solid var(--border-hairline);
+    padding-top: 1rem;
+  }
+  .faq-answer p {
+    margin: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .transparency-box {
+      padding: 2.5rem;
+    }
+  }
+  @media (max-width: 768px) {
+    .transparency-box {
+      padding: 2rem 1.5rem;
+    }
+  }
+</style>
