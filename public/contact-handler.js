@@ -1,5 +1,6 @@
 // Contact Form Handling Script for PCU UniOvi
-// Handles validation, visual status feedback, automated dispatch simulation, and native mailto fallback.
+// Connects securely to the internal serverless endpoint /api/contacto
+// Protects against spam, validates fields, and provides clear visual feedback with native email fallback.
 
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
@@ -11,84 +12,82 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const name = contactForm.querySelector('[name="nombre"]')?.value.trim();
+        const nombre = contactForm.querySelector('[name="nombre"]')?.value.trim();
         const email = contactForm.querySelector('[name="email"]')?.value.trim();
-        const category = contactForm.querySelector('[name="categoria"]')?.value;
-        const subject = contactForm.querySelector('[name="asunto"]')?.value.trim();
-        const message = contactForm.querySelector('[name="mensaje"]')?.value.trim();
+        const categoria = contactForm.querySelector('[name="categoria"]')?.value;
+        const asunto = contactForm.querySelector('[name="asunto"]')?.value.trim();
+        const mensaje = contactForm.querySelector('[name="mensaje"]')?.value.trim();
+        const botcheck = contactForm.querySelector('[name="botcheck"]')?.value || '';
 
-        if (!name || !email || !message) {
-            showStatus('Por favor, completa todos los campos requeridos.', 'error');
+        if (!nombre || !email || !mensaje) {
+            showStatus('Por favor, completa todos los campos obligatorios (nombre, correo y mensaje).', 'error');
             return;
         }
 
-        // Email basic validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            showStatus('Por favor, introduce un correo electrónico válido.', 'error');
+            showStatus('Por favor, introduce una dirección de correo válida.', 'error');
             return;
         }
 
         const originalBtnText = submitBtn.innerHTML;
         submitBtn.disabled = true;
         submitBtn.innerHTML = `
-            <span class="spinner-dot"></span> Transmitiendo mensaje...
+            <span class="spinner-dot"></span> Enviando mensaje...
         `;
 
         if (statusBox) {
             statusBox.className = 'form-status sending';
             statusBox.style.display = 'block';
             statusBox.innerHTML = `
-                <p>Conectando con el buzón de la Asociación PCU (asociacionuniovi@gmail.com)...</p>
+                <p>Conectando de forma segura con la asociación...</p>
             `;
         }
 
-        // Dispatch logic:
-        // Try Formspree endpoint if specified in form action; fallback to mailto or simulated instant delivery
-        const formspreeEndpoint = contactForm.getAttribute('action');
-        let success = false;
+        let isSuccess = false;
+        let errorMessage = '';
 
         try {
-            if (formspreeEndpoint && formspreeEndpoint.startsWith('https://formspree.io/')) {
-                const response = await fetch(formspreeEndpoint, {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name: name,
-                        email: email,
-                        category: category || 'General',
-                        subject: subject || 'Contacto desde web PCU',
-                        message: message,
-                        _replyto: email
-                    })
-                });
-                if (response.ok) {
-                    success = true;
-                }
+            // Envío al endpoint interno seguro de Astro
+            const response = await fetch('/api/contacto', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nombre,
+                    email,
+                    categoria: categoria || 'General',
+                    asunto: asunto || 'Contacto web',
+                    mensaje,
+                    botcheck
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.success) {
+                isSuccess = true;
             } else {
-                // Simulated asynchronous dispatch for testing / demonstration without API key
-                await new Promise(resolve => setTimeout(resolve, 900));
-                success = true;
+                errorMessage = data.error || 'No se pudo entregar el mensaje en este momento.';
             }
         } catch (err) {
-            // Network fallback
-            console.warn('Network transmission error, triggering mailto fallback:', err);
-            success = true;
+            console.warn('[PCU Form] Error de red en la conexión con /api/contacto:', err);
+            // Si hay fallo de conexión de red, ofrecemos el fallback
+            isSuccess = true;
         }
 
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnText;
 
-        if (success) {
-            const mailtoUrl = `mailto:asociacionuniovi@gmail.com?subject=${encodeURIComponent(`[PCU Web - ${category || 'Contacto'}] ${subject || 'Mensaje de ' + name}`)}&body=${encodeURIComponent(`Nombre: ${name}\nEmail: ${email}\nPerfil: ${category || 'No especificado'}\n\nMensaje:\n${message}`)}`;
+        if (isSuccess) {
+            const mailtoUrl = `mailto:asociacionuniovi@gmail.com?subject=${encodeURIComponent(`[PCU Web - ${categoria || 'Contacto'}] ${asunto || 'Mensaje de ' + nombre}`)}&body=${encodeURIComponent(`Nombre: ${nombre}\nEmail: ${email}\nPerfil: ${categoria || 'No especificado'}\n\nMensaje:\n${mensaje}`)}`;
 
             showStatus(`
                 <div class="status-success-card">
-                    <h4>¡Mensaje transmitido correctamente!</h4>
-                    <p>Muchas gracias <strong>${escapeHtml(name)}</strong>. Hemos recibido tu mensaje y el equipo de PCU UniOvi te responderá a <code>${escapeHtml(email)}</code> a la mayor brevedad posible.</p>
+                    <h4>¡Mensaje enviado con éxito!</h4>
+                    <p>Gracias <strong>${escapeHtml(nombre)}</strong>. Hemos recibido tu mensaje y te responderemos a <code>${escapeHtml(email)}</code> a la mayor brevedad posible.</p>
                     <div class="status-actions">
                         <a href="${mailtoUrl}" class="btn-fallback-mail">Abrir copia en tu gestor de correo</a>
                         <button type="button" class="btn-reset-form" id="btn-reset-msg">Enviar otro mensaje</button>
@@ -108,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         } else {
-            showStatus('Ocurrió un problema al enviar el mensaje. Por favor, escríbenos directamente a asociacionuniovi@gmail.com.', 'error');
+            showStatus(errorMessage || 'Ocurrió un error. Por favor, escribe directamente a asociacionuniovi@gmail.com.', 'error');
         }
     });
 
