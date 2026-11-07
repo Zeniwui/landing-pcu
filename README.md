@@ -1,51 +1,45 @@
-# 🚀 PCU UniOvi - Portal Web Oficial (Astro)
+# PCU UniOvi - Web de la asociación
 
-Bienvenido al repositorio de la página web de la **Asociación de Programación Competitiva Universitaria (PCU)** de la Universidad de Oviedo.
+Repositorio de la página web de la Asociación de Programación Competitiva Universitaria (PCU) de la Universidad de Oviedo.
 
-Este portal sirve como carta de presentación corporativa, directorio de actividades y concursos de algoritmia, blog de crónicas y canal de contacto para patrocinadores y estudiantes.
+El sitio reúne información sobre la asociación, avisos de actividades y concursos de programación, artículos del blog y vías de contacto para estudiantes y patrocinadores.
 
-🌍 **Web oficial:** [https://asociacionpcu.vercel.app](https://asociacionpcu.vercel.app)
+Web: [https://asociacionpcu.vercel.app](https://asociacionpcu.vercel.app)
 
----
+## Stack
 
-## 🛠️ Stack Tecnológico: Astro + Markdown + CSS Nativo
+La web está construida con [Astro](https://astro.build/) y genera páginas estáticas a partir de plantillas y archivos Markdown:
 
-Hemos migrado el portal a **[Astro](https://astro.build/)** para permitir múltiples páginas, catálogo de actividades y noticias sin perder la velocidad extrema del HTML estático:
+* Generación de HTML y CSS estático sin sobrecargar con JavaScript en el navegador.
+* Colecciones de contenido (Content Collections) en `src/content/` para noticias y actividades.
+* Estilos con CSS nativo y paleta corporativa (`#1D4ED8`), usando las fuentes Space Grotesk, JetBrains Mono y Plus Jakarta Sans.
+* Componente interactivo de marcador estilo ICPC con globos y tabla de posiciones.
 
-* **0 KB de JavaScript innecesario:** Astro compila a HTML y CSS puro. Máxima puntuación en rendimiento y SEO.
-* **Content Collections (Markdown):** Las noticias y las actividades se redactan en archivos `.md` dentro de `src/content/`.
-* **Diseño Editorial Técnico:** Paleta inspirada en la Universidad de Oviedo (`#1D4ED8`), tipografías `Space Grotesk`, `JetBrains Mono` y `Plus Jakarta Sans`.
-* **Marcador ICPC en Vivo:** Componente con telemetría de competición y globos oficiales.
-
----
-
-## 📁 Estructura del Proyecto
+## Estructura del proyecto
 
 ```text
 ├── public/                 # Archivos estáticos directos (imágenes, scripts)
 │   ├── images/logo.png
-│   └── contact-handler.js  # Script interactivo de envío automático
+│   └── contact-handler.js  # Script de envío de formularios
 ├── src/
-│   ├── components/         # Componentes modulares (Navbar, Footer, Scoreboard, Cards)
-│   ├── content/            # ¡Aquí se redacta el contenido!
-│   │   ├── actividades/    # Fichas individuales de concursos y talleres (.md)
-│   │   └── noticias/       # Artículos y crónicas de competiciones (.md)
+│   ├── components/         # Componentes (Navbar, Footer, Scoreboard, Cards)
+│   ├── content/            # Contenido en Markdown
+│   │   ├── actividades/    # Fichas de concursos y talleres (.md)
+│   │   └── noticias/       # Artículos y crónicas (.md)
 │   ├── layouts/            # Plantilla base (Layout.astro)
 │   ├── pages/              # Rutas del portal
 │   │   ├── index.astro     # Portada principal
-│   │   ├── actividades/    # Directorio y páginas dinámicas (/actividades/[slug])
+│   │   ├── actividades/    # Listado y páginas individuales (/actividades/[slug])
 │   │   └── noticias/       # Blog y crónicas (/noticias/[slug])
 │   └── styles/
-│       └── global.css      # Estilos globales y tokens de diseño
+│       └── global.css      # Estilos globales y variables de diseño
 ├── astro.config.mjs        # Configuración de Astro
 └── package.json
 ```
 
----
+## Cómo añadir una actividad o concurso
 
-## ✍️ Cómo añadir una nueva Actividad o Concurso
-
-Cualquier miembro del equipo puede publicar una nueva actividad simplemente creando un archivo en `src/content/actividades/nombre-actividad.md`:
+Para publicar una nueva actividad, crea un archivo `.md` en `src/content/actividades/nombre-actividad.md`:
 
 ```markdown
 ---
@@ -64,30 +58,40 @@ destacado: true
 Aquí se escribe el contenido en formato Markdown estándar con fotos, tablas o enlaces...
 ```
 
-Astro se encarga automáticamente de crear la tarjeta en `/actividades` y la página detallada en `/actividades/nombre-actividad`.
+Astro genera automáticamente la tarjeta en `/actividades` y la página detallada en `/actividades/nombre-actividad`.
 
----
+## Desarrollo local
 
-## 💻 Desarrollo en Local
+Los comandos deben ejecutarse en la terminal situándote en la raíz del proyecto (el directorio donde se encuentra `package.json`). Es necesario tener instalado [Node.js](https://nodejs.org/) (versión 18 o superior).
 
-1. **Instalar dependencias:**
+### Acceso a la terminal según tu sistema
+
+* Windows: abre PowerShell, Terminal de Windows o el Símbolo del sistema en la carpeta del proyecto. Si usas VS Code, pulsa `Ctrl + ñ` para abrir la terminal integrada.
+* Linux y macOS: abre tu emulador de terminal habitual (Bash o Zsh) y entra al directorio del repositorio:
+  ```bash
+  cd landing-pcu
+  ```
+
+### Comandos del proyecto
+
+Los comandos de npm funcionan exactamente igual en Windows, Linux y macOS:
+
+1. Instalar dependencias:
    ```bash
    npm install
    ```
 
-2. **Iniciar servidor de desarrollo:**
+2. Iniciar el servidor de desarrollo:
    ```bash
    npm run dev
    ```
-   Abre [http://localhost:4321](http://localhost:4321) en tu navegador para ver los cambios en tiempo real.
+   Abre [http://localhost:4321](http://localhost:4321) en el navegador para ver los cambios en tiempo real.
 
-3. **Compilar para producción:**
+3. Compilar para producción:
    ```bash
    npm run build
    ```
 
----
+## Despliegue
 
-## ⚡ Despliegue en Vercel
-
-El repositorio está configurado para desplegarse automáticamente en Vercel. Cada commit en GitHub dispara la compilación estática instantánea sin coste alguno.
+El proyecto está configurado para desplegarse en Vercel con cada subida a la rama principal en GitHub.
