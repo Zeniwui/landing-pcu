@@ -47,10 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         }
 
-        // Serializar los datos del formulario incluyendo access_key, nombre, email, mensaje, etc.
+        // Serializar los datos del formulario asegurando los campos estándar de Web3Forms (name, email, message)
         const formData = new FormData(contactForm);
-        formData.append('from_name', 'PCU UniOvi Web');
-        formData.append('subject', `[PCU Web - ${formData.get('categoria') || 'Contacto'}] Mensaje de ${nombre}`);
+        formData.set('name', nombre);
+        formData.set('email', email);
+        formData.set('message', mensaje);
+        formData.set('from_name', 'PCU UniOvi Web');
+        formData.set('subject', `[PCU Web - ${formData.get('categoria') || 'Contacto'}] Mensaje de ${nombre}`);
 
         const object = Object.fromEntries(formData);
         const json = JSON.stringify(object);
