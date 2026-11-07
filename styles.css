@@ -391,19 +391,25 @@ a {
 }
 
 /* ==========================================================================
-   HERO SCOREBOARD BOX (ICPC Scoreboard Telemetry Component)
+   HERO SCOREBOARD BOX (Adaptado al diseño Editorial Técnico de Versión 1)
    ========================================================================== */
 .scoreboard-box {
-    background: #111827;
-    border: 1px solid #1f2937;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-hairline);
     border-radius: var(--radius-md);
-    box-shadow: 0 20px 35px -10px rgba(15, 23, 42, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    box-shadow: var(--shadow-card);
     overflow: hidden;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.scoreboard-box:hover {
+    box-shadow: var(--shadow-elevated);
+    border-color: var(--border-strong);
 }
 
 .scoreboard-top {
-    background: #090d16;
-    border-bottom: 1px solid #1f2937;
+    background: var(--bg-surface-elevated);
+    border-bottom: 1px solid var(--border-hairline);
     padding: 0.85rem 1.25rem;
     display: flex;
     align-items: center;
@@ -416,35 +422,49 @@ a {
     display: flex;
     align-items: center;
     gap: 0.55rem;
-    color: #10b981;
+    color: var(--ink-secondary);
     font-weight: 600;
+    letter-spacing: 0.04em;
+    font-size: 0.74rem;
 }
 
 .radar-blink {
     width: 8px;
     height: 8px;
-    background: #10b981;
+    background: var(--verdict-ac);
     border-radius: 50%;
-    box-shadow: 0 0 8px #10b981;
-    animation: blinkGlow 1.8s infinite;
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
+    animation: blinkGlow 2s infinite;
 }
 
 @keyframes blinkGlow {
     0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.35; transform: scale(0.85); }
+    50% { opacity: 0.45; transform: scale(0.85); }
+}
+
+.scoreboard-timer {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--uniovi-blue);
+    background: var(--uniovi-blue-tint);
+    border: 1px solid rgba(29, 78, 216, 0.15);
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.04em;
 }
 
 .scoreboard-table {
-    padding: 1.25rem;
+    padding: 1.15rem 1.25rem;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    background: #0d121e;
+    background: var(--bg-surface);
 }
 
 .score-row {
-    background: #131a2a;
-    border: 1px solid #1e293b;
+    background: var(--bg-page);
+    border: 1px solid var(--border-hairline);
     border-radius: var(--radius-sm);
     padding: 0.85rem 1rem;
     display: flex;
@@ -452,17 +472,20 @@ a {
     justify-content: space-between;
     font-family: var(--font-mono);
     font-size: 0.82rem;
-    transition: transform 0.15s ease, border-color 0.15s ease;
+    transition: all 0.15s ease;
 }
 
 .score-row:hover {
-    border-color: #38bdf8;
+    background: #ffffff;
+    border-color: var(--border-strong);
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
 }
 
 .score-row.highlighted {
-    border-color: rgba(37, 99, 235, 0.6);
-    background: linear-gradient(90deg, rgba(37, 99, 235, 0.14) 0%, rgba(19, 26, 42, 0.8) 100%);
-    box-shadow: 0 0 15px rgba(37, 99, 235, 0.1);
+    background: #ffffff;
+    border-color: rgba(29, 78, 216, 0.3);
+    border-left: 3.5px solid var(--uniovi-blue);
+    box-shadow: 0 3px 10px rgba(29, 78, 216, 0.08);
 }
 
 .team-info {
@@ -472,22 +495,41 @@ a {
 }
 
 .rank-badge {
-    background: #1e293b;
-    color: #e2e8f0;
-    padding: 0.18rem 0.5rem;
-    border-radius: 4px;
+    background: #e2e8f0;
+    color: var(--ink-secondary);
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-sm);
     font-size: 0.75rem;
     font-weight: 700;
+    font-family: var(--font-mono);
+}
+
+.rank-badge.top-1 {
+    background: var(--uniovi-blue);
+    color: #ffffff;
+}
+
+.rank-badge.top-2 {
+    background: #cbd5e1;
+    color: var(--ink-primary);
+}
+
+.rank-badge.top-3 {
+    background: #e2e8f0;
+    color: var(--ink-muted);
 }
 
 .team-name {
-    color: #f8fafc;
+    color: var(--ink-primary);
+    font-family: var(--font-body);
+    font-size: 0.88rem;
     font-weight: 600;
 }
 
 .balloons {
     display: flex;
     gap: 5px;
+    align-items: center;
 }
 
 .balloon {
@@ -495,8 +537,13 @@ a {
     height: 16px;
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     display: inline-block;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.18);
     position: relative;
+    transition: transform 0.15s ease;
+}
+
+.balloon:hover {
+    transform: translateY(-2px) scale(1.08);
 }
 
 .balloon::after {
@@ -505,19 +552,42 @@ a {
     bottom: -3px;
     left: 5px;
     width: 4px;
-    height: 3px;
+    height: 2px;
     background: inherit;
     border-radius: 1px;
 }
 
-.balloon.b-green { background: #10b981; }
-.balloon.b-blue { background: #38bdf8; }
-.balloon.b-yellow { background: #f59e0b; }
-.balloon.b-purple { background: #a855f7; }
+.balloon.b-green { background: #059669; }
+.balloon.b-blue { background: #1d4ed8; }
+.balloon.b-yellow { background: #d97706; }
+.balloon.b-purple { background: #7c3aed; }
 
 .score-points {
-    color: #10b981;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    font-weight: 600;
+}
+
+.score-points.solved-highlight {
+    color: var(--verdict-ac);
+    background: var(--verdict-ac-bg);
+    border: 1px solid rgba(5, 150, 105, 0.2);
+    padding: 0.25rem 0.55rem;
+    border-radius: var(--radius-sm);
     font-weight: 700;
+}
+
+.scoreboard-foot {
+    padding: 0.65rem 1.25rem;
+    background: var(--bg-surface-elevated);
+    border-top: 1px solid var(--border-hairline);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-muted);
 }
 
 /* ==========================================================================
